@@ -1,0 +1,49 @@
+.cubes-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  perspective: 1000px;
+  z-index: 4;
+  overflow: visible;
+}
+
+.cube {
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: cubeFloat linear infinite;
+  will-change: transform;
+}
+
+.cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(124, 111, 255, 0.10);
+  border: 1px solid rgba(124, 111, 255, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 20px rgba(124, 111, 255, 0.08);
+}
+
+.cube-front  { transform: translateZ(var(--cube-half)); }
+.cube-back   { transform: rotateY(180deg) translateZ(var(--cube-half)); }
+.cube-left   { transform: rotateY(-90deg) translateZ(var(--cube-half)); }
+.cube-right  { transform: rotateY(90deg)  translateZ(var(--cube-half)); }
+.cube-top    { transform: rotateX(90deg)  translateZ(var(--cube-half));
+               background: rgba(0, 201, 177, 0.12);
+               border-color: rgba(0, 201, 177, 0.4); }
+.cube-bottom { transform: rotateX(-90deg) translateZ(var(--cube-half)); }
+
+/* Positions + délais des 4 cubes */
+.cube-1 { top: 10%; right: 15%; animation-duration: 8s;  animation-delay: 0s; }
+.cube-2 { top: 25%; right: 8%;  animation-duration: 11s; animation-delay: 2s; }
+.cube-3 { top: 5%;  right: 25%; animation-duration: 9s;  animation-delay: 1s; }
+.cube-4 { top: 40%; right: 20%; animation-duration: 13s; animation-delay: 3s; }
+
+@media (max-width: 900px) {
+  .cube { transform: scale(0.7); }
+}
+@media (max-width: 600px) {
+  .cube-3, .cube-4 { display: none; }
+  .cube { transform: scale(0.55); }
+}

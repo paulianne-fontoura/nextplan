@@ -1,0 +1,152 @@
+.pricing-page { background: transparent; }
+
+/* ============================================================
+   HERO — transparent sur gradient page
+   ============================================================ */
+.pricing-hero {
+  position: relative;
+  padding: var(--space-3xl) 0 var(--space-xl);
+  overflow: hidden;
+  background: transparent;
+}
+
+.pricing-hero-bg { display: none; }
+.pricing-glow { display: none; }
+
+.pricing-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.pricing-hero-content h1 {
+  margin: var(--space-md) 0;
+}
+.pricing-hero-content .italic-soft {
+  font-style: italic;
+  color: var(--color-accent);
+}
+.pricing-hero-sub {
+  font-size: 1.0625rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+/* Toggle */
+.pricing-toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+}
+.pricing-toggle button {
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: transparent;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pricing-toggle button:hover { color: var(--color-text-primary); }
+.pricing-toggle button.is-active {
+  background: var(--gradient-cta);
+  color: var(--color-text-on-accent);
+  box-shadow: 0 4px 16px rgba(107, 95, 228, 0.30);
+}
+.pricing-toggle-savings {
+  font-size: 0.7rem;
+  background: var(--color-warning);
+  color: var(--color-text-primary);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.pricing-cards-section {
+  padding: var(--space-xl) 0 var(--space-3xl);
+  position: relative;
+}
+
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.pricing-faq-section {
+  background: transparent;
+}
+
+.pricing-faq-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+.pricing-faq-header .caption {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.pricing-faq {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.faq-item {
+  overflow: hidden;
+  transition: border-color var(--transition-normal);
+}
+.faq-item.is-open {
+  border-color: rgba(107, 95, 228, 0.3);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: left;
+  background: transparent;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  display: inline-flex;
+}
+
+.faq-answer-wrap {
+  overflow: hidden;
+}
+.faq-answer {
+  padding: 0 var(--space-lg) var(--space-md);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .pricing-cards-grid { grid-template-columns: 1fr; }
+}

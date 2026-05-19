@@ -1,0 +1,52 @@
+body.cursor-none,
+body.cursor-none * {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(107, 95, 228, 0.6);
+  transition: transform 0s, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 50%;
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.2s ease, opacity 0.2s ease;
+  opacity: 0.6;
+}
+
+/* Hover sur élément interactif : dot rétrécit, ring grandit */
+.cursor-dot.is-interactive {
+  width: 4px;
+  height: 4px;
+  opacity: 0.85;
+}
+.cursor-ring.is-interactive {
+  width: 56px;
+  height: 56px;
+  border-color: var(--color-accent);
+  opacity: 0.9;
+  background: rgba(107, 95, 228, 0.08);
+}
+
+/* Cacher complètement sur tactile / écrans sans pointer fin */
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+  body.cursor-none, body.cursor-none * { cursor: auto !important; }
+}

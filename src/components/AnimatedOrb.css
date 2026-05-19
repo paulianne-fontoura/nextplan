@@ -1,0 +1,64 @@
+.orb-wrap {
+  position: relative;
+  pointer-events: none;
+  display: inline-block;
+}
+
+.orb {
+  position: relative;
+  border-radius: 50%;
+  animation: orbPulse 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.orb-aurora {
+  background: radial-gradient(circle at 35% 35%,
+    rgba(124, 111, 255, 0.85) 0%,
+    rgba(0, 201, 177, 0.4) 40%,
+    rgba(5, 6, 15, 0.95) 100%);
+  box-shadow:
+    0 0 60px rgba(124, 111, 255, 0.5),
+    0 0 120px rgba(124, 111, 255, 0.25),
+    inset 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.orb-teal {
+  background: radial-gradient(circle at 35% 35%,
+    rgba(0, 201, 177, 0.85) 0%,
+    rgba(124, 111, 255, 0.4) 40%,
+    rgba(5, 6, 15, 0.95) 100%);
+  box-shadow:
+    0 0 60px rgba(0, 201, 177, 0.45),
+    0 0 120px rgba(0, 201, 177, 0.2),
+    inset 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.orb-rose {
+  background: radial-gradient(circle at 35% 35%,
+    rgba(255, 107, 157, 0.85) 0%,
+    rgba(124, 111, 255, 0.4) 40%,
+    rgba(5, 6, 15, 0.95) 100%);
+  box-shadow:
+    0 0 60px rgba(255, 107, 157, 0.45),
+    0 0 120px rgba(255, 107, 157, 0.2),
+    inset 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+.orb-shine {
+  position: absolute;
+  top: 12%;
+  left: 18%;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.55) 0%, transparent 70%);
+  filter: blur(4px);
+}
+
+.orb-ring {
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 111, 255, 0.15);
+  animation: pulse-soft 5s ease-in-out infinite;
+}

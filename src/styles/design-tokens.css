@@ -1,0 +1,628 @@
+/* ============================================================
+   NEXTPLAN — DESIGN TOKENS
+   "Lumière & profondeur" — fond clair lavande + glass visible
+   ============================================================ */
+
+:root {
+  /* === FONDS === */
+  --color-bg-base:        #F7F6FB;   /* fond principal — blanc cassé lavande */
+  --color-bg-surface:     #FFFFFF;   /* cards blanches pures */
+  --color-bg-neuro:       #EEEDF6;   /* base neumorphisme — visible */
+  --color-bg-section-alt: #F0EEFA;   /* sections alternées */
+  --color-bg-tint:        #ECE9F8;   /* gradients fond hero */
+
+  /* === ACCENT (violet/indigo électrique) === */
+  --color-accent:         #6B5FE4;   /* CTA principal */
+  --color-accent-hover:   #5A4DD9;   /* hover */
+  --color-accent-light:   #8B83F0;   /* variante claire */
+  --color-accent-50:      #EFEDFE;   /* très pâle (backgrounds) */
+  --color-accent-100:     #DFD9FC;
+  --color-accent-200:     #C2B8FA;
+  --color-accent-glow:    rgba(107, 95, 228, 0.35);
+
+  /* === ACCENT SECONDAIRES (rares, pour highlights spécifiques) === */
+  --color-teal:           #4ECDC4;
+  --color-coral:          #FF6B7A;
+  --color-amber:          #FFB830;
+  --color-emerald:        #10B981;
+
+  /* === TEXTE === */
+  --color-text-primary:   #1A1A2E;   /* presque noir bleuté */
+  --color-text-secondary: #555770;   /* gris moyen lisible */
+  --color-text-muted:     #9396B0;
+  --color-text-on-dark:   #F4F5FA;   /* sur cards sombres */
+  --color-text-on-accent: #FFFFFF;
+
+  /* === BORDURES === */
+  --color-border-soft:    rgba(26, 26, 46, 0.06);
+  --color-border-default: rgba(26, 26, 46, 0.10);
+  --color-border-strong:  rgba(26, 26, 46, 0.16);
+
+  /* === CARD SOMBRE (contraste fort) === */
+  --color-dark-bg:        #1A1A2E;
+  --color-dark-bg-2:      #252742;
+  --color-dark-border:    rgba(255, 255, 255, 0.10);
+
+  /* === STATES === */
+  --color-success: #10B981;
+  --color-error:   #EF4444;
+  --color-warning: #F59E0B;
+
+  /* === GRADIENTS === */
+
+  /* Gradient global appliqué sur le body — toutes les pages */
+  --gradient-page:
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(107, 95, 228, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 100% 30%, rgba(78, 205, 196, 0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 50% 100%, rgba(255, 107, 122, 0.08) 0%, transparent 55%),
+    linear-gradient(180deg, #F7F6FB 0%, #ECE9F8 50%, #E4DFFA 100%);
+
+  --gradient-hero:
+    radial-gradient(ellipse 55% 70% at 90% 20%, rgba(107, 95, 228, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(78, 205, 196, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 50% 50%, rgba(255, 107, 122, 0.10) 0%, transparent 60%),
+    linear-gradient(135deg, #F7F6FB 0%, #ECE9F8 40%, #E4DFFA 100%);
+
+  --gradient-cta:
+    linear-gradient(135deg, #6B5FE4 0%, #8B83F0 50%, #6B5FE4 100%);
+
+  --gradient-premium-border:
+    linear-gradient(270deg, #6B5FE4, #8B83F0, #4ECDC4, #6B5FE4);
+
+  --gradient-xp-bar:
+    linear-gradient(90deg, #6B5FE4 0%, #8B83F0 50%, #4ECDC4 100%);
+
+  --gradient-text:
+    linear-gradient(135deg, #1A1A2E 0%, #6B5FE4 100%);
+
+  /* === GLASSMORPHISME — 3 niveaux de profondeur === */
+  --glass-1: rgba(255, 255, 255, 0.25);   /* fond — grandes zones */
+  --glass-2: rgba(255, 255, 255, 0.50);   /* cards principales */
+  --glass-3: rgba(255, 255, 255, 0.80);   /* avant-plan : badges, pills */
+  --glass-blur-sm: blur(8px);
+  --glass-blur-md: blur(16px);
+  --glass-blur-lg: blur(28px);
+
+  /* Legacy (compat) */
+  --glass-bg:        rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.70);
+  --glass-border:    1px solid rgba(255, 255, 255, 0.75);
+  --glass-blur:      blur(20px) saturate(180%);
+
+  /* === DEPTH SHADOW (cards principales — couches reflet) === */
+  --shadow-depth:
+    0 1px 0 rgba(255, 255, 255, 0.80) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.04) inset,
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-depth-hover:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.04) inset,
+    0 16px 48px rgba(26, 26, 46, 0.12),
+    0 2px 6px rgba(26, 26, 46, 0.06);
+
+  /* === NEUMORPHISME (sur --color-bg-neuro #EEEDF6) === */
+  --neuro-shadow-out:
+    8px 8px 20px rgba(26, 26, 46, 0.12),
+    -5px -5px 15px rgba(255, 255, 255, 0.9);
+  --neuro-shadow-out-soft:
+    4px 4px 12px rgba(26, 26, 46, 0.08),
+    -3px -3px 8px rgba(255, 255, 255, 0.85);
+  --neuro-shadow-hover:
+    10px 10px 25px rgba(26, 26, 46, 0.15),
+    -6px -6px 18px rgba(255, 255, 255, 1),
+    0 0 0 2px rgba(107, 95, 228, 0.15);
+  --neuro-shadow-in:
+    inset 4px 4px 10px rgba(26, 26, 46, 0.10),
+    inset -3px -3px 8px rgba(255, 255, 255, 0.8);
+
+  /* === OMBRES CLASSIQUES === */
+  --shadow-xs:    0 1px 2px rgba(26, 26, 46, 0.04);
+  --shadow-sm:    0 2px 8px rgba(26, 26, 46, 0.06);
+  --shadow-card:  0 4px 24px rgba(26, 26, 46, 0.06), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  --shadow-hover: 0 8px 40px rgba(26, 26, 46, 0.10);
+  --shadow-float: 0 20px 60px rgba(26, 26, 46, 0.18);
+  --glow-accent:  0 0 40px rgba(107, 95, 228, 0.25), 0 0 80px rgba(107, 95, 228, 0.10);
+
+  /* === TYPOGRAPHIE === */
+  --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-body:    'Inter', 'Plus Jakarta Sans', sans-serif;
+  --font-numbers: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* === ESPACEMENTS === */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  /* === RAYONS === */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-pill: 999px;
+
+  /* === TRANSITIONS === */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* === LAYOUT === */
+  --container-max: 1240px;
+  --navbar-height: 76px;
+  --content-pad:   clamp(20px, 5vw, 64px);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  background: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+#root {
+  background: transparent;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+}
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+p { margin: 0; }
+
+.caption,
+.label-uppercase {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.mono, .stat {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.italic-soft {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   GRADIENT TEXT
+   ============================================================ */
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.accent-text {
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 13px 26px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform var(--transition-spring),
+    box-shadow var(--transition-normal),
+    background var(--transition-normal),
+    border-color var(--transition-normal);
+  will-change: transform;
+  white-space: nowrap;
+  letter-spacing: 0.005em;
+}
+.btn:active { transform: translateY(1px) scale(0.98); }
+
+.btn-primary {
+  background: var(--gradient-cta);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  color: var(--color-text-on-accent);
+  box-shadow: 0 4px 16px rgba(107, 95, 228, 0.30);
+}
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: var(--glow-accent), 0 10px 32px rgba(107, 95, 228, 0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--color-border-default);
+  color: var(--color-text-primary);
+}
+.btn-ghost:hover {
+  background: var(--color-bg-surface);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-outline {
+  background: var(--color-bg-surface);
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+}
+.btn-outline:hover {
+  background: var(--color-accent-50);
+}
+
+.btn-dark {
+  background: var(--color-dark-bg);
+  color: var(--color-text-on-dark);
+  border: 1px solid var(--color-dark-bg-2);
+}
+.btn-dark:hover {
+  background: var(--color-dark-bg-2);
+}
+
+.btn-lg { padding: 16px 32px; font-size: 1rem; }
+.btn-sm { padding: 10px 18px; font-size: 0.85rem; }
+
+/* ============================================================
+   GLASS / NEURO — utilitaires
+   ============================================================ */
+/* ============================================================
+   GLASS CARD — verre très transparent sur GlobalBackground coloré
+   ============================================================ */
+.glass-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  /* 1. Transparence (0.30 pour laisser passer le fond coloré) */
+  background: rgba(255, 255, 255, 0.30);
+
+  /* 2. Flou */
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+
+  /* 3. Reflet des bords */
+  border-top:    1.5px solid rgba(255, 255, 255, 0.90);
+  border-left:   1px   solid rgba(255, 255, 255, 0.55);
+  border-right:  1px   solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px   solid rgba(255, 255, 255, 0.25);
+
+  border-radius: var(--radius-lg);
+
+  /* 4. Ombre + reflet interne */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 2px 8px  rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  transition:
+    background var(--transition-normal),
+    box-shadow var(--transition-normal),
+    border-color var(--transition-normal),
+    transform var(--transition-spring);
+}
+
+.glass-card.is-interactive {
+  cursor: pointer;
+}
+.glass-card.is-interactive:hover {
+  background: rgba(255, 255, 255, 0.45);
+  border-top-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.08),
+    0 4px 12px  rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-3px);
+}
+
+.neuro-card {
+  background: var(--color-bg-neuro);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neuro-shadow-out);
+  border: none;
+  transition: box-shadow var(--transition-normal), transform var(--transition-spring);
+}
+.neuro-card.is-interactive:hover {
+  box-shadow: var(--neuro-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.neuro-card-soft {
+  background: var(--color-bg-neuro);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--neuro-shadow-out-soft);
+}
+
+.neuro-inset {
+  background: var(--color-bg-neuro);
+  box-shadow: var(--neuro-shadow-in);
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================
+   NUMBERS — chiffres avec tabular nums
+   ============================================================ */
+.numbers {
+  font-family: var(--font-numbers);
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   GLOW BORDER — effet statique propre (ancienne rotation supprimée
+   car elle créait des artefacts visuels diagonaux dans certains
+   navigateurs et débordait visuellement)
+   ============================================================ */
+.glow-border {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Halo externe statique léger — donne juste une présence lumineuse */
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: 0 0 20px rgba(107, 95, 228, 0.12);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.65;
+  transition: opacity var(--transition-normal);
+}
+.glow-border:hover::after { opacity: 1; }
+
+/* ============================================================
+   GLASS SECTION — grand bloc verre posé sur dégradé (4 éléments)
+   ============================================================ */
+.glass-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  /* 1. Transparence */
+  background: rgba(255, 255, 255, 0.45);
+
+  /* 2. Flou */
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+  /* 3. Reflet bords */
+  border-top:    1.5px solid rgba(255, 255, 255, 0.85);
+  border-left:   1px   solid rgba(255, 255, 255, 0.50);
+  border-right:  1px   solid rgba(255, 255, 255, 0.30);
+  border-bottom: 1px   solid rgba(255, 255, 255, 0.20);
+
+  border-radius: var(--radius-xl);
+
+  /* 4. Ombre portée */
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 4px 16px  rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+/* ============================================================
+   PREMIUM BORDER — version statique (l'animation rotative causait
+   des artefacts diagonaux dans certains navigateurs)
+   ============================================================ */
+.premium-border {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1.5px solid var(--color-accent);
+  box-shadow: 0 0 24px rgba(107, 95, 228, 0.18);
+}
+
+/* ============================================================
+   CONTAINER & SECTIONS
+   ============================================================ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--content-pad);
+  padding-right: var(--content-pad);
+  width: 100%;
+}
+
+.section {
+  padding: var(--space-3xl) 0;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .section { padding: var(--space-2xl) 0; }
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.text-center { text-align: center; }
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+.text-accent { color: var(--color-accent); }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-2xl { margin-top: var(--space-2xl); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-2xl { margin-bottom: var(--space-2xl); }
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70%      { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blob1 {
+  0%   { transform: translate(0,0) rotate(0deg) scale(1); }
+  33%  { transform: translate(30px,-40px) rotate(120deg) scale(1.08); }
+  66%  { transform: translate(-20px,30px) rotate(240deg) scale(0.94); }
+  100% { transform: translate(0,0) rotate(360deg) scale(1); }
+}
+@keyframes blob2 {
+  0%   { transform: translate(0,0) rotate(0deg) scale(1); }
+  50%  { transform: translate(-30px,40px) rotate(-180deg) scale(1.06); }
+  100% { transform: translate(0,0) rotate(-360deg) scale(1); }
+}
+
+@keyframes dashFlow {
+  to { stroke-dashoffset: -24; }
+}
+
+/* ============================================================
+   BLOB FLOATS — GlobalBackground (5 blobs animés)
+   ============================================================ */
+@keyframes blobFloat1 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  100% { transform: translate(40px, 30px) scale(1.08); }
+}
+@keyframes blobFloat2 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  100% { transform: translate(-35px, 25px) scale(0.95); }
+}
+@keyframes blobFloat3 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  100% { transform: translate(25px, -40px) scale(1.05); }
+}
+@keyframes blobFloat4 {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  100% { transform: translate(-20px, -30px) scale(1.10); }
+}
+
+/* ============================================================
+   SCROLLBAR (clair)
+   ============================================================ */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bg-base); }
+::-webkit-scrollbar-thumb {
+  background: rgba(107, 95, 228, 0.25);
+  border-radius: 8px;
+  border: 2px solid var(--color-bg-base);
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(107, 95, 228, 0.45); }
+
+/* ============================================================
+   FOCUS / SELECTION
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--color-accent-100);
+  color: var(--color-text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

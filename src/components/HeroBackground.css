@@ -1,0 +1,115 @@
+/* ============================================================
+   HeroBackground — 3 layers
+   ============================================================ */
+.hero-bg {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-deep);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ============ LAYER 1 — ORBES AURORA ============ */
+.orbe {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+}
+
+.orbe-1 {
+  width: 600px;
+  height: 600px;
+  top: 30%;
+  left: 10%;
+  background: radial-gradient(circle, rgba(124, 111, 255, 0.45) 0%, transparent 70%);
+  animation: orbeFloat1 12s ease-in-out infinite alternate;
+}
+
+.orbe-2 {
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  right: 5%;
+  background: radial-gradient(circle, rgba(0, 201, 177, 0.32) 0%, transparent 70%);
+  animation: orbeFloat2 16s ease-in-out infinite alternate-reverse;
+}
+
+.orbe-3 {
+  width: 400px;
+  height: 400px;
+  top: 5%;
+  left: 45%;
+  background: radial-gradient(circle, rgba(255, 107, 157, 0.22) 0%, transparent 70%);
+  animation: orbeFloat3 10s ease-in-out infinite alternate;
+}
+
+/* ============ LAYER 2 — MOUSE SPOTLIGHT ============ */
+.mouse-spotlight {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(124, 111, 255, 0.08) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  left: var(--mouse-x, 50%);
+  top: var(--mouse-y, 50%);
+  transition: left 0.12s ease-out, top 0.12s ease-out;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+/* ============ LAYER 3 — GRID PERSPECTIVE ============ */
+.grid-perspective {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  right: 0;
+  height: 60%;
+  perspective: 800px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 100%);
+          mask-image: linear-gradient(to top, #000 30%, transparent 100%);
+}
+
+.grid-perspective-inner {
+  width: 200%;
+  height: 100%;
+  margin-left: -50%;
+  background-image:
+    linear-gradient(rgba(124, 111, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 111, 255, 0.18) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: rotateX(60deg) translateZ(0);
+  transform-origin: center top;
+}
+
+/* ============ FADE BAS DU HERO ============ */
+.hero-bg-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, var(--color-bg-deep));
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Le contenu enfant passe au-dessus de tout */
+.hero-bg > *:not(.orbe):not(.mouse-spotlight):not(.grid-perspective):not(.hero-bg-fade) {
+  position: relative;
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .orbe-1 { width: 360px; height: 360px; }
+  .orbe-2 { width: 320px; height: 320px; }
+  .orbe-3 { width: 260px; height: 260px; }
+  .mouse-spotlight { display: none; }
+}

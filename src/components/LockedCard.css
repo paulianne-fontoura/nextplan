@@ -1,0 +1,104 @@
+.locked-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.locked-card-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px dashed rgba(160, 168, 204, 0.25);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: box-shadow var(--transition-normal),
+              transform var(--transition-spring),
+              border-color var(--transition-fast),
+              background var(--transition-normal);
+  color: var(--color-text-secondary);
+  filter: grayscale(0.5);
+}
+.locked-card-link:hover {
+  box-shadow: var(--glow-primary);
+  border-color: rgba(124, 111, 255, 0.5);
+  background: rgba(124, 111, 255, 0.06);
+  filter: grayscale(0);
+}
+
+.locked-card-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+.locked-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.locked-card-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-amber);
+  background: rgba(255, 184, 48, 0.12);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 4px;
+  border: 1px solid rgba(255, 184, 48, 0.25);
+}
+
+.locked-card-body h4 {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.locked-card-sub {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.locked-card-lock {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+}
+
+.locked-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(124, 111, 255, 0.94);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+  text-align: center;
+  padding: var(--space-md);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.locked-card-link:hover .locked-card-overlay {
+  opacity: 1;
+}

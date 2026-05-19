@@ -1,0 +1,197 @@
+.floating-cards {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ============================================================
+   FLOATING CARD — vrai glassmorphisme (4 éléments combinés)
+   ============================================================ */
+.float-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+
+  /* 1 — Transparence */
+  background: rgba(255, 255, 255, 0.30);
+
+  /* 2 — Flou (verre dépoli) */
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+
+  /* 3 — Reflet bord supérieur blanc + bords latéraux dégressifs */
+  border-top:    1.5px solid rgba(255, 255, 255, 0.90);
+  border-left:   1px   solid rgba(255, 255, 255, 0.55);
+  border-right:  1px   solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px   solid rgba(255, 255, 255, 0.25);
+
+  border-radius: 20px;
+
+  /* 4 — Ombre douce + reflet interne haut */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 2px 8px  rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+  will-change: transform;
+  transform: translateZ(0);
+  overflow: hidden;
+  transition:
+    background 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.35s ease;
+}
+
+/* HOVER — reflets blancs intensifiés */
+.float-card:hover {
+  background: rgba(255, 255, 255, 0.42);
+  border-top-color: rgba(255, 255, 255, 1);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.08),
+    0 4px 12px  rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Sheen — bande lumineuse traversant au hover */
+.float-card-sheen {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 80%
+  );
+  pointer-events: none;
+  transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+.float-card:hover .float-card-sheen { left: 120%; }
+
+.float-card-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fond teinté DERRIÈRE chaque icône — 44×44, radius 10px */
+.float-icon-bg {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================================
+   POSITIONS — 5 cards distinctes, aucun chevauchement
+   Distances min entre cards : > 60px
+   ============================================================ */
+
+/* Card 1 — haut-gauche */
+.float-card-1 {
+  width: 84px;  height: 84px;
+  top: 5%;      left: 2%;
+  transform: rotate(-3deg);
+  animation: float-card-a 4s ease-in-out infinite;
+}
+
+/* Card 2 — haut-droite */
+.float-card-2 {
+  width: 88px;  height: 88px;
+  top: 5%;      right: 5%;
+  transform: rotate(3deg);
+  animation: float-card-b 6s ease-in-out infinite alternate;
+}
+
+/* Card 3 — CENTRE (la plus grande) */
+.float-card-3 {
+  width: 95px;  height: 95px;
+  top: 38%;
+  left: 50%;
+  margin-left: -47.5px; /* center horizontalement */
+  transform: rotate(0deg);
+  animation: float-card-e 3.5s ease-in-out infinite;
+  /* Légèrement plus saturée = card "principale" */
+  background: rgba(255, 255, 255, 0.50);
+  box-shadow:
+    0 10px 36px rgba(107, 95, 228, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+/* Card 4 — bas-droite */
+.float-card-4 {
+  width: 84px;  height: 84px;
+  top: 62%;     right: 8%;
+  transform: rotate(-2deg);
+  animation: float-card-c 5.5s ease-in-out infinite;
+}
+
+/* Card 5 — bas-gauche */
+.float-card-5 {
+  width: 84px;  height: 84px;
+  top: 68%;     left: 5%;
+  transform: rotate(3deg);
+  animation: float-card-d 7s ease-in-out infinite alternate;
+}
+
+/* ============================================================
+   ANIMATIONS — timings et amplitudes variés
+   ============================================================ */
+@keyframes float-card-a {
+  0%, 100% { transform: translateY(0)     rotate(-3deg); }
+  50%      { transform: translateY(-14px) rotate(-1deg); }
+}
+@keyframes float-card-b {
+  0%   { transform: translateY(0)     rotate(3deg); }
+  100% { transform: translateY(-10px) rotate(6deg); }
+}
+@keyframes float-card-c {
+  0%, 100% { transform: translateY(0)     rotate(-2deg); }
+  50%      { transform: translateY(-18px) rotate(-5deg); }
+}
+@keyframes float-card-d {
+  0%   { transform: translateY(0)    rotate(3deg); }
+  100% { transform: translateY(-8px) rotate(0deg); }
+}
+@keyframes float-card-e {
+  0%, 100% { transform: translateY(0)     rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(2deg); }
+}
+
+/* ============================================================
+   CHECK ANIMÉ — Card 5
+   ============================================================ */
+.float-check-path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: check-draw 2s ease-in-out infinite;
+}
+@keyframes check-draw {
+  0%   { stroke-dashoffset: 24; }
+  40%  { stroke-dashoffset: 0; }
+  80%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 24; }
+}
+
+/* ============================================================
+   RESPONSIVE — réduire les tailles sur mobile
+   ============================================================ */
+@media (max-width: 768px) {
+  .float-card-1 { width: 68px; height: 68px; }
+  .float-card-2 { width: 72px; height: 72px; }
+  .float-card-3 { width: 80px; height: 80px; margin-left: -40px; }
+  .float-card-4 { width: 68px; height: 68px; }
+  .float-card-5 { width: 68px; height: 68px; }
+  .float-icon-bg { width: 38px; height: 38px; }
+}

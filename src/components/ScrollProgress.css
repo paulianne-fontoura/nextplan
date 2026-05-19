@@ -1,0 +1,15 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-cta);
+  background-size: 200%;
+  animation: gradientShift 3s linear infinite;
+  transform-origin: 0% 50%;
+  z-index: 150;
+  pointer-events: none;
+  will-change: transform;
+  box-shadow: 0 0 12px rgba(124, 111, 255, 0.5);
+}

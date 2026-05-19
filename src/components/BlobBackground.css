@@ -1,0 +1,17 @@
+.blob-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.blob-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.040;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}

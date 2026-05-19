@@ -1,0 +1,1018 @@
+{
+  "diagnostic": {
+    "id": "diagnostic",
+    "title": "Diagnostic stratégique et contrôle",
+    "tier": "free",
+    "duration": "15 min",
+    "order": 1,
+    "iconColor": "#6366F1",
+    "iconBg": "rgba(99,102,241,0.12)",
+    "iconGlow": "rgba(99,102,241,0.20)",
+    "tagline": "Comprendre l'environnement avant de décider.",
+    "description": "Maîtrisez les modèles d'analyse stratégique qui structurent toute démarche de pilotage : PESTEL, Porter, BCG, ADL. De l'analyse macro-environnementale au positionnement du portefeuille d'activités.",
+    "keyPoints": [
+      "Modèle PESTEL pour le macro-environnement",
+      "5 forces de Porter pour l'intensité concurrentielle",
+      "Matrice BCG : positionner les domaines d'activité",
+      "Cycle de vie produit et matrice ADL"
+    ],
+    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "content": {
+      "intro": "Le diagnostic stratégique constitue la première étape de tout processus de pilotage. Avant de décider d'une orientation, l'entreprise doit comprendre où elle se trouve : quelles forces de l'environnement la portent ou la menacent, quelle est sa position face à ses concurrents, et comment ses différentes activités se comportent dans leur cycle de marché.\n\nCe module présente quatre grilles d'analyse devenues canoniques en stratégie. Elles ne se substituent pas l'une à l'autre — au contraire, chacune éclaire un aspect que les autres ne voient pas. Le diagnostic complet consiste à les enchaîner : PESTEL pour le macro-environnement, Porter pour la dynamique sectorielle, BCG pour le portefeuille d'activités, ADL pour intégrer la dimension temporelle. C'est cette articulation qui sépare un diagnostic d'expert d'un simple inventaire d'observations.",
+      "sections": [
+        {
+          "title": "Le modèle PESTEL — lire le macro-environnement",
+          "body": "PESTEL est un acronyme proposé dans les années 1960 par Francis Aguilar (initialement ETPS), repris et étendu par les écoles de management européennes. Il structure l'analyse de l'environnement général en six dimensions distinctes : Politique (stabilité gouvernementale, fiscalité, politique commerciale), Économique (croissance, inflation, taux d'intérêt, taux de change, pouvoir d'achat), Socio-culturel (démographie, modes de vie, valeurs, mobilité), Technologique (innovations, brevets, vitesse de transfert), Écologique (climat, ressources, normes environnementales, attentes sociétales) et Légal (réglementation sectorielle, droit du travail, normes).\n\nL'analyse PESTEL ne vise pas l'exhaustivité — vouloir tout couvrir mène à une liste sans hiérarchie. Le réflexe d'expert consiste à identifier 2 ou 3 facteurs réellement structurants par dimension, ceux qui modifient durablement le terrain de jeu. Une hausse durable des taux d'intérêt (Économique) bouleverse un secteur immobilier ; le RGPD (Légal) refait l'économie de la donnée ; le vieillissement démographique (Socio-culturel) crée des marchés entiers.\n\nUne fois les facteurs identifiés, deux questions guident l'analyse : ce facteur représente-t-il une opportunité ou une menace pour notre activité ? Et surtout : est-ce un facteur certain à court terme, ou un signal faible qui demande veille ? PESTEL est donc un outil de cadrage qui prépare les analyses plus fines — Porter, par exemple, suppose qu'on a au préalable identifié les forces macro qui structurent le secteur.\n\nL'erreur classique consiste à confondre PESTEL et SWOT : PESTEL ne traite que de l'environnement externe, pas des forces et faiblesses internes de l'entreprise. Les capacités internes relèvent d'autres outils (chaîne de valeur, VRIO).",
+          "highlight": "PESTEL = outil de cadrage externe. Identifier 2-3 facteurs structurants par dimension, pas une liste exhaustive."
+        },
+        {
+          "title": "Les 5 forces de Porter — diagnostiquer l'attractivité d'un secteur",
+          "body": "Michael Porter publie en 1979 dans la Harvard Business Review son cadre d'analyse devenu le plus enseigné en stratégie. Sa thèse : la rentabilité durable d'une entreprise dépend moins de ses qualités intrinsèques que de la structure du secteur dans lequel elle évolue. Cinq forces structurent cette intensité concurrentielle, et leur intensité conjointe détermine la rentabilité moyenne accessible aux acteurs.\n\nLa première force est la rivalité entre concurrents directs : elle est d'autant plus forte que les concurrents sont nombreux et de taille comparable, que le marché stagne, que les coûts fixes sont élevés, ou que les produits sont peu différenciés. Les compagnies aériennes en sont l'exemple type.\n\nLa deuxième et la troisième forces sont les pouvoirs de négociation respectifs des clients et des fournisseurs. Ils sont forts quand la partie adverse est concentrée, quand elle ne dispose pas de substituts, ou quand le produit échangé est standardisé. Un agriculteur face à un distributeur géant subit le pouvoir client ; un constructeur automobile face à un fournisseur unique de semi-conducteurs subit le pouvoir fournisseur.\n\nLa quatrième force est la menace de nouveaux entrants. Plus les barrières à l'entrée sont faibles (peu de capital nécessaire, technologie accessible, marque peu différenciante), plus cette menace est réelle. La cinquième force est la menace des produits de substitution — ces produits différents qui répondent au même besoin (TGV vs avion, Netflix vs cinéma).\n\nCertains auteurs ajoutent l'État comme sixième force, notamment dans les secteurs très régulés (banque, santé, énergie). Le diagnostic complet par les forces de Porter conduit à une notation (faible / modérée / forte) de chaque force, puis à une lecture stratégique : sur quelle force agir, laquelle contourner ?",
+          "highlight": "Plus les 5 forces sont fortes, moins le secteur est attractif. L'analyse pointe les leviers d'action stratégique."
+        },
+        {
+          "title": "La matrice BCG — équilibrer le portefeuille d'activités",
+          "body": "Développée à la fin des années 1960 par le Boston Consulting Group, la matrice BCG répond à une question cruciale pour les groupes diversifiés : comment allouer les ressources entre les différents Domaines d'Activité Stratégique (DAS) ? L'idée fondatrice est qu'une activité génère ou consomme du cash selon deux variables : sa position concurrentielle (mesurée par la Part de Marché Relative) et la dynamique du marché (Taux de Croissance).\n\nLa Part de Marché Relative se calcule comme le rapport entre le CA de l'entreprise et celui du leader (ou du second si l'entreprise est leader). Une PDMr supérieure à 1 signifie qu'on est leader ; inférieure à 1, qu'on est challenger. La logique sous-jacente est l'effet d'expérience : à plus forte production cumulée, coûts plus bas, donc marges plus élevées. Le Taux de Croissance du marché mesure quant à lui les besoins de financement : un marché en croissance demande des investissements continus pour suivre la cadence.\n\nLe croisement de ces deux axes produit quatre cases. Les Vedettes (forte croissance, forte PDMr) génèrent et consomment beaucoup de cash — elles s'autofinancent à moyen terme. Les Vaches à lait (faible croissance, forte PDMr) sont la trésorerie du groupe : elles génèrent du cash sans en consommer. Les Dilemmes (forte croissance, faible PDMr) consomment plus qu'ils ne produisent et exigent un choix : investir massivement pour les transformer en Vedettes, ou abandonner. Les Poids morts (faible croissance, faible PDMr) ne créent plus de valeur — il faut les céder ou les liquider.\n\nLe portefeuille idéal est équilibré : des Vaches à lait pour financer des Dilemmes en cours de conversion, qui deviendront les Vedettes puis les Vaches à lait de demain. La matrice BCG reste critiquée pour sa simplicité (deux axes seulement, et un seuil de PDMr=1 parfois inadapté), mais elle reste un outil de communication stratégique imbattable au comité de direction.",
+          "highlight": "Vaches à lait financent Dilemmes → futurs Vedettes. Portefeuille déséquilibré = risque de tarissement à 5 ans."
+        },
+        {
+          "title": "Le cycle de vie et la matrice ADL — intégrer la dynamique temporelle",
+          "body": "La critique majeure adressée à la BCG est son caractère statique : elle photographie une situation à un instant, sans dire comment elle évoluera. La matrice Arthur D. Little (cabinet de conseil américain fondé en 1886) corrige ce défaut en intégrant le cycle de vie du secteur. Tout secteur traverse en effet quatre phases : démarrage (innovation, peu d'acteurs, marché à construire), croissance (adoption massive, structuration concurrentielle), maturité (saturation, consolidation), déclin (substitution, sortie d'acteurs).\n\nLa matrice ADL croise cette maturité sectorielle (4 phases en colonnes) avec la position concurrentielle du DAS (5 niveaux en lignes : dominante, forte, favorable, défavorable, marginale). Les 20 cases résultantes conduisent à trois grandes stratégies génériques. Le développement naturel s'applique aux positions fortes sur des marchés en croissance : investir pour suivre la dynamique. Le développement sélectif vise les positions intermédiaires : choisir ses batailles, segmenter, se spécialiser. L'abandon concerne les positions défavorables sur des marchés en déclin : céder ou liquider plutôt que persister.\n\nADL apporte une lecture plus fine que la BCG sur deux dimensions. D'abord, la dynamique temporelle : un Dilemme BCG dans un secteur jeune n'a pas la même valeur qu'un Dilemme dans un secteur mûr — le premier est promesse, le second est désillusion probable. Ensuite, le degré de liberté stratégique : une position dominante en démarrage permet de définir les règles du jeu (Apple sur le smartphone) ; une position marginale en déclin ne laisse aucune marge de manœuvre.\n\nEn pratique, ADL et BCG se complètent : la BCG cartographie le portefeuille actuel, ADL aide à arbitrer entre les options d'évolution. Aucune des deux ne remplace le jugement stratégique — elles structurent la discussion, sans la conclure.",
+          "highlight": "ADL complète BCG en ajoutant la dimension temporelle : un Dilemme jeune n'a pas la même valeur qu'un Dilemme mûr."
+        }
+      ],
+      "formulas": [
+        {
+          "expr": "PDM relative = CA entreprise / CA leader",
+          "label": "Part de marché relative",
+          "when": "Sur l'axe horizontal de la matrice BCG. Si l'entreprise est leader, on divise par le CA du second.",
+          "example": "Si notre CA = 120 M€ et celui du leader = 200 M€, alors PDMr = 0,6. Inférieur à 1, donc nous sommes challenger : DAS positionné à droite de la médiane BCG."
+        },
+        {
+          "expr": "Taux de croissance = (CAₙ − CAₙ₋₁) / CAₙ₋₁",
+          "label": "Croissance annuelle du marché",
+          "when": "Sur l'axe vertical de la matrice BCG. Le seuil de séparation est typiquement 10 % ou le taux de croissance moyen du PIB +5 points.",
+          "example": "Marché qui passe de 800 M€ à 920 M€ : croissance = (920 − 800) / 800 = 15 %. Au-dessus du seuil de 10 % → axe vertical haut → secteur en croissance forte."
+        }
+      ],
+      "exampleTitle": "Cas pratique : diagnostic BCG d'un groupe à 4 DAS",
+      "exampleData": {
+        "das": [
+          {"nom": "DAS A", "croissance": "18%", "pdmRelative": "1.8", "position": "Star"},
+          {"nom": "DAS B", "croissance": "4%",  "pdmRelative": "2.2", "position": "Vache à lait"},
+          {"nom": "DAS C", "croissance": "15%", "pdmRelative": "0.4", "position": "Dilemme"},
+          {"nom": "DAS D", "croissance": "2%",  "pdmRelative": "0.3", "position": "Poids mort"}
+        ]
+      },
+      "exerciseSteps": [
+        {
+          "title": "Étape 1 — Lire les données du portefeuille",
+          "intro": "On dispose pour chaque DAS du taux de croissance du marché et de la part de marché relative déjà calculée. Avant de positionner, on identifie les seuils de référence.",
+          "calc": "Seuil PDMr = 1 (axe horizontal) · Seuil croissance = 10 % (axe vertical)",
+          "result": "Tout DAS avec PDMr > 1 est à gauche (leader). Tout DAS avec croissance > 10 % est en haut (marché dynamique).",
+          "tip": "Ces seuils sont à adapter au secteur : pour un marché tech, on peut monter le seuil à 15 % ; pour un marché mature, le baisser à 5 %."
+        },
+        {
+          "title": "Étape 2 — Positionner le DAS A (Vedette)",
+          "intro": "DAS A : croissance 18 %, PDMr 1,8. Lecture immédiate : croissance forte (au-dessus de 10) et part relative forte (au-dessus de 1).",
+          "calc": "Croissance 18 % > 10 % → haut · PDMr 1,8 > 1 → gauche",
+          "result": "Quadrant haut-gauche : VEDETTE (Star). Le DAS A est leader sur un marché en forte croissance.",
+          "tip": "Implication : DAS prometteur mais consommateur de cash. Il faut continuer à investir pour défendre la position de leader."
+        },
+        {
+          "title": "Étape 3 — Positionner le DAS B (Vache à lait)",
+          "intro": "DAS B : croissance 4 %, PDMr 2,2. Croissance faible mais position dominante.",
+          "calc": "Croissance 4 % < 10 % → bas · PDMr 2,2 > 1 → gauche (forte position)",
+          "result": "Quadrant bas-gauche : VACHE À LAIT. DAS mature, leader, peu d'investissements requis.",
+          "tip": "C'est la pompe à cash du groupe. Stratégie : traire — extraire le cash pour financer les Dilemmes."
+        },
+        {
+          "title": "Étape 4 — Positionner le DAS C (Dilemme)",
+          "intro": "DAS C : croissance 15 %, PDMr 0,4. Marché attractif mais on n'y est que challenger.",
+          "calc": "Croissance 15 % > 10 % → haut · PDMr 0,4 < 1 → droite",
+          "result": "Quadrant haut-droite : DILEMME. Position incertaine sur un marché qui consomme beaucoup de cash.",
+          "tip": "Décision critique : investir massivement pour devenir Vedette, ou désinvestir avant que les pertes ne s'accumulent. Surtout pas le statu quo."
+        },
+        {
+          "title": "Étape 5 — Positionner le DAS D (Poids mort)",
+          "intro": "DAS D : croissance 2 %, PDMr 0,3. Marché mort, position faible.",
+          "calc": "Croissance 2 % < 10 % → bas · PDMr 0,3 < 1 → droite",
+          "result": "Quadrant bas-droite : POIDS MORT. DAS sans avenir et sans levier de rebond.",
+          "tip": "Stratégie : céder rapidement à un acteur qui consolide le secteur, ou liquider. Ne mobilise plus d'investissements."
+        },
+        {
+          "title": "Étape 6 — Lecture stratégique du portefeuille",
+          "intro": "Avec 1 Vedette, 1 Vache à lait, 1 Dilemme et 1 Poids mort, le portefeuille est-il équilibré ?",
+          "calc": "1 Vache → finance · 1 Vedette → croît · 1 Dilemme → arbitrage · 1 Poids mort → cession",
+          "result": "Portefeuille globalement équilibré, à condition de trancher rapidement le DAS C et de céder le DAS D dans les 12 prochains mois.",
+          "tip": "Sans ces arbitrages, le cash généré par la Vache à lait sera dispersé entre Dilemme et Poids mort, et la Vedette manquera d'oxygène pour devenir la prochaine Vache à lait du groupe."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Quelle est la différence entre un Dilemme et une Vache à lait dans la matrice BCG ?",
+        "options": [
+          "Le Dilemme génère plus de cash que la Vache à lait",
+          "Le Dilemme est sur un marché en forte croissance avec une part faible, la Vache à lait l'inverse",
+          "La Vache à lait nécessite plus d'investissement que le Dilemme",
+          "Les deux occupent la même position concurrentielle"
+        ],
+        "correct": 1,
+        "explanation": "Le Dilemme combine forte croissance du marché (consommatrice de cash) et faible part de marché relative (peu de cash généré). La Vache à lait est l'inverse : marché mature peu coûteux et forte part qui génère du cash. La Vache à lait finance le Dilemme."
+      },
+      {
+        "question": "Dans le modèle PESTEL, à quelle dimension rattache-t-on l'évolution de la réglementation RGPD ?",
+        "options": [
+          "Politique uniquement",
+          "Technologique",
+          "Légal (et secondairement Politique)",
+          "Socio-culturel"
+        ],
+        "correct": 2,
+        "explanation": "Le RGPD est un texte juridique européen qui impose des règles précises — il relève donc principalement de la dimension Légale. Le contexte politique européen qui l'a fait émerger explique sa secondaire dimension politique."
+      },
+      {
+        "question": "Quelle force de Porter est augmentée par la présence de nombreux fournisseurs alternatifs sur le marché ?",
+        "options": [
+          "Le pouvoir des fournisseurs augmente",
+          "Le pouvoir des fournisseurs diminue",
+          "La rivalité entre concurrents augmente",
+          "La menace de substituts augmente"
+        ],
+        "correct": 1,
+        "explanation": "Plus il y a d'alternatives de fournisseurs, moins chacun peut imposer ses conditions à l'entreprise cliente. Le pouvoir de négociation des fournisseurs diminue donc, ce qui est favorable à l'entreprise."
+      }
+    ]
+  },
+
+  "budgets": {
+    "id": "budgets",
+    "title": "Budgets et articulation budgétaire",
+    "tier": "free",
+    "duration": "18 min",
+    "order": 2,
+    "iconColor": "#0EA5E9",
+    "iconBg": "rgba(14,165,233,0.12)",
+    "iconGlow": "rgba(14,165,233,0.20)",
+    "tagline": "Traduire la stratégie en chiffres opérationnels.",
+    "description": "Du budget des ventes au budget de trésorerie, découvrez comment s'articulent les différents budgets pour former le budget maître. Construisez un système budgétaire cohérent qui prolonge la stratégie sur l'horizon court terme.",
+    "keyPoints": [
+      "Définition et rôles du budget",
+      "Processus budgétaire top-down et bottom-up",
+      "Articulation des budgets fonctionnels",
+      "Budget maître et états financiers prévisionnels"
+    ],
+    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "content": {
+      "intro": "Le budget est l'expression chiffrée et quantifiée du plan d'action annuel de l'entreprise. C'est l'outil qui traduit les orientations stratégiques de moyen terme en engagements opérationnels datés et mesurables. Là où la stratégie reste qualitative et pluriannuelle, le budget impose la précision : combien d'unités vendues, à quel prix, avec quelles ressources, sur quelle période.\n\nConstruire un système budgétaire cohérent suppose de respecter une logique d'enchaînement : chaque budget en alimente d'autres selon une articulation précise. Une erreur sur le budget des ventes se propage à toute la chaîne. C'est cette articulation, plus que l'arithmétique elle-même, qui fait la qualité d'un contrôleur de gestion.",
+      "sections": [
+        {
+          "title": "Définition et rôles du budget — un outil aux quatre fonctions",
+          "body": "Un budget est une prévision chiffrée portant sur une période courte (typiquement l'année, parfois découpée en mois ou trimestres), déclinée par centre de responsabilité (service, atelier, filiale). Cette définition technique cache quatre fonctions qui structurent l'usage réel des budgets en entreprise.\n\nLa fonction de prévision est la plus visible : le budget anticipe les volumes, les coûts, la trésorerie. Il oblige à se projeter, donc à expliciter les hypothèses sur lesquelles repose l'activité future. Une entreprise sans budget est une entreprise qui réagit ; une entreprise budgetée est une entreprise qui anticipe.\n\nLa fonction de coordination est moins évidente mais cruciale. Le budget force les fonctions à se parler : les commerciaux annoncent leurs prévisions, la production cale ses capacités, les achats négocient en conséquence, les RH planifient les recrutements. Sans budget, chaque service optimise localement — avec budget, on synchronise les efforts.\n\nLa fonction de motivation transforme les chiffres en engagements personnels. Un objectif budgété devient une cible managériale ; sa tenue conditionne souvent les rémunérations variables. C'est cette dimension qui rend le budget politique : on ne négocie pas qu'un chiffre, on négocie aussi un niveau de pression sur soi-même.\n\nLa fonction de contrôle, enfin, fait du budget la référence sur laquelle on mesure les écarts à posteriori. Sans budget, pas de contrôle budgétaire — c'est le module suivant qui exploite cette dernière fonction. Le budget n'est donc pas qu'un document financier : c'est un dispositif de management complet.",
+          "highlight": "Le budget remplit 4 fonctions : prévoir, coordonner, motiver, contrôler. C'est un outil de management, pas qu'une prévision."
+        },
+        {
+          "title": "Le processus budgétaire — top-down, bottom-up ou navette ?",
+          "body": "La construction d'un budget peut suivre deux logiques opposées, qui ont chacune leurs vertus et leurs travers. La logique top-down (descendante) part de la direction générale, qui fixe les objectifs globaux puis les décline par fonction et par centre. Avantage : la cohérence stratégique est garantie, les objectifs sont alignés sur la vision de la direction. Inconvénient : les opérationnels reçoivent des cibles qu'ils n'ont pas négociées, ce qui crée démotivation et, parfois, irréalisme (objectifs déconnectés des capacités réelles du terrain).\n\nLa logique bottom-up (ascendante) inverse la démarche : chaque centre construit son propre budget à partir de ses contraintes opérationnelles, puis les budgets remontent et s'agrègent au niveau direction. Avantage : la responsabilisation est forte, les chiffres reflètent la réalité du terrain. Inconvénient : la cohérence globale n'est pas garantie — la somme des budgets locaux peut diverger des ambitions stratégiques, voire les contredire (sous-estimation systématique pour faciliter la tenue des objectifs).\n\nDans la pratique des grandes entreprises, on observe une logique mixte avec navette budgétaire. La direction fixe d'abord un cadre stratégique chiffré (taux de croissance attendu, marge cible, enveloppe d'investissement). Les opérationnels proposent ensuite leurs budgets dans ce cadre. Une phase de négociation s'engage : la direction arbitre entre les remontées et le cadre initial, demande des ajustements, valide ou refuse certaines propositions. Ce va-et-vient — qui peut durer plusieurs mois — produit un budget à la fois cohérent et porté par le terrain.\n\nLa qualité du dialogue de la navette est déterminante. Si la direction n'écoute jamais les remontées, on retombe dans le top-down dégradé. Si les opérationnels imposent leurs vues, on retombe dans le bottom-up. Le contrôleur de gestion joue ici un rôle d'arbitre technique : il vérifie la cohérence des hypothèses, pas leur orientation politique.",
+          "highlight": "En pratique : navette budgétaire — la direction cadre, les opérationnels proposent, négociation, arbitrage final."
+        },
+        {
+          "title": "L'articulation des budgets — la chaîne de cohérence",
+          "body": "Les budgets ne se construisent pas en parallèle, mais en cascade : chacun alimente le suivant selon un enchaînement précis qu'il faut connaître pour éviter les incohérences. Cet enchaînement s'organise autour d'un budget pivot — le budget des ventes — et de cinq familles qui en découlent.\n\nLe budget des ventes est dit limitatif. Il fixe les quantités et prix à vendre, donc le chiffre d'affaires attendu. Toutes les autres prévisions dépendent de lui : à quoi bon prévoir une production de 10 000 unités si on n'en vend que 7 000 ? Sa construction s'appuie sur les études de marché, l'analyse des tendances commerciales, les engagements clients, et l'historique des ventes pondéré des hypothèses conjoncturelles.\n\nDu budget des ventes découle le budget de production. La formule fondamentale est : Production = Ventes prévues + Stock final souhaité − Stock initial. Cette formule garantit que la demande sera couverte tout en atteignant le niveau de stock voulu en fin de période. Le budget de production détermine à son tour le budget des approvisionnements (matières premières à commander) et le budget de main-d'œuvre directe (heures à mobiliser).\n\nEn parallèle, le budget des frais généraux couvre les charges administratives, commerciales, recherche et développement. Le budget des investissements engage les acquisitions d'immobilisations sur l'horizon budgétaire — c'est lui qui finance la capacité de production future. Enfin, tout converge vers le budget de trésorerie (encaissements/décaissements mensuels) et vers le budget général : compte de résultat et bilan prévisionnels, qui ferment la boucle financière.\n\nLa cohérence se vérifie par des contrôles croisés : la somme des budgets de centres égale-t-elle le budget global ? Les hypothèses de croissance utilisées par les commerciaux sont-elles compatibles avec celles utilisées par les RH ? Un système budgétaire incohérent peut produire des résultats arithmétiquement justes mais opérationnellement irréalistes.",
+          "highlight": "Chaîne : Ventes (pivot) → Production → Achats + MOD → Trésorerie + Budget général. Chaque maillon alimente le suivant."
+        },
+        {
+          "title": "Le budget de trésorerie — pivot financier du système",
+          "body": "Le budget de trésorerie occupe une place particulière dans l'architecture : il consolide tous les flux de cash de l'entreprise et constitue le baromètre de la santé financière à court terme. Une entreprise rentable peut faire faillite si elle manque de trésorerie au mauvais moment — d'où l'importance critique de ce budget.\n\nSa construction repose sur un principe de décalage entre fait générateur et flux de trésorerie. Une vente faite en janvier mais payée à 60 jours produit un produit comptable en janvier et un encaissement en mars. Inversement, un achat de janvier payé à 30 jours produit une charge en janvier et un décaissement en février. Le budget de trésorerie matérialise ces décalages mois par mois.\n\nConcrètement, on liste tous les encaissements prévisionnels : créances clients selon leurs échéances, ventes au comptant, subventions, emprunts encaissés, cessions d'actifs. Puis tous les décaissements : règlements fournisseurs selon les délais accordés, salaires et charges sociales, TVA à reverser, impôts, remboursements d'emprunts, investissements. La trésorerie finale du mois = trésorerie initiale + encaissements − décaissements.\n\nLa lecture du budget de trésorerie révèle deux types de signaux. Les besoins de financement à court terme se manifestent par une trésorerie qui plonge en territoire négatif sur certaines périodes — il faut alors prévoir crédit court terme, escompte, affacturage, ou décalage de paiement négocié. Les excédents structurels signalent une trésorerie pléthorique : on placera les liquidités sur des supports adaptés (compte à terme, SICAV monétaire) plutôt que de les laisser dormir sur un compte courant.\n\nLe budget de trésorerie est suivi avec une fréquence supérieure aux autres budgets, parfois hebdomadaire. C'est l'outil de pilotage privilégié du DAF dans les périodes de tension — d'où son nom de pivot financier du système budgétaire.",
+          "highlight": "Trésorerie = juge de paix du budget. Une entreprise rentable peut faire faillite si elle manque de cash au mauvais moment."
+        }
+      ],
+      "formulas": [
+        {
+          "expr": "Production = Ventes prévues + Stock final souhaité − Stock initial",
+          "label": "Quantité à produire",
+          "when": "Pour passer du budget des ventes au budget de production. Garantit que la demande sera couverte tout en atteignant le niveau de stock voulu.",
+          "example": "Ventes prévues 10 000 unités, stock initial 1 500, stock final voulu 2 000 → Production = 10 000 + 2 000 − 1 500 = 10 500 unités."
+        },
+        {
+          "expr": "Achats = Consommations prévues + Stock final − Stock initial",
+          "label": "Quantité à acheter",
+          "when": "Même logique que pour la production, mais appliquée aux matières premières. Détermine le budget des approvisionnements.",
+          "example": "Consommation prévue 12 t, stock initial 2 t, stock final visé 3 t → Achats = 12 + 3 − 2 = 13 tonnes à commander sur la période."
+        },
+        {
+          "expr": "Trésorerie finale = Trésorerie initiale + Encaissements − Décaissements",
+          "label": "Solde de trésorerie mensuel",
+          "when": "Calculé mois par mois dans le budget de trésorerie. Une valeur négative signale un besoin de financement court terme à anticiper.",
+          "example": "Tréso initiale 50 k€, encaissements 180 k€, décaissements 220 k€ → Tréso finale = 50 + 180 − 220 = 10 k€. Positif mais tendu."
+        },
+        {
+          "expr": "Chiffre d'affaires = Quantités × Prix unitaire",
+          "label": "CA prévisionnel",
+          "when": "À la base du budget des ventes. Se calcule produit par produit, puis s'agrège par canal de distribution et par période.",
+          "example": "1 200 unités du produit X à 25 € + 800 unités du produit Y à 40 € → CA = 30 000 + 32 000 = 62 000 €."
+        }
+      ],
+      "exampleTitle": "Cas pratique : construction d'un budget des ventes trimestriel",
+      "exampleData": {
+        "produit": "Produit X",
+        "prixUnitaire": 25,
+        "ventesT1": 1200,
+        "ventesT2": 1500,
+        "ventesT3": 1800,
+        "ventesT4": 2000,
+        "totalCA": 162500
+      },
+      "exerciseSteps": [
+        {
+          "title": "Étape 1 — Construire le tableau des quantités prévisionnelles",
+          "intro": "On reprend les volumes prévus par trimestre, issus des prévisions commerciales validées en navette budgétaire.",
+          "calc": "T1 : 1 200 · T2 : 1 500 · T3 : 1 800 · T4 : 2 000",
+          "result": "Total annuel : 1 200 + 1 500 + 1 800 + 2 000 = 6 500 unités. Tendance croissante T1 → T4 (+67 %).",
+          "tip": "Vérifier la cohérence : cette croissance est-elle compatible avec la capacité de production ? Avec les actions commerciales prévues ? Si oui, on valide."
+        },
+        {
+          "title": "Étape 2 — Calculer le chiffre d'affaires trimestriel",
+          "intro": "Application de la formule CA = Quantités × Prix unitaire pour chaque trimestre.",
+          "calc": "T1 : 1 200 × 25 = 30 000 € · T2 : 1 500 × 25 = 37 500 € · T3 : 1 800 × 25 = 45 000 € · T4 : 2 000 × 25 = 50 000 €",
+          "result": "CA annuel = 30 000 + 37 500 + 45 000 + 50 000 = 162 500 €.",
+          "tip": "Le prix unitaire est constant ici. En cas de variation tarifaire dans l'année (campagne promo, hausse au 1er juillet), il faut décomposer par sous-période."
+        },
+        {
+          "title": "Étape 3 — Déduire le budget de production",
+          "intro": "On applique la formule : Production = Ventes + Stock final − Stock initial. Hypothèses : stock initial = 200 unités, stock final visé = 250 unités.",
+          "calc": "Production annuelle = 6 500 + 250 − 200 = 6 550 unités. Décomposée par trimestre selon les capacités de l'atelier.",
+          "result": "On lisse la production sur les 4 trimestres pour éviter les pics de charge atelier : ~1 638 unités/trimestre avec ajustement du stock saisonnier.",
+          "tip": "Si la production était strictement alignée sur les ventes, l'atelier serait sous-utilisé en T1 et saturé en T4. Le lissage par le stock régule la charge."
+        },
+        {
+          "title": "Étape 4 — Calculer les besoins en matières premières",
+          "intro": "Pour produire 6 550 unités, supposons 2 kg de matière par unité, prix d'achat 4 €/kg, stock initial 500 kg, stock final visé 600 kg.",
+          "calc": "Consommation = 6 550 × 2 = 13 100 kg. Achats = 13 100 + 600 − 500 = 13 200 kg. Coût d'achat = 13 200 × 4 = 52 800 €.",
+          "result": "Budget des achats matières : 52 800 € sur l'année. À répartir mensuellement selon les délais fournisseurs.",
+          "tip": "Ce coût représente 52 800 / 162 500 ≈ 32 % du CA. C'est un ratio à surveiller : une dégradation signale soit une hausse des matières, soit une perte de productivité matière."
+        },
+        {
+          "title": "Étape 5 — Estimer le budget de trésorerie au T1",
+          "intro": "Hypothèses : ventes encaissées à 60 jours (T1 encaissé en T2), achats payés à 30 jours (T1 payé en T2). Trésorerie initiale = 15 000 €.",
+          "calc": "T1 : Encaissements 0 (les ventes T1 seront encaissées T2) · Décaissements ≈ 8 000 € (charges fixes + salaires) · Tréso fin T1 = 15 000 − 8 000 = 7 000 €.",
+          "result": "Trésorerie positive mais tendue en début d'année. Les premiers encaissements arrivent en T2 (30 000 € du T1).",
+          "tip": "Si l'entreprise démarrait à 0 de trésorerie, elle serait à -8 000 € fin T1 : besoin d'un découvert ou d'un apport. Ce calcul justifie souvent une avance bancaire de campagne en début d'année."
+        },
+        {
+          "title": "Étape 6 — Synthèse et arbitrages stratégiques",
+          "intro": "Le budget global est cohérent — ventes 162 500 €, production 6 550, achats 52 800 €, trésorerie maîtrisée. Quelles décisions en tirer ?",
+          "calc": "Marge brute estimée : (162 500 − 52 800 − autres charges variables) / 162 500. Si charges variables ≈ 90 k€, marge ≈ 45 %.",
+          "result": "Le budget valide la viabilité du plan annuel. Il sert de référence pour le contrôle budgétaire à venir : tout écart sera analysé module suivant.",
+          "tip": "À ce stade, présentation au comité de direction : validation, puis communication aux centres de responsabilité. Le budget devient engagement."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Pourquoi le budget des ventes est-il considéré comme limitatif dans le système budgétaire ?",
+        "options": [
+          "Parce qu'il limite la rentabilité de l'entreprise",
+          "Parce que toute la chaîne budgétaire dépend du volume de ventes prévu",
+          "Parce que les ventes sont toujours sous-estimées",
+          "Parce qu'il est imposé par la direction financière"
+        ],
+        "correct": 1,
+        "explanation": "Le budget des ventes détermine les quantités à produire, donc les matières à acheter, la main-d'œuvre à mobiliser, et finalement la trésorerie. Tous les autres budgets en découlent : il est le goulot d'étranglement qui contraint l'ensemble."
+      },
+      {
+        "question": "Une entreprise prévoit 10 000 unités vendues, un stock initial de 1 500 unités et souhaite finir avec 2 000 unités. Quelle production prévoir ?",
+        "options": [
+          "8 500 unités",
+          "10 500 unités",
+          "11 500 unités",
+          "13 500 unités"
+        ],
+        "correct": 1,
+        "explanation": "Production = Ventes + Stock final − Stock initial = 10 000 + 2 000 − 1 500 = 10 500 unités. Cette formule garantit que la demande est couverte tout en atteignant le niveau de stock final souhaité."
+      },
+      {
+        "question": "Quelle est la conséquence d'un budget construit uniquement en top-down ?",
+        "options": [
+          "Une excellente motivation des équipes opérationnelles",
+          "Un risque de démotivation et d'objectifs irréalistes pour les opérationnels",
+          "Une parfaite remontée du terrain",
+          "Une absence totale de contrôle"
+        ],
+        "correct": 1,
+        "explanation": "Le top-down impose des objectifs sans consultation du terrain. Les opérationnels perçoivent ces objectifs comme arbitraires, ce qui démotive et peut conduire à des cibles déconnectées des capacités réelles. La logique mixte avec navette corrige ce défaut."
+      }
+    ]
+  },
+
+  "ecarts": {
+    "id": "ecarts",
+    "title": "Contrôle budgétaire et analyse des écarts",
+    "tier": "premium",
+    "duration": "22 min",
+    "order": 3,
+    "iconColor": "#10B981",
+    "iconBg": "rgba(16,185,129,0.12)",
+    "iconGlow": "rgba(16,185,129,0.20)",
+    "tagline": "Décomposer le réel pour piloter l'action corrective.",
+    "description": "Le contrôle budgétaire ne se limite pas à constater l'écart global : il le décompose en sous-écarts attribués à des causes identifiables (volume, prix, mix, productivité). Maîtrisez cette analyse fine indispensable au contrôle de gestion.",
+    "keyPoints": [
+      "Calcul et interprétation des écarts globaux",
+      "Décomposition des écarts sur chiffre d'affaires",
+      "Décomposition des écarts sur coûts (matières, MOD, charges indirectes)",
+      "Mise en place d'actions correctives"
+    ],
+    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "content": {
+      "intro": "Le contrôle budgétaire constitue l'aboutissement du processus de gestion prévisionnelle. Il compare systématiquement les réalisations effectives aux prévisions inscrites au budget, puis explique les écarts en les décomposant en causes élémentaires identifiables. Sans cette décomposition, un écart global défavorable reste opaque ; avec elle, il devient actionnable.\n\nUn écart de CA défavorable de 12 000 €, par exemple, peut résulter de causes radicalement différentes : une baisse de volume due au marché, une baisse de prix imposée par la concurrence, ou un changement de mix produits qui défavorise les marges. Chacune de ces causes appelle une action corrective spécifique — et certaines combinaisons d'écarts révèlent même des effets contradictoires que seule la décomposition rend visibles. Maîtriser l'analyse des écarts, c'est passer du constat au pilotage.",
+      "sections": [
+        {
+          "title": "Principe général du contrôle budgétaire — la mécanique de l'écart",
+          "body": "Le contrôle budgétaire s'organise en trois étapes successives. La première consiste à calculer les écarts entre les valeurs réelles constatées et les valeurs prévues au budget — l'arithmétique est simple, mais le choix de la convention de signe est crucial. La deuxième étape, plus délicate, décompose chaque écart global en sous-écarts attribués à des causes élémentaires (volume, prix, productivité). La troisième étape, managériale, déclenche les actions correctives ou révise les prévisions selon le diagnostic.\n\nConvention de signe : un écart est qualifié de favorable (F) s'il améliore le résultat, défavorable (D) sinon. Pour les produits (CA, ventes), Écart = Réel − Prévu : un écart positif signifie qu'on a vendu plus que prévu, c'est favorable. Pour les charges (coûts, dépenses), Écart = Prévu − Réel : un écart positif signifie qu'on a dépensé moins que prévu, c'est aussi favorable. Cette convention permet qu'un écart positif soit toujours favorable, quel que soit le poste analysé.\n\nLa notion de budget flexible est centrale. Pour analyser proprement la productivité (matière, main-d'œuvre), il faut neutraliser l'effet du volume d'activité réel. Le budget flexible recalcule la prévision en l'ajustant à l'activité réellement constatée. Par exemple, si on avait prévu 1 kg de matière par produit pour 1 000 produits (soit 1 000 kg) mais qu'on a produit 1 100 produits, le budget flexible devient 1 100 kg. C'est par rapport à ce budget flexible qu'on mesure ensuite l'écart de productivité matière.\n\nLe contrôle budgétaire produit ses meilleurs résultats quand il est mensualisé. Attendre la fin d'année pour analyser les écarts revient à constater une dérive plutôt qu'à la corriger. Les entreprises performantes en font un rituel mensuel court mais systématique : revue d'écarts, analyse causale, décision d'action — moins d'une heure par centre de responsabilité, mais sans concession sur la rigueur.",
+          "highlight": "Convention universelle : un écart positif est toujours favorable. Le budget flexible neutralise l'effet volume pour analyser la productivité."
+        },
+        {
+          "title": "Décomposition de l'écart sur chiffre d'affaires — volume, prix, mix",
+          "body": "L'écart global sur CA = CA réel − CA prévu. Cette différence agrège deux effets qu'il faut absolument distinguer : l'effet du volume (a-t-on vendu plus ou moins d'unités que prévu ?) et l'effet du prix (les prix réels diffèrent-ils des prix prévus ?). Une analyse stratégique exige qu'on isole ces effets, car ils appellent des décisions opposées.\n\nL'écart sur volume isole l'effet quantité : il se calcule comme Écart volume = (Qr − Qp) × Pp, où Qr est la quantité réelle vendue, Qp la quantité prévue, et Pp le prix prévu. On valorise la différence de quantités au prix budgété — ce qui neutralise l'effet prix. Si Qr > Qp, écart favorable : on a vendu plus que prévu au prix budgété, ce qui aurait dû ajouter du CA.\n\nL'écart sur prix isole l'effet tarifaire : Écart prix = (Pr − Pp) × Qr. On valorise la différence de prix sur les quantités réellement vendues — ce qui isole l'impact pur des variations tarifaires sur le volume effectif. Si Pr < Pp (prix réel inférieur au prévu, ce qui arrive en cas de remises commerciales ou de baisse concurrentielle), écart défavorable.\n\nUne vérification essentielle : Écart volume + Écart prix = Écart global. Si ce n'est pas le cas, il y a une erreur de calcul ou un effet supplémentaire à modéliser. Dans les entreprises multi-produits, on ajoute un troisième terme : l'écart sur mix, qui mesure l'effet d'un changement dans la composition des ventes (vendre proportionnellement plus du produit A à forte marge et moins du produit B est favorable, même à CA total identique).\n\nLecture stratégique : un écart volume favorable et prix défavorable signale typiquement une stratégie de baisse des prix payante en volume mais coûteuse en valeur. Un écart volume défavorable et prix favorable signale l'inverse : montée en gamme réussie mais avec érosion de part de marché. Les décisions à prendre sont opposées dans chaque cas.",
+          "highlight": "Vérification : Écart volume + Écart prix = Écart global. Si différent, recalculer ou intégrer l'écart sur mix."
+        },
+        {
+          "title": "Décomposition des écarts sur charges directes — matières et main-d'œuvre",
+          "body": "Pour les charges directes (matières premières, main-d'œuvre directe), la décomposition suit la même logique que pour le CA mais avec des conventions de signe inversées (puisque ce sont des charges). L'enjeu est d'isoler les effets de quantité (productivité) et de prix (taux d'achat ou taux horaire).\n\nÉcart sur matières — quantité : (Qp ajustée − Qr) × Pp. La quantité prévue est ajustée au volume d'activité réel via le budget flexible. Si la consommation de matières par produit a augmenté (Qr > Qp ajustée), écart défavorable — signal d'une dégradation de la productivité matière (gaspillage, qualité défaillante, machine déréglée).\n\nÉcart sur matières — prix : (Pp − Pr) × Qr. On valorise la différence de prix d'achat sur les quantités réellement consommées. Un prix réel supérieur au prévu (Pr > Pp) produit un écart défavorable — hausse des matières premières, perte de remises sur volume, changement de fournisseur.\n\nPour la main-d'œuvre directe, la décomposition est symétrique. Écart sur temps (rendement) : (Tp ajusté − Tr) × tp, où Tp est le temps prévu, Tr le temps réel, tp le taux horaire prévu. Un temps réel supérieur au prévu signale une perte de productivité (formation insuffisante, équipement défaillant, baisse d'engagement). Écart sur taux : (tp − tr) × Tr, qui mesure l'effet pur des variations de taux horaire (heures supplémentaires, prime, recours à l'intérim plus cher).\n\nL'analyse croisée matière/MOD est révélatrice. Un écart matière favorable obtenu via un fournisseur low-cost peut s'accompagner d'un écart MOD défavorable (matière de moindre qualité, plus difficile à travailler, taux de rebut accru). C'est typiquement le piège des optimisations en silo : une économie en achats devient un surcoût en production.",
+          "highlight": "Croisement obligatoire : un écart favorable sur matières peut masquer un écart défavorable sur MOD ou rebut."
+        },
+        {
+          "title": "Écarts sur charges indirectes — budget, activité, rendement",
+          "body": "Les charges indirectes sont les plus complexes à analyser, car elles mélangent une part variable (qui suit le volume) et une part fixe (qui reste constante à court terme). La décomposition classique en trois sous-écarts est devenue standard dans les manuels et les examens.\n\nL'écart sur budget mesure la différence entre les dépenses réelles et le budget flexible — c'est-à-dire le budget recalculé pour l'activité réellement atteinte. Il isole l'effet pur des écarts sur prix et consommations, hors effet de volume. Un écart sur budget défavorable signale une dérive sur les achats indirects (énergie, maintenance, fournitures), souvent symptomatique d'un manque de contrôle des engagements.\n\nL'écart sur activité (ou écart d'imputation) mesure l'effet de la sous- ou sur-absorption des frais fixes. Quand l'activité réelle est inférieure à l'activité normale (celle qui sert à calculer les coûts unitaires standards), les frais fixes sont répartis sur moins d'unités — chaque unité absorbe davantage de frais fixes que prévu, ce qui crée un écart défavorable purement comptable. Cet écart est important à isoler car il ne reflète pas une mauvaise gestion mais simplement un volume inférieur au normal.\n\nL'écart sur rendement, enfin, mesure la différence entre l'activité réelle (heures-machine effectivement consommées) et l'activité allouée à la production réelle (heures-machine théoriquement nécessaires pour produire le volume réel). Cet écart isole l'efficacité productive de l'atelier — il est défavorable si l'on consomme plus d'heures-machine que la production réelle ne le justifierait.\n\nLa lecture conjointe des trois écarts permet un diagnostic précis : un écart sur activité défavorable mais un écart sur budget et rendement favorables signalent que l'atelier fonctionne bien mais à un volume insuffisant — la priorité est commerciale, pas industrielle. À l'inverse, des écarts sur budget et rendement défavorables mais une activité conforme signalent une dérive opérationnelle qui mérite enquête.",
+          "highlight": "Charges indirectes = 3 écarts : budget (prix), activité (imputation des fixes), rendement (efficacité). Lecture conjointe obligatoire."
+        }
+      ],
+      "formulas": [
+        {
+          "expr": "Écart global CA = CAr − CAp",
+          "label": "Écart global sur ventes",
+          "when": "Premier calcul du contrôle budgétaire. Sera ensuite décomposé en volume et prix.",
+          "example": "CA réel 64 800 €, CA prévu 62 000 € → Écart = +2 800 € (F). Reste à comprendre pourquoi."
+        },
+        {
+          "expr": "Écart volume = (Qr − Qp) × Pp",
+          "label": "Effet du volume sur le CA",
+          "when": "Isole l'effet pur des variations de quantité, en valorisant au prix prévu.",
+          "example": "Qr 1 100 unités, Qp 1 000, Pp 50 € → Écart volume = (1 100 − 1 000) × 50 = +5 000 € (F)."
+        },
+        {
+          "expr": "Écart prix = (Pr − Pp) × Qr",
+          "label": "Effet du prix sur le CA",
+          "when": "Isole l'effet pur des variations de prix, en valorisant sur les quantités réelles.",
+          "example": "Pr 48 €, Pp 50 €, Qr 1 100 → Écart prix = (48 − 50) × 1 100 = −2 200 € (D). Baisse de prix qui érode l'effet volume."
+        },
+        {
+          "expr": "Écart quantité matière = (Qp ajustée − Qr) × Pp",
+          "label": "Productivité matière",
+          "when": "Sur le budget flexible. Mesure si la consommation réelle de matière par unité produite est meilleure ou pire que la norme.",
+          "example": "Production réelle 1 100 unités × 2 kg/unité prévu = 2 200 kg ajustés. Consommation réelle 2 300 kg, prix 4 € → Écart = (2 200 − 2 300) × 4 = −400 € (D)."
+        },
+        {
+          "expr": "Écart prix matière = (Pp − Pr) × Qr",
+          "label": "Prix d'achat matières",
+          "when": "Isole l'effet des variations de prix d'achat sur les quantités réellement consommées.",
+          "example": "Pp 4 €/kg, Pr 4,20 €/kg, Qr 2 300 kg → Écart = (4 − 4,20) × 2 300 = −460 € (D). Matière payée plus cher."
+        },
+        {
+          "expr": "Écart rendement MOD = (Tp ajusté − Tr) × tp",
+          "label": "Productivité main-d'œuvre",
+          "when": "Mesure l'efficacité du temps de travail par unité produite.",
+          "example": "Tp ajusté 1 100 h, Tr 1 150 h, tp 25 €/h → Écart = (1 100 − 1 150) × 25 = −1 250 € (D). Surconsommation de 50 h."
+        }
+      ],
+      "exampleTitle": "Cas pratique : décomposition complète d'un écart sur ventes",
+      "exampleData": {
+        "produit": "Produit Z",
+        "qPrevue": 1000,
+        "pPrevu": 50,
+        "qReelle": 1100,
+        "pReel": 48,
+        "ecartGlobal": "+2 800 (F)",
+        "ecartVolume": "+5 000 (F)",
+        "ecartPrix": "−2 200 (D)"
+      },
+      "exerciseSteps": [
+        {
+          "title": "Étape 1 — Calculer le CA prévu et le CA réel",
+          "intro": "Données : quantité prévue 1 000 unités à 50 €, quantité réelle 1 100 unités à 48 €. On calcule d'abord les deux valeurs globales.",
+          "calc": "CA prévu = 1 000 × 50 = 50 000 € · CA réel = 1 100 × 48 = 52 800 €",
+          "result": "Écart global = 52 800 − 50 000 = +2 800 € (Favorable).",
+          "tip": "Un écart global favorable peut masquer des effets contradictoires. Sans décomposition, on conclurait à tort que tout va bien."
+        },
+        {
+          "title": "Étape 2 — Calculer l'écart sur volume",
+          "intro": "On isole l'effet quantité. La différence de quantité (Qr − Qp) est valorisée au prix prévu (Pp), ce qui neutralise l'effet prix.",
+          "calc": "Écart volume = (1 100 − 1 000) × 50 = 100 × 50 = +5 000 €",
+          "result": "Écart sur volume FAVORABLE de 5 000 €. On a vendu 100 unités de plus que prévu, qui auraient rapporté 5 000 € au prix budgété.",
+          "tip": "Si le marché global a crû, c'est une bonne nouvelle sectorielle. Si le marché a stagné, c'est un gain de part de marché — encore meilleur signal."
+        },
+        {
+          "title": "Étape 3 — Calculer l'écart sur prix",
+          "intro": "On isole l'effet tarifaire. La différence de prix (Pr − Pp) est valorisée sur la quantité réelle (Qr), qui reflète la réalité commerciale.",
+          "calc": "Écart prix = (48 − 50) × 1 100 = −2 × 1 100 = −2 200 €",
+          "result": "Écart sur prix DÉFAVORABLE de 2 200 €. Le prix réel de 48 € est inférieur au prix budgété de 50 €, ce qui a érodé la marge sur chaque unité vendue.",
+          "tip": "Causes possibles : remises commerciales accordées pour atteindre le volume, baisse de prix concurrentielle subie, ou changement de mix vers des références moins chères."
+        },
+        {
+          "title": "Étape 4 — Vérifier la cohérence de la décomposition",
+          "intro": "L'écart global doit être égal à la somme des deux sous-écarts. Cette vérification garantit qu'on n'a pas oublié d'effet et que les calculs sont justes.",
+          "calc": "Écart volume + Écart prix = +5 000 + (−2 200) = +2 800 €",
+          "result": "Égal à l'écart global calculé en étape 1 : +2 800 € (F). Décomposition cohérente, l'analyse est valide.",
+          "tip": "Si la somme ne tombait pas juste, vérifier d'abord les formules (Qp/Qr et Pp/Pr ne doivent pas être confondus), puis envisager un écart de mix si plusieurs produits."
+        },
+        {
+          "title": "Étape 5 — Interpréter stratégiquement le résultat",
+          "intro": "Volume favorable +5 000, prix défavorable −2 200, global favorable +2 800. Quelle lecture stratégique en tirer ?",
+          "calc": "Volume +10 % (1 100/1 000) · Prix −4 % (48/50) · Net en valeur : +5,6 % de CA",
+          "result": "Stratégie de prix agressive payante en volume mais coûteuse en marge unitaire. Le gain net est modeste, et la marge globale s'érode.",
+          "tip": "Décision à prendre : la baisse de prix est-elle ponctuelle ou structurelle ? Si ponctuelle (campagne promo), revenir au prix initial après. Si structurelle (concurrence durable), revoir le modèle de coûts ou monter en gamme."
+        },
+        {
+          "title": "Étape 6 — Préparer l'action corrective",
+          "intro": "Le contrôleur de gestion ne se contente pas du diagnostic — il propose des actions. Ces actions dépendent de l'analyse causale poussée plus loin (entretien commerciaux, analyse concurrence).",
+          "calc": "Pistes : (a) revoir la politique de remises · (b) tester un retour au prix 50 € sur un segment · (c) lancer une montée en gamme sur le produit Z+",
+          "result": "Recommandation : tester sur 2 segments distincts les options (a) et (c) sur le prochain trimestre, et mesurer l'écart résultant.",
+          "tip": "Bonne pratique : transformer chaque écart significatif en plan d'action chiffré avec responsable et échéance. L'analyse sans action est un exercice stérile."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Une entreprise constate un écart global défavorable sur ses ventes. L'écart sur volume est favorable de 8 000€, l'écart sur prix est défavorable de 12 000€. Quelle est la décision la plus appropriée ?",
+        "options": [
+          "Augmenter immédiatement le prix de vente",
+          "Analyser pourquoi les prix réels ont baissé (remises, marché, concurrence) avant de décider",
+          "Diminuer les quantités produites",
+          "Ignorer l'écart car il est compensé"
+        ],
+        "correct": 1,
+        "explanation": "L'écart sur prix défavorable mérite une analyse causale avant action : remises commerciales accordées ? Baisse du marché ? Concurrence agressive ? Augmenter mécaniquement le prix pourrait aggraver la situation si la cause est concurrentielle."
+      },
+      {
+        "question": "Pourquoi ajuste-t-on la quantité prévue à l'activité réelle (budget flexible) avant de calculer l'écart sur consommation matière ?",
+        "options": [
+          "Pour rendre les calculs plus complexes",
+          "Pour neutraliser l'effet du volume d'activité et isoler l'effet réel de la productivité matière",
+          "Pour minimiser l'écart constaté",
+          "C'est une obligation légale"
+        ],
+        "correct": 1,
+        "explanation": "Sans ajustement, l'écart mélangerait deux effets : la variation de volume et la variation d'efficacité dans l'utilisation des matières. Le budget flexible (prévision × activité réelle) isole le pur effet de productivité matière, qui est le seul intéressant pour l'analyse."
+      },
+      {
+        "question": "Un écart sur activité défavorable sur les charges indirectes signifie le plus souvent :",
+        "options": [
+          "Que les charges variables ont dépassé les prévisions",
+          "Que le volume d'activité réel est inférieur au volume normal, entraînant une sous-imputation des frais fixes",
+          "Que la main-d'œuvre directe a été inefficace",
+          "Que les prix d'achat des matières ont augmenté"
+        ],
+        "correct": 1,
+        "explanation": "L'écart sur activité (ou écart d'imputation) mesure l'effet d'un volume d'activité différent du volume normal. Si l'activité réelle est inférieure, les frais fixes sont répartis sur moins d'unités, ce qui crée une sous-absorption défavorable."
+      }
+    ]
+  },
+
+  "investissement": {
+    "id": "investissement",
+    "title": "Critères de choix d'investissement",
+    "tier": "premium",
+    "duration": "20 min",
+    "order": 4,
+    "iconColor": "#F59E0B",
+    "iconBg": "rgba(245,158,11,0.12)",
+    "iconGlow": "rgba(245,158,11,0.20)",
+    "tagline": "Décider en avenir certain : la rentabilité chiffrée.",
+    "description": "Avant de mobiliser des capitaux, l'entreprise doit évaluer la rentabilité d'un investissement. VAN, TRI, indice de profitabilité, délai de récupération : quatre critères complémentaires pour décider en toute rigueur.",
+    "keyPoints": [
+      "Valeur Actuelle Nette (VAN) comme critère de référence",
+      "Taux de Rentabilité Interne (TRI)",
+      "Indice de Profitabilité (IP) et Délai de Récupération (DR)",
+      "Choisir entre projets mutuellement exclusifs"
+    ],
+    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "content": {
+      "intro": "Un investissement engage des capitaux aujourd'hui dans l'attente de flux de trésorerie futurs, étalés sur plusieurs années. La décision d'investir suppose donc de comparer une dépense immédiate à une série de recettes futures — exercice impossible sans tenir compte de la valeur temporelle de l'argent. 1 000 € reçus dans 5 ans valent moins que 1 000 € reçus aujourd'hui, à la fois parce que l'argent pourrait être placé entre-temps, et parce que l'incertitude croît avec l'horizon.\n\nLa résolution de ce problème passe par l'actualisation : on ramène tous les flux futurs à leur valeur d'aujourd'hui en les divisant par (1+t)ⁿ, où t est le taux d'actualisation choisi et n la durée. À partir de ce principe fondateur, quatre critères principaux structurent la décision d'investissement, chacun éclairant un aspect différent de la rentabilité. Comprendre leurs articulations et leurs limites est essentiel pour ne pas faire les arbitrages mécaniquement.",
+      "sections": [
+        {
+          "title": "La Valeur Actuelle Nette (VAN) — le critère de référence",
+          "body": "La VAN d'un projet est la somme des flux de trésorerie futurs actualisés, diminuée de l'investissement initial. Formellement : VAN = Σ [Fluxₙ / (1+t)ⁿ] − I₀. Le taux d'actualisation t utilisé représente typiquement le coût moyen pondéré du capital (CMPC) de l'entreprise — c'est-à-dire la rémunération minimale exigée par les apporteurs de fonds (actionnaires et créanciers).\n\nLa lecture de la VAN est immédiate. Si VAN > 0, le projet crée de la valeur : les flux actualisés couvrent l'investissement et génèrent un surplus. Le projet est accepté. Si VAN < 0, le projet détruit de la valeur : il rapporte moins que le coût du capital. Il doit être rejeté. Si VAN = 0, le projet rémunère exactement le coût du capital — il est financièrement neutre, sans effet sur la valeur de l'entreprise. La décision à ce seuil dépend alors de critères non financiers (stratégique, image, social).\n\nLa VAN est considérée comme théoriquement supérieure aux autres critères pour une raison simple : elle mesure directement la création de valeur en unités monétaires. Une VAN de 50 000 € signifie qu'on enrichira les actionnaires de 50 000 € de valeur actuelle. Aucun autre critère ne fournit cette lecture directe en richesse créée.\n\nDeux limites pratiques à connaître. D'abord, la VAN dépend du taux d'actualisation choisi — un mauvais taux fausse la décision. Les entreprises utilisent typiquement leur CMPC mais ajoutent une prime de risque pour les projets particulièrement incertains. Ensuite, la VAN ne tient pas compte de la taille relative du projet : un projet à VAN = 100 sur 50 d'investissement n'a pas le même intérêt qu'un projet à VAN = 100 sur 10 000. L'indice de profitabilité corrige cette limite.",
+          "highlight": "VAN > 0 : projet crée de la valeur, à accepter. VAN < 0 : projet détruit de la valeur, à rejeter. VAN = 0 : rémunère exactement le coût du capital."
+        },
+        {
+          "title": "Le Taux de Rentabilité Interne (TRI) — la rentabilité intrinsèque",
+          "body": "Le TRI est le taux d'actualisation pour lequel la VAN s'annule. Mathématiquement, il résout l'équation : Σ [Fluxₙ / (1+TRI)ⁿ] = I₀. Concrètement, le TRI représente la rentabilité moyenne intrinsèque du projet, exprimée en pourcentage annuel. Si on actualisait au TRI, la VAN serait nulle ; à tout taux inférieur, la VAN devient positive.\n\nLa règle de décision est intuitive : on accepte le projet si TRI > coût du capital. La marge entre les deux représente le surplus de rentabilité au-delà du minimum exigé. Le TRI séduit par son côté concret : un projet à 18 % est facile à comparer mentalement à un coût du capital de 10 %.\n\nMais le TRI cache plusieurs pièges. Le premier concerne les flux non conventionnels : quand les flux changent plusieurs fois de signe (par exemple un projet qui demande un réinvestissement en année 3), l'équation peut avoir plusieurs solutions mathématiques — il existe alors plusieurs TRI, ce qui rend le critère inutilisable. Le second piège concerne les projets de tailles différentes : un petit projet peut avoir un TRI élevé sans créer beaucoup de valeur absolue, et inversement. C'est typiquement le cas où VAN et TRI peuvent diverger.\n\nLe troisième piège, plus subtil, est l'hypothèse implicite de réinvestissement : le TRI suppose que les flux intermédiaires sont réinvestis au TRI lui-même. Si le TRI est très élevé (par exemple 30 %), cette hypothèse est irréaliste — l'entreprise n'a typiquement pas de placements à 30 %. Pour corriger ce biais, certains praticiens utilisent le TRI modifié (MIRR), qui suppose un réinvestissement au coût du capital.\n\nEn pratique : VAN et TRI sont des critères complémentaires. La VAN tranche en cas de conflit, le TRI fournit une lecture rapide et un seuil de décision intuitif.",
+          "highlight": "TRI = taux qui annule la VAN. Règle : accepter si TRI > coût du capital. Attention aux flux non conventionnels (plusieurs TRI possibles)."
+        },
+        {
+          "title": "Indice de Profitabilité et Délai de Récupération — les critères complémentaires",
+          "body": "L'Indice de Profitabilité (IP) mesure la création de valeur par euro investi. Sa formule : IP = 1 + (VAN / I₀), ou de façon équivalente IP = (Σ flux actualisés) / I₀. Un IP de 1,18 signifie qu'un euro investi rapporte 1,18 € en valeur actuelle — soit 18 cents de valeur créée par euro engagé. La règle de décision est : accepter si IP > 1.\n\nL'IP s'avère particulièrement précieux en situation de rationnement de capital. Quand l'entreprise dispose d'un budget d'investissement limité et doit arbitrer entre plusieurs projets non exclusifs, l'IP permet de hiérarchiser les projets par efficacité d'utilisation des capitaux. On retient les projets par ordre décroissant d'IP jusqu'à épuisement du budget — démarche optimale pour maximiser la VAN totale sous contrainte.\n\nLe Délai de Récupération (DR ou Payback) mesure le temps nécessaire pour récupérer l'investissement initial via les flux cumulés. C'est le critère le plus simple à comprendre, et le plus utilisé en PME : combien d'années avant que mes recettes cumulées dépassent ma dépense initiale ? Plus le DR est court, moins le projet est risqué en termes de liquidité.\n\nDeux versions coexistent. Le DR simple cumule les flux non actualisés — facile à calculer mais ignore la valeur temporelle de l'argent. Le DR actualisé cumule les flux après actualisation — plus rigoureux mais plus long. Les manuels enseignent les deux ; les examens demandent souvent le DR simple par souci de simplicité de calcul.\n\nLimite majeure du DR : il ignore complètement les flux postérieurs à la récupération. Un projet à DR = 3 ans et flux nuls ensuite est traité comme un projet à DR = 3 ans et flux énormes ensuite. C'est pour cela que le DR n'est jamais utilisé seul — il complète la VAN en éclairant la dimension risque/liquidité, mais ne se substitue pas à elle.",
+          "highlight": "IP : utile en rationnement de capital. DR : éclaire le risque de liquidité. Aucun ne remplace la VAN, ils la complètent."
+        },
+        {
+          "title": "Comparaison entre projets mutuellement exclusifs — quel critère privilégier ?",
+          "body": "Quand l'entreprise doit choisir entre deux projets exclusifs (un seul peut être réalisé), les quatre critères peuvent donner des résultats divergents. Comprendre quel critère privilégier dans quelles circonstances est essentiel — c'est typiquement le sujet d'examen le plus discriminant.\n\nRègle générale : la VAN tranche. C'est elle qui mesure directement la création de valeur, donc qui correspond à l'objectif financier de l'entreprise (maximiser la valeur pour les actionnaires). En cas de conflit entre VAN et TRI, on suit la VAN. Le conflit typique apparaît entre un petit projet à TRI très élevé et un grand projet à TRI plus modeste mais à VAN plus élevée : on retient le grand projet, qui enrichit plus l'entreprise en valeur absolue.\n\nIl existe néanmoins des situations où d'autres critères priment. En situation de rationnement strict de capital, l'IP permet d'optimiser l'utilisation du budget disponible — c'est lui qu'il faut suivre pour classer les projets. Quand le risque de liquidité est central (PME jeune, projet exposé à l'incertitude), le DR fournit l'information clé sur la rapidité de récupération.\n\nL'analyse par les flux différentiels (méthode du projet incrémental) est utile pour départager des projets de tailles différentes. On calcule la VAN du projet (Grand − Petit), c'est-à-dire la VAN des flux supplémentaires apportés par le grand projet. Si cette VAN différentielle est positive, le surplus de capital investi rapporte plus que le coût du capital — on choisit le grand projet. C'est une façon élégante de réconcilier les arbitrages.\n\nDernière dimension : aucun critère financier ne capture les enjeux stratégiques ou qualitatifs. Un projet à VAN négative peut être retenu pour des raisons de positionnement marché, d'image, ou de contrainte réglementaire. Inversement, un projet à VAN positive peut être rejeté s'il détourne les équipes d'enjeux plus structurants. Les critères financiers éclairent la décision, ils ne la prennent pas.",
+          "highlight": "En cas de conflit VAN/TRI : la VAN tranche. En rationnement : suivre l'IP. Pour le risque : compléter par le DR."
+        }
+      ],
+      "formulas": [
+        {
+          "expr": "VAN = Σ [Fluxₙ / (1+t)ⁿ] − I₀",
+          "label": "Valeur Actuelle Nette",
+          "when": "Critère central. t = coût du capital, n = année, I₀ = investissement initial. On accepte si VAN > 0.",
+          "example": "Projet I₀ = 100 k€, flux 30/35/40/45 k€ sur 4 ans, t = 10 % → VAN = 30/1,1 + 35/1,21 + 40/1,331 + 45/1,4641 − 100 = 27,3 + 28,9 + 30,1 + 30,7 − 100 = +17 k€. Acceptable."
+        },
+        {
+          "expr": "TRI : taux t* tel que VAN(t*) = 0",
+          "label": "Taux de Rentabilité Interne",
+          "when": "Se calcule par tâtonnement, interpolation, ou solveur. On accepte si TRI > coût du capital.",
+          "example": "Pour le projet ci-dessus, le TRI résolu numériquement est d'environ 16,9 %. Comme 16,9 % > 10 % (coût du capital), le projet est rentable."
+        },
+        {
+          "expr": "IP = 1 + (VAN / I₀)",
+          "label": "Indice de Profitabilité",
+          "when": "Mesure la création de valeur par euro investi. Utile en rationnement de capital. On accepte si IP > 1.",
+          "example": "IP = 1 + (17 / 100) = 1,17. Chaque euro investi rapporte 1,17 € en valeur actuelle, soit 17 cents de valeur créée par euro engagé."
+        },
+        {
+          "expr": "DR : période t telle que Σ flux cumulés (jusqu'à t) ≥ I₀",
+          "label": "Délai de Récupération",
+          "when": "Critère prudentiel mesurant le risque de liquidité. Plus court = moins risqué.",
+          "example": "Flux cumulés : 30 (an 1), 65 (an 2), 105 (an 3). L'investissement de 100 est récupéré dans l'année 3 — précisément à 2 + 35/40 ≈ 2,87 ans."
+        }
+      ],
+      "exampleTitle": "Cas pratique : projet à 4 ans, investissement 100 000€, taux 10%",
+      "exampleData": {
+        "investissement": 100000,
+        "tauxActualisation": "10%",
+        "flux": [30000, 35000, 40000, 45000],
+        "van": "≈ 17 030 €",
+        "tri": "≈ 16,9 %",
+        "ip": "1,17",
+        "dr": "≈ 2,87 ans",
+        "decision": "Accepter (VAN > 0, TRI > 10 %, IP > 1)"
+      },
+      "exerciseSteps": [
+        {
+          "title": "Étape 1 — Identifier les paramètres et poser le problème",
+          "intro": "Données : Investissement initial I₀ = 100 000 €. Flux futurs : 30 000 (an 1), 35 000 (an 2), 40 000 (an 3), 45 000 (an 4). Taux d'actualisation : 10 % (coût du capital).",
+          "calc": "Variables : t = 0,10 · n ∈ {1,2,3,4} · Flux croissants typiques d'un projet en montée en charge.",
+          "result": "Objectif : calculer VAN, TRI, IP, DR puis décider. On commence par la VAN, critère de référence.",
+          "tip": "Vérifier d'emblée la plausibilité : la somme brute des flux (150 000) dépasse l'investissement, donc le projet a une chance d'être rentable une fois actualisé."
+        },
+        {
+          "title": "Étape 2 — Calculer la VAN flux par flux",
+          "intro": "Application de la formule VAN = Σ [Fluxₙ / (1+t)ⁿ] − I₀. On actualise chaque flux séparément.",
+          "calc": "F1 actualisé = 30 000 / 1,10 = 27 273 € · F2 = 35 000 / 1,21 = 28 926 € · F3 = 40 000 / 1,331 = 30 053 € · F4 = 45 000 / 1,4641 = 30 738 €",
+          "result": "Somme des flux actualisés = 117 030 €. VAN = 117 030 − 100 000 = +17 030 €. Décision : projet créateur de valeur, on l'accepte.",
+          "tip": "Vérification : sans actualisation, la somme aurait été 150 000 €. L'actualisation ronge donc 33 000 € de valeur, soit 22 % — typique pour un horizon de 4 ans à 10 %."
+        },
+        {
+          "title": "Étape 3 — Estimer le TRI par encadrement",
+          "intro": "Le TRI est le taux qui annule la VAN. On l'encadre en testant plusieurs taux : à 10 %, VAN = +17 030 ; il faut trouver un taux où VAN ≈ 0.",
+          "calc": "Test à 15 % : VAN ≈ 100 000 + (30 000/1,15 + 35 000/1,3225 + 40 000/1,520875 + 45 000/1,749) − 100 000 ≈ +4 470 € · Test à 18 % : VAN ≈ −2 200 €",
+          "result": "Le TRI est entre 15 % et 18 %. Par interpolation linéaire : TRI ≈ 15 + 3 × (4 470 / (4 470 + 2 200)) ≈ 17 %.",
+          "tip": "En examen, on demande souvent une interpolation entre deux taux choisis (15 % et 18 % typiquement). Sans calculatrice financière, l'encadrement par tests est la méthode standard."
+        },
+        {
+          "title": "Étape 4 — Calculer l'Indice de Profitabilité",
+          "intro": "L'IP mesure la valeur créée par euro investi. Formule : IP = (Somme des flux actualisés) / I₀, ou de façon équivalente : IP = 1 + (VAN / I₀).",
+          "calc": "IP = 117 030 / 100 000 = 1,17 · ou IP = 1 + (17 030 / 100 000) = 1 + 0,17 = 1,17",
+          "result": "Chaque euro investi rapporte 1,17 € de valeur actuelle, soit 17 cents de création de valeur par euro engagé. IP > 1 → projet rentable.",
+          "tip": "Si on devait choisir entre ce projet et un autre à I₀ = 50 000 € et VAN = 10 000 €, l'IP du second serait 1,20 — il serait préférable en efficacité du capital, malgré une VAN absolue plus faible."
+        },
+        {
+          "title": "Étape 5 — Calculer le Délai de Récupération",
+          "intro": "Le DR est le temps nécessaire pour cumuler des flux égaux à l'investissement. Version simple ici (sans actualiser les flux), plus pédagogique.",
+          "calc": "Flux cumulés : Fin an 1 = 30 000 · Fin an 2 = 65 000 · Fin an 3 = 105 000 (dépasse 100 000) → récupération en année 3. Précisément : 2 + (100 000 − 65 000) / 40 000 = 2 + 0,875 = 2,875 ans.",
+          "result": "DR ≈ 2,87 ans. L'investissement est récupéré entre la fin de la 2ème et de la 3ème année, environ 10 mois et demi après le début de l'an 3.",
+          "tip": "Pour le DR actualisé, recalculer avec les flux actualisés (27 273, 28 926, 30 053, 30 738). Le résultat serait légèrement plus long, autour de 3,2 ans."
+        },
+        {
+          "title": "Étape 6 — Synthèse et décision",
+          "intro": "On dispose maintenant des quatre indicateurs. Comment les lire conjointement pour décider ?",
+          "calc": "VAN = +17 030 € · TRI ≈ 17 % · IP = 1,17 · DR ≈ 2,87 ans",
+          "result": "Tous les indicateurs convergent : projet rentable, à accepter. VAN positive, TRI bien au-dessus du coût du capital, IP > 1, et DR raisonnable (moins de 3 ans).",
+          "tip": "En examen, formuler explicitement la décision : « Le projet est accepté car la VAN est positive (création de valeur de 17 030 €), confirmée par un TRI de 17 % nettement supérieur au coût du capital de 10 %. » C'est cette synthèse qui rapporte les points."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Si la VAN d'un projet est négative, quelle décision prend-on et pourquoi ?",
+        "options": [
+          "Accepter le projet : la VAN négative est neutre",
+          "Rejeter le projet : il ne couvre pas le coût du capital",
+          "Accepter si le TRI est positif",
+          "Rejeter uniquement si le délai de récupération dépasse 3 ans"
+        ],
+        "correct": 1,
+        "explanation": "Une VAN négative signifie que les flux actualisés du projet sont inférieurs à l'investissement initial, donc que le projet rémunère moins que le coût du capital. Il détruit de la valeur — on le rejette."
+      },
+      {
+        "question": "Pourquoi la VAN est-elle considérée comme théoriquement supérieure au TRI en cas de conflit entre les deux ?",
+        "options": [
+          "Parce qu'elle est plus simple à calculer",
+          "Parce qu'elle mesure directement la création de valeur en euros, alors que le TRI peut conduire à de mauvais arbitrages entre projets de tailles différentes",
+          "Parce qu'elle est plus précise mathématiquement",
+          "Parce que le TRI est interdit par les normes comptables"
+        ],
+        "correct": 1,
+        "explanation": "La VAN donne un montant absolu de création de valeur, directement comparable. Le TRI est un pourcentage qui peut favoriser un petit projet très rentable au détriment d'un grand projet moins rentable mais qui crée plus de valeur absolue."
+      },
+      {
+        "question": "Quel critère privilégier pour départager deux projets de tailles très différentes en situation de capitaux rationnés ?",
+        "options": [
+          "La VAN, toujours",
+          "Le délai de récupération",
+          "L'Indice de Profitabilité, car il mesure la création de valeur par euro investi",
+          "Le TRI, car il est indépendant de la taille"
+        ],
+        "correct": 2,
+        "explanation": "L'IP mesure le rendement par euro investi : il permet de classer les projets selon leur efficacité d'utilisation du capital, ce qui est exactement le critère pertinent en situation de rationnement où chaque euro doit être optimalement alloué."
+      }
+    ]
+  },
+
+  "incertain": {
+    "id": "incertain",
+    "title": "Décision en avenir incertain",
+    "tier": "premium",
+    "duration": "20 min",
+    "order": 5,
+    "iconColor": "#8B5CF6",
+    "iconBg": "rgba(139,92,246,0.12)",
+    "iconGlow": "rgba(139,92,246,0.20)",
+    "tagline": "Choisir sans connaître les probabilités.",
+    "description": "Lorsque les probabilités des états de nature sont inconnues, plusieurs critères de décision s'opposent — chacun reflète une attitude face au risque. Maîtrisez Wald, Maximax, Savage, Laplace et Hurwicz pour décider en toute lucidité.",
+    "keyPoints": [
+      "Différence entre avenir aléatoire et avenir incertain",
+      "Critère de Wald (Maximin) : pessimisme prudent",
+      "Critères de Maximax, Savage et Laplace",
+      "Critère de Hurwicz : compromis paramétré"
+    ],
+    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "content": {
+      "intro": "Décider, c'est choisir une action parmi plusieurs, sans contrôler tous les facteurs qui détermineront son résultat. Frank Knight, dans son ouvrage Risk, Uncertainty and Profit (1921), opère une distinction fondamentale qui structure encore aujourd'hui la théorie de la décision : risque vs incertitude. En situation de risque (ou avenir aléatoire), on connaît les probabilités des états possibles — on peut donc raisonner en espérance mathématique. En situation d'incertitude radicale (ou avenir incertain), on ignore même les probabilités — l'espérance n'est plus calculable.\n\nC'est cette deuxième situation que ce module explore. Comment décider quand on ne peut pas probabiliser ? Cinq critères concurrents proposent des réponses, chacun reflétant une attitude différente face à l'inconnu : pessimisme prudent (Wald), optimisme (Maximax), minimisation du regret (Savage), équiprobabilité postulée (Laplace), compromis paramétré (Hurwicz). Aucun n'est universellement supérieur — le choix du critère est lui-même un acte de management, qui traduit une politique de risque.",
+      "sections": [
+        {
+          "title": "Avenir aléatoire vs avenir incertain — la distinction de Knight",
+          "body": "Frank Knight, économiste de l'École de Chicago, publie en 1921 une distinction qui deviendra fondamentale en théorie de la décision. Le risque correspond aux situations où l'on peut probabiliser : on connaît les états possibles et leurs probabilités d'occurrence. C'est le cas par exemple du lancer d'un dé (1/6 par face), ou d'un investissement dont on dispose d'une distribution statistique des rendements historiques. L'incertitude radicale, à l'inverse, désigne les situations où les probabilités elles-mêmes sont inconnues — soit qu'elles n'existent pas (événements uniques), soit qu'on n'a pas l'information pour les estimer.\n\nEn avenir aléatoire, on dispose d'un outil puissant : l'espérance mathématique. Pour une action A produisant les gains g₁, g₂, g₃ dans les états E₁, E₂, E₃ de probabilités p₁, p₂, p₃, l'espérance est E(A) = p₁×g₁ + p₂×g₂ + p₃×g₃. On retient l'action à plus forte espérance. Cette règle est optimale pour un décideur neutre au risque, et constitue le critère par défaut en finance et en assurance.\n\nLa variance complète l'espérance en mesurant la dispersion des résultats autour de la moyenne : V(A) = Σ pᵢ × (gᵢ − E(A))². Un décideur averse au risque préfère une espérance plus faible si la variance est nettement moindre — il privilégie la sécurité sur le rendement maximal. Inversement, un décideur amateur de risque (parieur) accepte une espérance plus faible si l'écart-type ouvre de plus grands gains exceptionnels.\n\nEn avenir incertain, ces outils probabilistes ne sont plus mobilisables. On entre dans le domaine des règles de décision non probabilistes, qui se distinguent par l'attitude qu'elles incarnent face au risque. C'est ce que les cinq critères suivants formalisent.",
+          "highlight": "Knight (1921) : risque = on peut probabiliser ; incertitude = on ne peut pas. Outils différents : espérance vs critères non probabilistes."
+        },
+        {
+          "title": "Le critère de Wald (Maximin) — le pessimiste prudent",
+          "body": "Proposé par le mathématicien Abraham Wald dans les années 1940, ce critère incarne la décision prudente sous incertitude maximale. Sa logique : pour chaque action, on identifie le pire résultat possible (le minimum de la ligne dans la matrice des gains). Puis on retient l'action dont ce pire résultat est le moins mauvais (le maximum des minima). D'où son autre nom de critère du Maximin.\n\nLe raisonnement implicite est celui de l'aversion radicale au risque : un décideur appliquant Wald considère que la nature peut se montrer hostile, et qu'il doit donc se prémunir contre le pire scénario imaginable. Il sacrifie les opportunités de gains élevés au profit d'une garantie de protection minimale. C'est typiquement le critère du décideur ayant beaucoup à perdre, ou de celui qui considère le pire scénario comme plausible.\n\nIllustration : pour une action A avec gains possibles {40, 60, 80}, le pire est 40. Pour B avec {30, 90, 50}, le pire est 30. Pour C avec {70, 50, 60}, le pire est 50. Wald retient C (max des min = 50), même si A ou B offrent des maxima supérieurs. C garantit au moins 50, quoi qu'il arrive.\n\nQuand utiliser Wald ? Trois situations classiques. D'abord, les décisions à fort enjeu où le pire scénario doit rester supportable : un investissement financier substantiel, un lancement de produit qui engage l'entreprise. Ensuite, les contextes où l'on suspecte que la nature pourrait être adverse — concurrence agressive, opposition réglementaire. Enfin, les décisions à enjeu vital ou irréversible, où l'on préfère la sécurité de pire à la maximisation du meilleur.\n\nLimite : Wald est extrêmement conservateur. Il peut conduire à rejeter des actions à forte espérance et faible probabilité d'échec, au profit d'actions ternes mais sûres. Dans les contextes peu hostiles, il fait passer à côté d'opportunités significatives.",
+          "highlight": "Wald = max(min) : choisir l'action dont le pire résultat est le moins mauvais. Critère du décideur prudent face à un avenir potentiellement hostile."
+        },
+        {
+          "title": "Maximax, Savage et Laplace — trois attitudes complémentaires",
+          "body": "Aux côtés de Wald, trois autres critères classiques explorent des attitudes alternatives face à l'incertitude. Le critère Maximax incarne l'optimisme absolu : pour chaque action, on retient le meilleur résultat possible (max de la ligne), puis on choisit l'action au plus grand max. Avec les mêmes gains que précédemment {40,60,80}, {30,90,50}, {70,50,60}, Maximax retient B (max = 90). C'est le critère du décideur entreprenant, qui parie que la nature jouera en sa faveur et veut maximiser le meilleur scénario.\n\nSavage propose une logique plus subtile : minimiser le regret maximum. Le regret se définit comme l'écart entre le résultat obtenu et le meilleur résultat possible dans l'état réalisé. Concrètement, pour chaque colonne (état de nature), on identifie le meilleur résultat, puis on calcule pour chaque case le regret = meilleur de colonne − valeur de la case. On obtient ainsi une matrice de regrets, sur laquelle on applique un Minimax : on retient l'action dont le regret maximum est le plus faible. Savage minimise ainsi la déception maximale a posteriori.\n\nLe critère de Laplace, attribué au mathématicien Pierre-Simon Laplace, suit une logique différente : en l'absence totale d'information sur les probabilités, on suppose équiprobabilité des états (principe de raison insuffisante). On calcule alors la moyenne arithmétique des gains pour chaque action, et on retient l'action à plus forte moyenne. Pour A {40,60,80}, moyenne = 60 ; pour B {30,90,50}, moyenne = 56,7 ; pour C {70,50,60}, moyenne = 60. Laplace choisirait A ou C (égalité, à départager par d'autres considérations).\n\nLequel utiliser ? Maximax pour les décisions exploratoires à faible enjeu où l'on cherche des coups gagnants (lancement test, innovation incrémentale). Savage pour les décideurs qui veulent éviter la déception a posteriori (« j'aurais dû choisir l'autre »). Laplace en l'absence quasi totale d'information, comme position par défaut. Aucun n'est universellement supérieur — leur usage dépend du contexte et de la culture managériale.",
+          "highlight": "Maximax = optimiste · Savage = anti-regret · Laplace = équiprobabilité postulée. Trois attitudes complémentaires à Wald."
+        },
+        {
+          "title": "Le critère de Hurwicz — le compromis paramétré",
+          "body": "Léonid Hurwicz, économiste américain prix Nobel en 2007, propose en 1951 un critère qui réconcilie pessimisme et optimisme via un paramètre. Le décideur choisit un coefficient d'optimisme α dans l'intervalle [0;1], qui pondère son attitude entre les deux extrêmes. La formule de Hurwicz : H(A) = α × max(A) + (1−α) × min(A). On retient l'action à plus fort H.\n\nLa valeur de α traduit la politique de risque. Quand α = 0, on retombe sur Wald (uniquement le min compte) — pessimisme pur. Quand α = 1, on retombe sur Maximax (uniquement le max compte) — optimisme pur. Pour α = 0,5, équilibre parfait entre max et min. Une valeur de α = 0,7 traduit un optimisme modéré (70% du max + 30% du min) ; α = 0,3 traduit un pessimisme modéré.\n\nIllustration avec les mêmes gains et α = 0,6 : H(A) = 0,6 × 80 + 0,4 × 40 = 48 + 16 = 64. H(B) = 0,6 × 90 + 0,4 × 30 = 54 + 12 = 66. H(C) = 0,6 × 70 + 0,4 × 50 = 42 + 20 = 62. Hurwicz à α = 0,6 retient B (H le plus élevé). Notons que B avait été rejeté par Wald : Hurwicz révèle que B redevient intéressant dès qu'on accepte une part d'optimisme.\n\nL'avantage opérationnel de Hurwicz est double. D'abord, il offre la flexibilité maximale : un seul critère paramétrable permet de balayer toutes les attitudes de risque possibles. Ensuite, il rend explicite l'hypothèse comportementale du décideur — il faut justifier le choix d'α, ce qui force à objectiver sa politique de risque.\n\nMéthodologie pratique : on commence par calculer H pour plusieurs valeurs d'α (par exemple 0,2, 0,5, 0,8) et on regarde si la décision change. Si l'action retenue est la même pour toutes les valeurs raisonnables d'α, la décision est robuste — on la prend en confiance. Si elle change avec α, la décision est sensible à l'attitude de risque — on doit alors expliciter et justifier le α retenu.",
+          "highlight": "Hurwicz : H(A) = α·max(A) + (1−α)·min(A). α = 0 → Wald, α = 1 → Maximax. Test de robustesse : la décision change-t-elle avec α ?"
+        }
+      ],
+      "formulas": [
+        {
+          "expr": "Espérance E(A) = Σ pᵢ × gᵢ",
+          "label": "Avenir aléatoire — espérance",
+          "when": "Quand les probabilités pᵢ des états sont connues. Outil de base du calcul probabiliste de décision.",
+          "example": "Action A avec gains 40, 60, 80 et probabilités 0,2, 0,5, 0,3 → E(A) = 0,2×40 + 0,5×60 + 0,3×80 = 8 + 30 + 24 = 62."
+        },
+        {
+          "expr": "Variance V(A) = Σ pᵢ × (gᵢ − E(A))²",
+          "label": "Avenir aléatoire — risque",
+          "when": "Mesure la dispersion des gains autour de l'espérance. L'écart-type √V(A) est plus parlant.",
+          "example": "Pour A ci-dessus, V(A) = 0,2×(40−62)² + 0,5×(60−62)² + 0,3×(80−62)² = 96,8 + 2 + 97,2 = 196 → σ ≈ 14."
+        },
+        {
+          "expr": "Wald : choisir argmax{ min(A) }",
+          "label": "Maximin — pessimiste",
+          "when": "Avenir incertain. Pour le décideur prudent qui veut garantir le pire scénario possible.",
+          "example": "Actions A min=40, B min=30, C min=50 → Wald retient C (max des min = 50)."
+        },
+        {
+          "expr": "Maximax : choisir argmax{ max(A) }",
+          "label": "Optimiste",
+          "when": "Avenir incertain. Pour le décideur entreprenant qui veut maximiser le meilleur scénario.",
+          "example": "Actions A max=80, B max=90, C max=70 → Maximax retient B (max des max = 90)."
+        },
+        {
+          "expr": "Savage : choisir argmin{ max(regretᵢⱼ) } avec regretᵢⱼ = max_colj − gᵢⱼ",
+          "label": "Minimax regret",
+          "when": "Pour le décideur soucieux d'éviter la déception a posteriori.",
+          "example": "Construire la matrice des regrets puis appliquer un Minimax dessus — chaque case = meilleur de colonne − gain de la case."
+        },
+        {
+          "expr": "Laplace : choisir argmax{ moyenne(A) }",
+          "label": "Équiprobabilité postulée",
+          "when": "Quand on n'a aucune information sur les probabilités. Suppose tous les états équiprobables.",
+          "example": "A {40,60,80} moyenne 60, B {30,90,50} moyenne 56,7, C {70,50,60} moyenne 60 → A ou C ex æquo."
+        },
+        {
+          "expr": "Hurwicz : H(A) = α·max(A) + (1−α)·min(A)",
+          "label": "Compromis paramétré",
+          "when": "Pour ajuster finement l'attitude de risque. α ∈ [0;1].",
+          "example": "α = 0,6, A {40,80} → H = 0,6×80 + 0,4×40 = 64. Tester la sensibilité de la décision à α."
+        }
+      ],
+      "exampleTitle": "Cas pratique : matrice 3 actions × 3 états — application des 5 critères",
+      "exampleData": {
+        "actions": ["A1", "A2", "A3"],
+        "etats": ["E1", "E2", "E3"],
+        "gains": [
+          [40, 60, 80],
+          [30, 90, 50],
+          [70, 50, 60]
+        ],
+        "alpha": 0.6,
+        "wald": "A3 (min=50)",
+        "maximax": "A2 (max=90)",
+        "laplace": "A1 ou A3 (moy=60)",
+        "hurwicz06": "A2 (H = 66)"
+      },
+      "exerciseSteps": [
+        {
+          "title": "Étape 1 — Construire la matrice et identifier les valeurs clés",
+          "intro": "Matrice 3×3 : trois actions A1, A2, A3 face à trois états E1, E2, E3. Les probabilités des états sont inconnues — c'est de l'incertitude radicale.",
+          "calc": "A1 : [40, 60, 80] · A2 : [30, 90, 50] · A3 : [70, 50, 60]",
+          "result": "Pour chaque action, on note le min, le max, la moyenne et la somme. C'est la base de tous les calculs suivants.",
+          "tip": "Vérifier rapidement : aucun min ou max n'est aberrant (pas de valeur dix fois plus grande/petite que les autres). Les écarts sont cohérents — la décision sera fine, pas évidente."
+        },
+        {
+          "title": "Étape 2 — Appliquer Wald (Maximin)",
+          "intro": "Pour chaque action, identifier le pire résultat (minimum de la ligne). Retenir l'action dont ce minimum est le plus grand.",
+          "calc": "min(A1) = 40 · min(A2) = 30 · min(A3) = 50",
+          "result": "Wald retient A3 (max des minima = 50). En cas de pire scénario, A3 garantit au moins 50.",
+          "tip": "Lecture : un décideur appliquant Wald accepte de plafonner ses gains potentiels pour s'assurer un seuil minimal. Il refuse A2 malgré son potentiel à 90, parce que A2 peut aussi tomber à 30."
+        },
+        {
+          "title": "Étape 3 — Appliquer Maximax (optimiste)",
+          "intro": "Pour chaque action, identifier le meilleur résultat (maximum de la ligne). Retenir l'action dont ce maximum est le plus grand.",
+          "calc": "max(A1) = 80 · max(A2) = 90 · max(A3) = 70",
+          "result": "Maximax retient A2 (max des maxima = 90). Le décideur optimiste parie sur le meilleur scénario.",
+          "tip": "Wald et Maximax ne choisissent pas la même action : Wald → A3, Maximax → A2. C'est typique. L'écart révèle la sensibilité de la décision à l'attitude de risque."
+        },
+        {
+          "title": "Étape 4 — Appliquer Laplace (équiprobabilité)",
+          "intro": "On suppose que les trois états sont équiprobables (probabilité 1/3 chacun). On calcule la moyenne arithmétique des gains de chaque action.",
+          "calc": "moy(A1) = (40+60+80)/3 = 60 · moy(A2) = (30+90+50)/3 ≈ 56,7 · moy(A3) = (70+50+60)/3 = 60",
+          "result": "A1 et A3 sont à égalité (moyenne 60), supérieures à A2 (56,7). Laplace départage entre A1 et A3 par un critère secondaire — souvent la variance.",
+          "tip": "Cas litigieux. Pour départager, on regarde la variance : A1 [40,60,80] est plus dispersée qu'A3 [70,50,60]. Un décideur averse au risque choisira A3, plus stable."
+        },
+        {
+          "title": "Étape 5 — Appliquer Savage (Minimax regret)",
+          "intro": "Construire la matrice des regrets : pour chaque colonne (état), identifier le maximum, puis calculer regret = max_colonne − gain. Appliquer un Minimax sur cette matrice.",
+          "calc": "Max colonnes : E1=70, E2=90, E3=80. Regrets A1 : [30,30,0] (max=30) · A2 : [40,0,30] (max=40) · A3 : [0,40,20] (max=40)",
+          "result": "Savage retient A1 (regret maximal le plus faible = 30). A1 minimise la déception maximale possible.",
+          "tip": "Lecture psychologique : un décideur appliquant Savage cherche à éviter de se dire a posteriori « j'aurais dû choisir l'autre ». Pour lui, le pire est la déception, plus que la perte absolue."
+        },
+        {
+          "title": "Étape 6 — Appliquer Hurwicz (α = 0,6, optimisme modéré)",
+          "intro": "Pondérer max et min de chaque action selon le coefficient α choisi. H(A) = α × max + (1−α) × min. Ici α = 0,6 : 60 % d'optimisme, 40 % de pessimisme.",
+          "calc": "H(A1) = 0,6×80 + 0,4×40 = 48 + 16 = 64 · H(A2) = 0,6×90 + 0,4×30 = 54 + 12 = 66 · H(A3) = 0,6×70 + 0,4×50 = 42 + 20 = 62",
+          "result": "Hurwicz à α = 0,6 retient A2 (H = 66, le plus élevé). Avec un optimisme modéré, A2 redevient intéressant — son potentiel élevé compense partiellement son pire scénario.",
+          "tip": "Test de robustesse : refaire le calcul avec α = 0,4. Tu trouveras H(A1) = 56, H(A2) = 54, H(A3) = 58 → A3 gagne. La décision change avec α — il faut donc justifier explicitement l'attitude de risque."
+        },
+        {
+          "title": "Étape 7 — Synthèse et choix final",
+          "intro": "Les cinq critères ne convergent pas. Comment décider en pratique ?",
+          "calc": "Wald → A3 · Maximax → A2 · Laplace → A1 ou A3 · Savage → A1 · Hurwicz(0,6) → A2",
+          "result": "Décision = fonction de la politique de risque du décideur. Si averse au risque : A3. Si optimiste : A2. Si anti-regret : A1. C'est cohérent — chaque critère reflète une attitude.",
+          "tip": "En examen, présenter le raisonnement complet : tableau de synthèse des 5 critères, puis discussion du critère le plus approprié au contexte de l'exercice. C'est cette discussion qui rapporte le plus de points, pas le seul calcul."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Quelle est la différence fondamentale entre avenir aléatoire et avenir incertain ?",
+        "options": [
+          "L'avenir incertain implique toujours des pertes financières",
+          "En avenir aléatoire on connaît les probabilités des états, en avenir incertain on les ignore",
+          "L'avenir aléatoire concerne le court terme, l'incertain le long terme",
+          "Ce sont des synonymes"
+        ],
+        "correct": 1,
+        "explanation": "C'est la distinction clé établie par Knight (1921) : aléatoire = on peut probabiliser, incertain = on ne peut pas. Les critères de décision diffèrent fondamentalement : espérance dans le premier cas, Wald ou Hurwicz dans le second."
+      },
+      {
+        "question": "Un décideur applique le critère de Hurwicz avec α = 0,3. Quelle attitude reflète ce choix ?",
+        "options": [
+          "Un optimisme marqué : il pondère fortement le meilleur scénario",
+          "Un pessimisme marqué : il pondère fortement le pire scénario (70%)",
+          "Une équiprobabilité parfaite",
+          "Un calcul d'espérance classique"
+        ],
+        "correct": 1,
+        "explanation": "α = 0,3 signifie que le décideur pondère le meilleur résultat à 30% et le pire à 70%. Il est donc plus pessimiste qu'optimiste, sans aller jusqu'au pessimisme absolu de Wald (qui correspondrait à α = 0)."
+      },
+      {
+        "question": "Pourquoi le critère de Savage est-il qualifié de critère du regret minimum ?",
+        "options": [
+          "Parce qu'il minimise les pertes absolues",
+          "Parce qu'il choisit l'action qui minimise le regret maximum, c'est-à-dire l'écart entre le résultat obtenu et le meilleur résultat possible dans l'état réalisé",
+          "Parce qu'il maximise les gains espérés",
+          "Parce qu'il évite tous les regrets"
+        ],
+        "correct": 1,
+        "explanation": "Savage construit une matrice de regrets (regret = meilleur de la colonne − case considérée), puis applique un Minimax sur cette matrice. L'action retenue est celle dont le pire regret possible est le plus faible — on minimise la déception maximale."
+      }
+    ]
+  },
+
+  "mpm": {
+    "id": "mpm",
+    "title": "Gestion de projet — Méthode MPM",
+    "tier": "free",
+    "duration": "16 min",
+    "order": 6,
+    "iconColor": "#EC4899",
+    "iconBg": "rgba(236,72,153,0.12)",
+    "iconGlow": "rgba(236,72,153,0.20)",
+    "tagline": "Planifier un projet et identifier son chemin critique.",
+    "description": "Développée par Bernard ROY en 1970, la méthode des Potentiels METRA structure la planification d'un projet en réseau de tâches. Identifiez le chemin critique, les marges et les goulots d'étranglement.",
+    "keyPoints": [
+      "Décomposition d'un projet en tâches élémentaires",
+      "Construction de la matrice de niveaux et du graphe",
+      "Calcul des DTO (date au plus tôt) et DTA (date au plus tard)",
+      "Identification du chemin critique et des marges"
+    ],
+    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "content": {
+      "intro": "La gestion de projet exige de répondre à une question apparemment simple mais redoutable : combien de temps un projet va-t-il prendre, et quelles tâches sont vraiment critiques ? Bernard ROY, mathématicien et chercheur français, développe en 1970 à l'Université d'Aix-Marseille la méthode des Potentiels METRA (du nom de la société qui l'a commandée) pour répondre rigoureusement à ces questions. Sa méthode privilégie une représentation orientée tâches : chaque tâche est un nœud du graphe, les flèches matérialisent les contraintes d'antériorité.\n\nCette représentation contraste avec la méthode PERT, née aux États-Unis dans les années 1950 pour le programme Polaris, qui privilégie une représentation orientée événements. La MPM s'avère plus lisible et plus pratique en gestion courante — elle s'est largement imposée en France et dans les pays francophones, tandis que le PERT reste répandu dans le monde anglo-saxon. Maîtriser la MPM, c'est posséder l'outil de référence pour planifier rigoureusement n'importe quel projet structuré en tâches.",
+      "sections": [
+        {
+          "title": "Les 7 étapes de la méthode MPM — la démarche complète",
+          "body": "La construction d'un graphe MPM suit une démarche en 7 étapes parfaitement codifiée, qu'il faut connaître et appliquer dans l'ordre. Le respect de l'ordre n'est pas une coquetterie pédagogique : chaque étape exploite les résultats de la précédente, et une erreur en amont se propage à toutes les suivantes.\n\nÉtape 1 — Décomposer le projet en tâches élémentaires. On liste exhaustivement les tâches nécessaires à la réalisation du projet. Le grain de décomposition est crucial : trop grossier, on perd en précision de planification ; trop fin, on noie l'analyse dans le détail. La règle pratique : une tâche doit avoir un livrable clair et un responsable unique.\n\nÉtape 2 — Estimer la durée de chaque tâche. On affecte une durée à chaque tâche, exprimée dans une unité homogène (heures, jours, semaines selon l'échelle du projet). L'estimation s'appuie sur l'expérience, les standards internes, ou parfois une fourchette pessimiste/optimiste/probable (analogie avec le PERT).\n\nÉtape 3 — Identifier les antériorités. Pour chaque tâche, on note la liste des tâches qui doivent absolument être terminées avant qu'elle puisse commencer. C'est cette information qui structure le réseau. Attention à distinguer antériorité réelle (technique) et antériorité de confort (organisationnelle) : seules les premières sont contraignantes pour le calcul.\n\nÉtape 4 — Construire la matrice de niveaux. On regroupe les tâches par niveau topologique : niveau 0 = tâches sans antériorité, niveau 1 = tâches dont les antécédentes sont toutes au niveau 0, et ainsi de suite. La matrice de niveaux ordonne les tâches pour permettre le tracé du graphe.\n\nÉtape 5 — Tracer le graphe MPM. Chaque tâche est un nœud (rectangle), placée selon son niveau de gauche à droite. Les flèches relient chaque tâche à ses successeurs. On ajoute un nœud Début et un nœud Fin.\n\nÉtape 6 — Calculer les DTO (de gauche à droite). On parcourt le graphe en avant, en calculant pour chaque tâche sa date au plus tôt selon la règle : DTO(j) = MAX{ DTO(i) + durée(i) } pour toutes les tâches i précédant j.\n\nÉtape 7 — Calculer les DTA et identifier le chemin critique. On parcourt le graphe en arrière depuis la fin, en calculant les dates au plus tard, puis les marges (DTA − DTO). Les tâches à marge nulle constituent le chemin critique.",
+          "highlight": "7 étapes ordonnées. Une erreur d'antériorité (étape 3) se propage à tout le graphe — d'où l'importance d'un recensement rigoureux."
+        },
+        {
+          "title": "Calcul des dates DTO et DTA — la double passe sur le graphe",
+          "body": "Le cœur calculatoire de la MPM repose sur une double passe sur le graphe : une passe en avant pour les DTO, une passe en arrière pour les DTA. Comprendre cette logique est essentiel — c'est ce qui permet ensuite d'identifier rapidement les marges et le chemin critique.\n\nLa DTO (Date au plus Tôt) d'une tâche est la date la plus précoce à laquelle elle peut commencer, compte tenu des contraintes d'antériorité. La formule de récurrence est : DTO(j) = MAX{ DTO(i) + durée(i) } pour toutes les tâches i précédant j. Pourquoi le maximum ? Parce que la tâche j ne peut commencer que lorsque toutes ses antécédentes sont terminées — donc à la fin de la plus longue d'entre elles. Le calcul démarre au nœud Début (DTO = 0) et progresse vers Fin.\n\nLa DTA (Date au plus Tard) est la date la plus tardive à laquelle une tâche peut commencer sans retarder la fin du projet. La formule de récurrence est : DTA(i) = MIN{ DTA(j) − durée(i) } pour toutes les tâches j succédant à i. Pourquoi le minimum ? Parce qu'une tâche doit être terminée avant la première date au plus tard de ses successeurs — la contrainte la plus serrée est celle qui démarre le plus tôt. Le calcul démarre au nœud Fin (DTA = durée totale du projet) et remonte vers Début.\n\nIllustration sur un mini-graphe : supposons deux tâches A (durée 4) et B (durée 2) qui précèdent C. La DTO de C est MAX(0+4, 0+2) = 4 — il faut attendre que A finisse. Maintenant supposons que C précède Fin. Si la durée totale du projet est 10 et la durée de C est 3, la DTA de C est 10 − 3 = 7. La DTA de A est 7 − 4 = 3 ; celle de B est 7 − 2 = 5. La marge de A est 3 − 0 = 3 ; celle de B est 5 − 0 = 5.\n\nVérification rapide : pour les tâches du nœud Début et du nœud Fin, on doit toujours avoir DTO = DTA = 0 pour Début, et DTO = DTA = durée du projet pour Fin. Si ce n'est pas le cas, il y a une erreur de calcul à retrouver — typiquement une antériorité oubliée.",
+          "highlight": "DTO : passe avant avec MAX. DTA : passe arrière avec MIN. Vérification : Début → DTO=DTA=0 ; Fin → DTO=DTA=durée projet."
+        },
+        {
+          "title": "Marges et chemin critique — identifier les leviers d'action",
+          "body": "Une fois les DTO et DTA calculés, on peut identifier les marges et le chemin critique — l'information stratégique du graphe MPM. La marge totale d'une tâche est définie comme la différence entre sa DTA et sa DTO : Marge totale = DTA − DTO. Elle représente le retard maximal que la tâche peut absorber sans retarder la fin du projet.\n\nDeux cas extrêmes méritent attention. Si Marge totale = 0, la tâche est dite critique : elle n'a aucune latitude. Tout retard sur cette tâche se traduit mécaniquement par un retard équivalent du projet entier. Si Marge totale > 0, la tâche dispose d'une réserve de temps. Une tâche de marge 3 jours peut être différée de 3 jours sans conséquence — utile pour absorber les aléas opérationnels (maladie, panne, attente fournisseur).\n\nLe chemin critique est l'ensemble des tâches critiques (marge nulle) reliant le nœud Début au nœud Fin de manière continue. Il forme un ou plusieurs chemins ininterrompus dans le graphe. Sa longueur (somme des durées des tâches critiques) est exactement la durée totale du projet — c'est d'ailleurs la définition équivalente : le chemin critique est le chemin le plus long du graphe.\n\nIl existe en outre la notion de marge libre, plus fine que la marge totale. La marge libre d'une tâche est le retard maximal qu'elle peut prendre sans retarder le démarrage au plus tôt d'aucune de ses successeurs. Marge libre = MIN{ DTO(j) } − DTO(i) − durée(i) pour j succédant à i. Cette marge libre est toujours inférieure ou égale à la marge totale. Elle est utile pour les décisions locales : exploiter la marge libre ne consomme pas la marge des autres tâches.\n\nDans un projet complexe, il peut exister plusieurs chemins critiques parallèles, voire des chemins quasi-critiques (marge très faible mais non nulle) qui basculent dans la criticité au moindre incident. Une bonne pratique consiste à identifier non seulement le chemin critique mais aussi les chemins à marge inférieure à un seuil (par exemple 10 % de la durée du projet) — ces chemins requièrent une vigilance accrue.",
+          "highlight": "Marge totale = DTA − DTO. Marge nulle → tâche critique. Chemin critique = chemin le plus long du graphe, qui détermine la durée totale."
+        },
+        {
+          "title": "Pilotage du projet à partir du chemin critique — les décisions opérationnelles",
+          "body": "Le chemin critique n'est pas seulement un résultat de calcul — c'est un outil de pilotage opérationnel quotidien. Le chef de projet l'utilise pour trois familles de décisions : suivi, accélération, et arbitrage de ressources.\n\nSuivi prioritaire des tâches critiques. Le chef de projet concentre son attention quotidienne sur les tâches à marge nulle. Tout signal de retard sur une tâche critique déclenche une action corrective immédiate — réaffectation de ressources, escalade managériale, négociation avec les parties prenantes. Les tâches non critiques peuvent absorber un certain retard (la marge totale) sans intervention, ce qui libère l'attention pour les enjeux vraiment critiques.\n\nDécisions d'accélération. Si l'on veut raccourcir le projet (par exemple suite à une demande client), il faut accélérer une tâche du chemin critique — accélérer une tâche non critique consomme simplement sa marge sans gagner un seul jour sur la durée totale. La technique d'accélération s'appelle crashing : on alloue plus de ressources à une tâche critique (heures supplémentaires, sous-traitance, équipe supplémentaire) en acceptant un surcoût. Le choix de la tâche à crasher se fait selon le ratio coût d'accélération / jour gagné — on commence par la moins chère.\n\nAttention au piège de l'accélération : raccourcir une tâche critique peut faire émerger un nouveau chemin critique qui jusque-là était quasi-critique. Il faut donc recalculer le graphe à chaque modification — l'accélération itérative est rarement linéaire.\n\nArbitrage de ressources rares. Quand plusieurs tâches concurrentes mobilisent une même ressource limitée (un spécialiste, une machine), le chef de projet doit arbitrer. Le réflexe MPM est de prioriser les tâches critiques — toute tâche non critique peut être différée sans pénaliser le projet. C'est ainsi qu'on optimise globalement plutôt que localement.\n\nEnfin, la MPM fournit la base du tableau de bord projet. Les indicateurs classiques sont : pourcentage d'avancement par tâche, glissement (retard pris sur le chemin critique), consommation des marges (rouge si > 80 % de la marge consommée), et reste à faire estimé. Ces indicateurs alimentent les comités projet hebdomadaires et permettent un pilotage par exception : on parle prioritairement de ce qui dérive du chemin critique, le reste est traité en flux normal.",
+          "highlight": "Pilotage : surveiller les tâches critiques en priorité, accélérer (crash) uniquement sur le chemin critique, arbitrer les ressources en faveur du critique."
+        }
+      ],
+      "formulas": [
+        {
+          "expr": "DTO(j) = MAX { DTO(i) + durée(i) }",
+          "label": "Date au plus Tôt — passe avant",
+          "when": "Pour toutes les tâches i précédant j. Calcul démarré au nœud Début (DTO = 0) et propagé vers Fin.",
+          "example": "Si A (DTO 0, durée 4) et B (DTO 0, durée 2) précèdent C : DTO(C) = MAX(0+4, 0+2) = 4. C ne peut commencer avant que A ne soit terminée."
+        },
+        {
+          "expr": "DTA(i) = MIN { DTA(j) − durée(i) }",
+          "label": "Date au plus Tard — passe arrière",
+          "when": "Pour toutes les tâches j succédant à i. Calcul démarré au nœud Fin (DTA = durée projet) et propagé vers Début.",
+          "example": "Si C (durée 3) précède D (DTA 9) et E (DTA 7) : DTA(C) = MIN(9−3, 7−3) = MIN(6, 4) = 4. C doit être commencée au plus tard à 4."
+        },
+        {
+          "expr": "Marge totale = DTA − DTO",
+          "label": "Latitude totale d'une tâche",
+          "when": "Calculée après les passes avant et arrière. Représente le retard maximal absorbable.",
+          "example": "Tâche avec DTO = 5, DTA = 8 → Marge totale = 3. La tâche peut être retardée jusqu'à 3 jours sans pénaliser le projet."
+        },
+        {
+          "expr": "Tâche critique ⟺ Marge totale = 0 ⟺ DTO = DTA",
+          "label": "Critère de criticité",
+          "when": "Une tâche est critique ssi elle n'a aucune marge — tout retard se répercute sur le projet.",
+          "example": "Tâche avec DTO = 4 et DTA = 4 → Marge = 0 → critique. Tout retard sur elle retarde le projet d'autant."
+        },
+        {
+          "expr": "Marge libre(i) = MIN { DTO(j) } − DTO(i) − durée(i)",
+          "label": "Marge consommable sans pénaliser les successeurs",
+          "when": "Pour les décisions locales. Toujours ≤ marge totale.",
+          "example": "Tâche A (DTO 2, durée 3) précède B (DTO 8) et C (DTO 6) : Marge libre = MIN(8, 6) − 2 − 3 = 6 − 5 = 1. A peut être retardée d'1 jour sans gêner B ou C."
+        }
+      ],
+      "exampleTitle": "Cas pratique : projet à 10 tâches — construction du chemin critique",
+      "exampleData": {
+        "taches": [
+          {"id":"A","duree":4,"anteriorites":[]},
+          {"id":"B","duree":2,"anteriorites":[]},
+          {"id":"C","duree":1,"anteriorites":["A"]},
+          {"id":"D","duree":1,"anteriorites":["A","B"]},
+          {"id":"E","duree":2,"anteriorites":["A"]},
+          {"id":"F","duree":2,"anteriorites":["C"]},
+          {"id":"G","duree":2,"anteriorites":["D","F"]},
+          {"id":"H","duree":1,"anteriorites":["E"]},
+          {"id":"I","duree":4,"anteriorites":["G","H"]},
+          {"id":"J","duree":1,"anteriorites":["I"]}
+        ],
+        "cheminCritique": ["DEBUT","A","C","F","G","I","J","FIN"],
+        "dureeProjet": "14 jours"
+      },
+      "exerciseSteps": [
+        {
+          "title": "Étape 1 — Établir la matrice des antériorités",
+          "intro": "On dresse pour chaque tâche la liste de ses prédécesseurs immédiats. C'est l'étape la plus délicate — une antériorité oubliée fausse tout le graphe.",
+          "calc": "A : ∅ · B : ∅ · C : {A} · D : {A,B} · E : {A} · F : {C} · G : {D,F} · H : {E} · I : {G,H} · J : {I}",
+          "result": "Tâches sans antériorité (niveau 0) : A et B. Démarrage du projet sur ces deux tâches en parallèle.",
+          "tip": "Vérifier qu'aucune tâche n'a d'antécédent qui dépend d'elle-même (cycle interdit). Et que chaque tâche apparaît bien comme prédécesseur d'au moins une autre, sauf les terminales."
+        },
+        {
+          "title": "Étape 2 — Construire la matrice de niveaux",
+          "intro": "On classe les tâches par niveau topologique : niveau 0 = aucune antériorité ; niveau k = toutes antériorités au niveau ≤ k−1.",
+          "calc": "N0 : A, B · N1 : C (après A), D (après A et B), E (après A) · N2 : F (après C), H (après E) · N3 : G (après D et F) · N4 : I (après G et H) · N5 : J (après I)",
+          "result": "6 niveaux topologiques. Le graphe se trace de gauche à droite par ordre de niveau croissant.",
+          "tip": "La matrice de niveaux n'a pas qu'un usage de tracé : elle garantit que les calculs DTO se font bien dans l'ordre topologique — sans cela, on risque de calculer la DTO d'une tâche avant celle de son antécédent."
+        },
+        {
+          "title": "Étape 3 — Passe avant : calcul des DTO",
+          "intro": "On parcourt le graphe de Début à Fin en appliquant DTO(j) = MAX{ DTO(i) + durée(i) } pour tout i précédant j. DTO(Début) = 0.",
+          "calc": "DTO(A) = 0 · DTO(B) = 0 · DTO(C) = 0+4 = 4 · DTO(D) = MAX(0+4, 0+2) = 4 · DTO(E) = 0+4 = 4 · DTO(F) = 4+1 = 5 · DTO(H) = 4+2 = 6 · DTO(G) = MAX(4+1, 5+2) = 7 · DTO(I) = MAX(7+2, 6+1) = 9 · DTO(J) = 9+4 = 13 · DTO(Fin) = 13+1 = 14",
+          "result": "Durée totale du projet : 14 jours. C'est la valeur de DTO(Fin), incompressible en l'état actuel des hypothèses.",
+          "tip": "À chaque MAX, identifier d'où vient la contrainte la plus serrée. Pour G, c'est F (5+2=7) qui contraint, pas D (4+1=5). F appartient donc probablement au chemin critique."
+        },
+        {
+          "title": "Étape 4 — Passe arrière : calcul des DTA",
+          "intro": "On parcourt le graphe de Fin à Début en appliquant DTA(i) = MIN{ DTA(j) − durée(i) } pour tout j succédant à i. DTA(Fin) = 14.",
+          "calc": "DTA(J) = 14−1 = 13 · DTA(I) = 13−4 = 9 · DTA(H) = 9−1 = 8 · DTA(G) = 9−2 = 7 · DTA(E) = 8−2 = 6 · DTA(F) = 7−2 = 5 · DTA(D) = 7−1 = 6 · DTA(C) = 5−1 = 4 · DTA(B) = 6−2 = 4 · DTA(A) = MIN(4−4, 6−4, 6−4) = 0",
+          "result": "Pour Début : DTA = 0 (cohérent avec DTO = 0). Pour Fin : DTA = 14 (cohérent avec DTO = 14). Calculs validés.",
+          "tip": "À chaque MIN, identifier le successeur le plus contraignant. Pour A, c'est C (4−4=0) qui impose la DTA — A et C sont donc critiques."
+        },
+        {
+          "title": "Étape 5 — Calculer les marges totales",
+          "intro": "Marge = DTA − DTO pour chaque tâche. Les tâches à marge nulle sont critiques.",
+          "calc": "A : 0−0 = 0 (critique) · B : 4−0 = 4 · C : 4−4 = 0 (critique) · D : 6−4 = 2 · E : 6−4 = 2 · F : 5−5 = 0 (critique) · G : 7−7 = 0 (critique) · H : 8−6 = 2 · I : 9−9 = 0 (critique) · J : 13−13 = 0 (critique)",
+          "result": "Tâches critiques : A, C, F, G, I, J. Tâches non critiques avec marges : B (4), D (2), E (2), H (2).",
+          "tip": "B dispose d'une marge confortable de 4 jours — c'est typiquement une tâche où l'on peut absorber un aléa sans impact. D, E, H ont 2 jours de réserve — utile mais à surveiller."
+        },
+        {
+          "title": "Étape 6 — Identifier le chemin critique",
+          "intro": "Le chemin critique est l'enchaînement continu de tâches critiques de Début à Fin.",
+          "calc": "DÉBUT → A → C → F → G → I → J → FIN",
+          "result": "Chemin critique unique de 7 segments. Durée : 0 + 4 + 1 + 2 + 2 + 4 + 1 = 14 jours = durée du projet. Cohérent.",
+          "tip": "Vérification : le chemin critique reproduit bien la durée totale. Si la somme des durées critiques ne donne pas la durée totale calculée par DTO(Fin), il y a une erreur."
+        },
+        {
+          "title": "Étape 7 — Lecture stratégique pour le pilotage",
+          "intro": "Quelles décisions opérationnelles tirer du graphe ?",
+          "calc": "6 tâches critiques sur 10 (60 %) · marges concentrées sur B (4 jours) et D/E/H (2 jours) · pas de marge libre sur le chemin critique",
+          "result": "Pilotage : focus prioritaire sur A, C, F, G, I, J. Toute action d'accélération doit porter sur ces tâches — accélérer B est inutile. Pour gagner un jour, on évalue le coût d'accélération de chaque tâche critique et on choisit la moins chère.",
+          "tip": "Attention : si on accélère par exemple G d'un jour (durée 2 → 1), il faut recalculer. Le nouveau chemin critique pourrait passer par D ou E (qui avaient seulement 2 jours de marge). L'accélération n'est jamais linéaire dans un graphe complexe."
+        }
+      ]
+    },
+    "quiz": [
+      {
+        "question": "Dans MPM, que signifie DTO = DTA pour une tâche ?",
+        "options": [
+          "La tâche peut être ignorée du projet",
+          "La tâche est critique et appartient au chemin critique : sa marge totale est nulle",
+          "La tâche dure exactement 1 jour",
+          "La tâche est mal estimée"
+        ],
+        "correct": 1,
+        "explanation": "Quand DTO = DTA, la marge totale (DTA − DTO) est nulle : la tâche n'a aucune latitude. Tout retard sur cette tâche retarde mécaniquement le projet d'autant. Elle appartient donc au chemin critique."
+      },
+      {
+        "question": "Une tâche non critique a une marge totale de 3 jours. Que peut-on en conclure ?",
+        "options": [
+          "Elle doit être supprimée du projet",
+          "Elle peut être retardée jusqu'à 3 jours sans impacter la durée totale du projet",
+          "Elle dure 3 jours",
+          "Elle doit absolument être accélérée"
+        ],
+        "correct": 1,
+        "explanation": "La marge totale mesure le retard maximal admissible. 3 jours de marge signifie que la tâche peut commencer (ou se prolonger) jusqu'à 3 jours après sa DTO sans retarder la fin du projet. Cette latitude permet de gérer les aléas opérationnels."
+      },
+      {
+        "question": "Pour raccourcir la durée totale d'un projet, sur quelle ou quelles tâches faut-il agir ?",
+        "options": [
+          "N'importe quelle tâche",
+          "La tâche la plus longue, qu'elle soit critique ou non",
+          "Uniquement une tâche du chemin critique",
+          "Toutes les tâches simultanément"
+        ],
+        "correct": 2,
+        "explanation": "La durée du projet est déterminée par le chemin critique. Accélérer une tâche non critique réduit sa marge sans changer la durée totale. Seule une réduction d'une tâche critique raccourcit le projet — à condition qu'aucun nouveau chemin critique n'émerge."
+      }
+    ]
+  }
+}

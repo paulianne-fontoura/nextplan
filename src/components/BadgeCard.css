@@ -1,0 +1,89 @@
+.badge-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg-neuro);
+  box-shadow: var(--neuro-shadow-out-soft);
+  border: none;
+  border-radius: var(--radius-md);
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    box-shadow var(--transition-normal),
+    transform var(--transition-spring);
+  width: 100%;
+  color: var(--color-text-primary);
+}
+
+.badge-card.is-unlocked:hover {
+  box-shadow: var(--neuro-shadow-hover);
+  transform: translateY(-3px) scale(1.02);
+}
+.badge-card.is-locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.badge-card-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.875rem;
+}
+.is-unlocked .badge-card-icon {
+  background: linear-gradient(135deg, rgba(107, 95, 228, 0.15), rgba(255, 184, 48, 0.12));
+  border: 1px solid rgba(255, 184, 48, 0.3);
+}
+.is-locked .badge-card-icon {
+  background: rgba(26, 26, 46, 0.04);
+  color: var(--color-text-muted);
+}
+
+.badge-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.badge-card-label {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.badge-card-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.badge-card-xp {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: var(--color-teal);
+}
+
+.badge-card-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 70%);
+  background-size: 200% 100%;
+  background-position: -200% 0;
+  pointer-events: none;
+  animation: shimmer 6s ease-in-out infinite;
+}

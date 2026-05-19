@@ -1,0 +1,95 @@
+.learning-path-section {
+  padding: var(--space-3xl) 0;
+  position: relative;
+}
+
+.learning-path-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+.learning-path-header .caption { display: block; margin-bottom: 6px; }
+.learning-path-header h2 { margin-bottom: var(--space-sm); }
+.learning-path-header p { color: var(--color-text-secondary); }
+
+/* Ligne SVG dessinée à l'apparition */
+.learning-path-stroke {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  transition: stroke-dashoffset 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.learning-path-stroke.is-drawn { stroke-dashoffset: 0; }
+
+/* Grille horizontale des 6 étapes au-dessus de la ligne */
+.learning-path-nodes-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.learning-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.learning-step:hover { transform: translateY(-3px); }
+
+.learning-step-node {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-numbers);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.learning-step-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.learning-step-outcome {
+  font-size: 11px;
+  color: #8080a0;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.learning-step-badge {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.learning-path-footer {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+/* Responsive — masquer la ligne et passer en grille 2 colonnes */
+@media (max-width: 768px) {
+  .learning-path-line-overlay { display: none; }
+  .learning-path-nodes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .learning-path-nodes-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,86 @@
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+}
+
+.badge-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 46, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+  padding: var(--space-md);
+}
+
+.badge-modal {
+  position: relative;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-float);
+  color: var(--color-text-primary);
+}
+
+.badge-modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-bg-neuro);
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background var(--transition-fast);
+}
+.badge-modal-close:hover {
+  background: var(--color-accent-100);
+  color: var(--color-text-primary);
+}
+
+.badge-modal-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto var(--space-md);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-accent-50), rgba(255, 184, 48, 0.15));
+  border: 1px solid rgba(255, 184, 48, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  box-shadow: 0 8px 32px rgba(255, 184, 48, 0.15);
+}
+
+.badge-modal h3 {
+  margin: var(--space-sm) 0;
+  font-size: 1.5rem;
+}
+
+.badge-modal p {
+  color: var(--color-text-secondary);
+}
+
+.badge-modal-xp {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: 6px 16px;
+  background: rgba(78, 205, 196, 0.15);
+  color: var(--color-teal);
+  border: 1px solid rgba(78, 205, 196, 0.3);
+  border-radius: var(--radius-pill);
+  font-size: 1rem;
+}

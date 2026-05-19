@@ -1,0 +1,215 @@
+/* ============================================================
+   AnimatedLesson — player de leçon animée
+   ============================================================ */
+.al-container {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  outline: none;
+}
+
+/* HEADER */
+.al-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+}
+.al-eyebrow {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.al-lesson-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.al-slide-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--font-numbers);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.al-counter-current { font-size: 24px; }
+.al-counter-sep { font-size: 16px; color: var(--color-text-muted); margin: 0 2px; }
+.al-counter-total { font-size: 16px; color: var(--color-text-muted); }
+
+/* STAGE */
+.al-stage {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 16px;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.al-stage-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* NARRATION */
+.al-narration {
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 3px solid;
+  border-radius: 10px;
+  min-height: 76px;
+}
+.al-narration-tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.al-narration-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* CONTROLS */
+.al-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.al-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+  font-family: inherit;
+}
+.al-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.al-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.al-btn-nav {
+  width: 36px;
+  height: 36px;
+  background: rgba(26, 26, 46, 0.05);
+  color: var(--color-text-secondary);
+}
+.al-btn-nav:hover:not(:disabled) {
+  background: rgba(26, 26, 46, 0.10);
+  color: var(--color-text-primary);
+}
+
+.al-btn-play {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 6px 16px -4px rgba(26, 26, 46, 0.30);
+}
+.al-btn-play:hover:not(:disabled) {
+  box-shadow: 0 10px 24px -4px rgba(26, 26, 46, 0.40);
+}
+
+.al-btn-speed {
+  min-width: 48px;
+  height: 32px;
+  padding: 0 10px;
+  background: rgba(26, 26, 46, 0.05);
+  color: var(--color-text-primary);
+  font-family: var(--font-numbers);
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  letter-spacing: -0.02em;
+}
+.al-btn-speed:hover {
+  background: rgba(26, 26, 46, 0.10);
+}
+
+/* Progress bar segments */
+.al-progress-bar {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  min-width: 0;
+}
+.al-progress-seg {
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  min-width: 0;
+}
+.al-progress-track {
+  height: 4px;
+  background: rgba(26, 26, 46, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.al-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.al-time {
+  font-family: var(--font-numbers);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.al-time-sep {
+  color: var(--color-text-muted);
+  margin: 0 2px;
+}
+
+/* Hint */
+.al-hint {
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 720px) {
+  .al-container { padding: 18px 20px; }
+  .al-controls { flex-wrap: wrap; }
+  .al-progress-bar { order: -1; width: 100%; flex: 1 0 100%; margin-bottom: 4px; }
+  .al-time { font-size: 11px; }
+}

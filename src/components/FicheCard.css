@@ -1,0 +1,180 @@
+.fiche-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-soft);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-card);
+}
+.fiche-card::before {
+  content: none;
+  display: none;
+  background: none;
+}
+.fiche-card > * { position: relative; z-index: 1; }
+
+.fiche-card-header {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.fiche-card-header h2 { margin-top: var(--space-xs); }
+
+.fiche-block { margin-bottom: var(--space-xl); }
+.fiche-block:last-of-type { margin-bottom: 0; }
+
+.fiche-block-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border-soft);
+}
+
+.fiche-block p {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+.fiche-block p:last-child { margin-bottom: 0; }
+.fiche-block p strong { color: var(--color-text-primary); font-weight: 700; }
+
+.fiche-callout {
+  background: var(--color-accent-50);
+  border: 1px solid var(--color-accent-100);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-md);
+  font-size: 0.95rem;
+}
+.fiche-callout p { margin-bottom: 2px; color: var(--color-text-primary); }
+.fiche-callout p:last-child { margin-bottom: 0; }
+
+.fiche-formula {
+  background: var(--color-bg-neuro);
+  box-shadow: var(--neuro-shadow-in);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-accent);
+  text-align: center;
+  margin: var(--space-md) 0;
+}
+
+/* === Tableau === */
+.fiche-table {
+  display: grid;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  background: var(--color-bg-base);
+}
+.fiche-table-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--color-border-soft);
+}
+.fiche-table-row:last-child { border-bottom: none; }
+.fiche-table-row > div {
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+}
+.fiche-table-head { background: var(--color-bg-section-alt); }
+.fiche-table-head > div {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.fiche-legend {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* === Steps === */
+.fiche-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+.fiche-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  color: var(--color-text-secondary);
+}
+.fiche-step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient-cta);
+  color: var(--color-text-on-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(107, 95, 228, 0.30);
+}
+
+/* === Bullets === */
+.fiche-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-left: 0;
+}
+.fiche-bullets li {
+  position: relative;
+  padding-left: var(--space-lg);
+  color: var(--color-text-secondary);
+}
+.fiche-bullets li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-teal);
+  font-weight: 700;
+}
+.fiche-bullets-warn li::before {
+  content: '✗';
+  color: var(--color-coral);
+}
+
+.fiche-card-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border-soft);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.fiche-footer-note {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 600px) {
+  .fiche-card { padding: var(--space-lg); }
+  .fiche-table-row { font-size: 0.85rem; }
+}

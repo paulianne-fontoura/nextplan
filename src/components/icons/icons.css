@@ -1,0 +1,77 @@
+/* ============================================================
+   Icons — keyframes communs
+   ============================================================ */
+.icon-svg {
+  display: block;
+}
+
+/* GANTT — barres horizontales qui s'étendent en séquence */
+@keyframes gantt-bar-1 {
+  0%, 100% { stroke-dashoffset: 0; }
+  50%      { stroke-dashoffset: 0; }
+}
+@keyframes gantt-bar-grow {
+  0%   { transform: scaleX(0); }
+  50%  { transform: scaleX(1); }
+  100% { transform: scaleX(1); }
+}
+.gantt-bar {
+  transform-origin: left center;
+  animation: gantt-bar-grow 3s ease-in-out infinite;
+}
+.gantt-bar-1 { animation-delay: 0s; }
+.gantt-bar-2 { animation-delay: 0.4s; }
+.gantt-bar-3 { animation-delay: 0.8s; }
+
+/* MPM — connections qui pulsent */
+@keyframes mpm-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 1; }
+}
+.mpm-conn { animation: mpm-pulse 2.4s ease-in-out infinite; }
+.mpm-conn-2 { animation-delay: 0.4s; }
+.mpm-conn-3 { animation-delay: 0.8s; }
+.mpm-node {
+  transform-origin: center;
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+.mpm-node-2 { animation-delay: 0.4s; }
+.mpm-node-3 { animation-delay: 0.8s; }
+
+/* PERT — dashoffset animé sur les paths */
+.pert-path {
+  stroke-dasharray: 6 4;
+  animation: dashFlow 1.6s linear infinite;
+}
+
+/* Badge — shimmer rotatif */
+@keyframes badge-rotate {
+  to { transform: rotate(360deg); }
+}
+.badge-spark {
+  transform-origin: center;
+  animation: badge-rotate 8s linear infinite;
+}
+
+/* Lock — oscillation de l'arc */
+@keyframes lock-bounce {
+  0%, 100% { transform: rotate(0); }
+  50%      { transform: rotate(-6deg); }
+}
+.lock-arc {
+  transform-origin: bottom center;
+  animation: lock-bounce 3s ease-in-out infinite;
+}
+
+/* Check — dessin progressif */
+@keyframes check-draw {
+  0%   { stroke-dashoffset: 30; }
+  50%  { stroke-dashoffset: 0; }
+  90%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 30; }
+}
+.check-path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: check-draw 3s ease-in-out infinite;
+}
