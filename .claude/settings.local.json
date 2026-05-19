@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:/Users/pfontoura/OneDrive - PROCIVIS/Documents/Planification et controle - site/public\")",
+      "Bash(mkdir -p \"C:/Users/pfontoura/OneDrive - PROCIVIS/Documents/Planification et controle - site/src/components\")",
+      "Bash(mkdir -p \"C:/Users/pfontoura/OneDrive - PROCIVIS/Documents/Planification et controle - site/src/pages\")",
+      "Bash(mkdir -p \"C:/Users/pfontoura/OneDrive - PROCIVIS/Documents/Planification et controle - site/src/assets\")",
+      "Bash(mkdir -p \"C:/Users/pfontoura/OneDrive - PROCIVIS/Documents/Planification et controle - site/src/styles\")"
+    ]
+  }
+}
