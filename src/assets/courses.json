@@ -16,8 +16,7 @@
       "Matrice BCG : positionner les domaines d'activité",
       "Cycle de vie produit et matrice ADL"
     ],
-    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
-    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "videoUrl": "https://www.youtube.com/embed/DgFaHsmqpAY",
     "content": {
       "intro": "Le diagnostic stratégique constitue la première étape de tout processus de pilotage. Avant de décider d'une orientation, l'entreprise doit comprendre où elle se trouve : quelles forces de l'environnement la portent ou la menacent, quelle est sa position face à ses concurrents, et comment ses différentes activités se comportent dans leur cycle de marché.\n\nCe module présente quatre grilles d'analyse devenues canoniques en stratégie. Elles ne se substituent pas l'une à l'autre — au contraire, chacune éclaire un aspect que les autres ne voient pas. Le diagnostic complet consiste à les enchaîner : PESTEL pour le macro-environnement, Porter pour la dynamique sectorielle, BCG pour le portefeuille d'activités, ADL pour intégrer la dimension temporelle. C'est cette articulation qui sépare un diagnostic d'expert d'un simple inventaire d'observations.",
       "sections": [
@@ -59,10 +58,30 @@
       "exampleTitle": "Cas pratique : diagnostic BCG d'un groupe à 4 DAS",
       "exampleData": {
         "das": [
-          {"nom": "DAS A", "croissance": "18%", "pdmRelative": "1.8", "position": "Star"},
-          {"nom": "DAS B", "croissance": "4%",  "pdmRelative": "2.2", "position": "Vache à lait"},
-          {"nom": "DAS C", "croissance": "15%", "pdmRelative": "0.4", "position": "Dilemme"},
-          {"nom": "DAS D", "croissance": "2%",  "pdmRelative": "0.3", "position": "Poids mort"}
+          {
+            "nom": "DAS A",
+            "croissance": "18%",
+            "pdmRelative": "1.8",
+            "position": "Star"
+          },
+          {
+            "nom": "DAS B",
+            "croissance": "4%",
+            "pdmRelative": "2.2",
+            "position": "Vache à lait"
+          },
+          {
+            "nom": "DAS C",
+            "croissance": "15%",
+            "pdmRelative": "0.4",
+            "position": "Dilemme"
+          },
+          {
+            "nom": "DAS D",
+            "croissance": "2%",
+            "pdmRelative": "0.3",
+            "position": "Poids mort"
+          }
         ]
       },
       "exerciseSteps": [
@@ -146,7 +165,6 @@
       }
     ]
   },
-
   "budgets": {
     "id": "budgets",
     "title": "Budgets et articulation budgétaire",
@@ -164,8 +182,7 @@
       "Articulation des budgets fonctionnels",
       "Budget maître et états financiers prévisionnels"
     ],
-    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
-    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "videoUrl": "https://www.youtube.com/embed/NnG6uInsCbM",
     "content": {
       "intro": "Le budget est l'expression chiffrée et quantifiée du plan d'action annuel de l'entreprise. C'est l'outil qui traduit les orientations stratégiques de moyen terme en engagements opérationnels datés et mesurables. Là où la stratégie reste qualitative et pluriannuelle, le budget impose la précision : combien d'unités vendues, à quel prix, avec quelles ressources, sur quelle période.\n\nConstruire un système budgétaire cohérent suppose de respecter une logique d'enchaînement : chaque budget en alimente d'autres selon une articulation précise. Une erreur sur le budget des ventes se propage à toute la chaîne. C'est cette articulation, plus que l'arithmétique elle-même, qui fait la qualité d'un contrôleur de gestion.",
       "sections": [
@@ -307,7 +324,6 @@
       }
     ]
   },
-
   "ecarts": {
     "id": "ecarts",
     "title": "Contrôle budgétaire et analyse des écarts",
@@ -325,8 +341,7 @@
       "Décomposition des écarts sur coûts (matières, MOD, charges indirectes)",
       "Mise en place d'actions correctives"
     ],
-    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
-    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "videoUrl": "",
     "content": {
       "intro": "Le contrôle budgétaire constitue l'aboutissement du processus de gestion prévisionnelle. Il compare systématiquement les réalisations effectives aux prévisions inscrites au budget, puis explique les écarts en les décomposant en causes élémentaires identifiables. Sans cette décomposition, un écart global défavorable reste opaque ; avec elle, il devient actionnable.\n\nUn écart de CA défavorable de 12 000 €, par exemple, peut résulter de causes radicalement différentes : une baisse de volume due au marché, une baisse de prix imposée par la concurrence, ou un changement de mix produits qui défavorise les marges. Chacune de ces causes appelle une action corrective spécifique — et certaines combinaisons d'écarts révèlent même des effets contradictoires que seule la décomposition rend visibles. Maîtriser l'analyse des écarts, c'est passer du constat au pilotage.",
       "sections": [
@@ -481,7 +496,6 @@
       }
     ]
   },
-
   "investissement": {
     "id": "investissement",
     "title": "Critères de choix d'investissement",
@@ -499,8 +513,7 @@
       "Indice de Profitabilité (IP) et Délai de Récupération (DR)",
       "Choisir entre projets mutuellement exclusifs"
     ],
-    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
-    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "videoUrl": "",
     "content": {
       "intro": "Un investissement engage des capitaux aujourd'hui dans l'attente de flux de trésorerie futurs, étalés sur plusieurs années. La décision d'investir suppose donc de comparer une dépense immédiate à une série de recettes futures — exercice impossible sans tenir compte de la valeur temporelle de l'argent. 1 000 € reçus dans 5 ans valent moins que 1 000 € reçus aujourd'hui, à la fois parce que l'argent pourrait être placé entre-temps, et parce que l'incertitude croît avec l'horizon.\n\nLa résolution de ce problème passe par l'actualisation : on ramène tous les flux futurs à leur valeur d'aujourd'hui en les divisant par (1+t)ⁿ, où t est le taux d'actualisation choisi et n la durée. À partir de ce principe fondateur, quatre critères principaux structurent la décision d'investissement, chacun éclairant un aspect différent de la rentabilité. Comprendre leurs articulations et leurs limites est essentiel pour ne pas faire les arbitrages mécaniquement.",
       "sections": [
@@ -555,7 +568,12 @@
       "exampleData": {
         "investissement": 100000,
         "tauxActualisation": "10%",
-        "flux": [30000, 35000, 40000, 45000],
+        "flux": [
+          30000,
+          35000,
+          40000,
+          45000
+        ],
         "van": "≈ 17 030 €",
         "tri": "≈ 16,9 %",
         "ip": "1,17",
@@ -643,7 +661,6 @@
       }
     ]
   },
-
   "incertain": {
     "id": "incertain",
     "title": "Décision en avenir incertain",
@@ -661,8 +678,7 @@
       "Critères de Maximax, Savage et Laplace",
       "Critère de Hurwicz : compromis paramétré"
     ],
-    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
-    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "videoUrl": "",
     "content": {
       "intro": "Décider, c'est choisir une action parmi plusieurs, sans contrôler tous les facteurs qui détermineront son résultat. Frank Knight, dans son ouvrage Risk, Uncertainty and Profit (1921), opère une distinction fondamentale qui structure encore aujourd'hui la théorie de la décision : risque vs incertitude. En situation de risque (ou avenir aléatoire), on connaît les probabilités des états possibles — on peut donc raisonner en espérance mathématique. En situation d'incertitude radicale (ou avenir incertain), on ignore même les probabilités — l'espérance n'est plus calculable.\n\nC'est cette deuxième situation que ce module explore. Comment décider quand on ne peut pas probabiliser ? Cinq critères concurrents proposent des réponses, chacun reflétant une attitude différente face à l'inconnu : pessimisme prudent (Wald), optimisme (Maximax), minimisation du regret (Savage), équiprobabilité postulée (Laplace), compromis paramétré (Hurwicz). Aucun n'est universellement supérieur — le choix du critère est lui-même un acte de management, qui traduit une politique de risque.",
       "sections": [
@@ -733,12 +749,32 @@
       ],
       "exampleTitle": "Cas pratique : matrice 3 actions × 3 états — application des 5 critères",
       "exampleData": {
-        "actions": ["A1", "A2", "A3"],
-        "etats": ["E1", "E2", "E3"],
+        "actions": [
+          "A1",
+          "A2",
+          "A3"
+        ],
+        "etats": [
+          "E1",
+          "E2",
+          "E3"
+        ],
         "gains": [
-          [40, 60, 80],
-          [30, 90, 50],
-          [70, 50, 60]
+          [
+            40,
+            60,
+            80
+          ],
+          [
+            30,
+            90,
+            50
+          ],
+          [
+            70,
+            50,
+            60
+          ]
         ],
         "alpha": 0.6,
         "wald": "A3 (min=50)",
@@ -834,7 +870,6 @@
       }
     ]
   },
-
   "mpm": {
     "id": "mpm",
     "title": "Gestion de projet — Méthode MPM",
@@ -852,8 +887,7 @@
       "Calcul des DTO (date au plus tôt) et DTA (date au plus tard)",
       "Identification du chemin critique et des marges"
     ],
-    "videoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
-    "exerciceVideoUrl": "https://www.youtube.com/embed/[PLACEHOLDER]",
+    "videoUrl": "https://www.youtube.com/embed/0Z0JrSOjEDU",
     "content": {
       "intro": "La gestion de projet exige de répondre à une question apparemment simple mais redoutable : combien de temps un projet va-t-il prendre, et quelles tâches sont vraiment critiques ? Bernard ROY, mathématicien et chercheur français, développe en 1970 à l'Université d'Aix-Marseille la méthode des Potentiels METRA (du nom de la société qui l'a commandée) pour répondre rigoureusement à ces questions. Sa méthode privilégie une représentation orientée tâches : chaque tâche est un nœud du graphe, les flèches matérialisent les contraintes d'antériorité.\n\nCette représentation contraste avec la méthode PERT, née aux États-Unis dans les années 1950 pour le programme Polaris, qui privilégie une représentation orientée événements. La MPM s'avère plus lisible et plus pratique en gestion courante — elle s'est largement imposée en France et dans les pays francophones, tandis que le PERT reste répandu dans le monde anglo-saxon. Maîtriser la MPM, c'est posséder l'outil de référence pour planifier rigoureusement n'importe quel projet structuré en tâches.",
       "sections": [
@@ -913,18 +947,86 @@
       "exampleTitle": "Cas pratique : projet à 10 tâches — construction du chemin critique",
       "exampleData": {
         "taches": [
-          {"id":"A","duree":4,"anteriorites":[]},
-          {"id":"B","duree":2,"anteriorites":[]},
-          {"id":"C","duree":1,"anteriorites":["A"]},
-          {"id":"D","duree":1,"anteriorites":["A","B"]},
-          {"id":"E","duree":2,"anteriorites":["A"]},
-          {"id":"F","duree":2,"anteriorites":["C"]},
-          {"id":"G","duree":2,"anteriorites":["D","F"]},
-          {"id":"H","duree":1,"anteriorites":["E"]},
-          {"id":"I","duree":4,"anteriorites":["G","H"]},
-          {"id":"J","duree":1,"anteriorites":["I"]}
+          {
+            "id": "A",
+            "duree": 4,
+            "anteriorites": []
+          },
+          {
+            "id": "B",
+            "duree": 2,
+            "anteriorites": []
+          },
+          {
+            "id": "C",
+            "duree": 1,
+            "anteriorites": [
+              "A"
+            ]
+          },
+          {
+            "id": "D",
+            "duree": 1,
+            "anteriorites": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "id": "E",
+            "duree": 2,
+            "anteriorites": [
+              "A"
+            ]
+          },
+          {
+            "id": "F",
+            "duree": 2,
+            "anteriorites": [
+              "C"
+            ]
+          },
+          {
+            "id": "G",
+            "duree": 2,
+            "anteriorites": [
+              "D",
+              "F"
+            ]
+          },
+          {
+            "id": "H",
+            "duree": 1,
+            "anteriorites": [
+              "E"
+            ]
+          },
+          {
+            "id": "I",
+            "duree": 4,
+            "anteriorites": [
+              "G",
+              "H"
+            ]
+          },
+          {
+            "id": "J",
+            "duree": 1,
+            "anteriorites": [
+              "I"
+            ]
+          }
         ],
-        "cheminCritique": ["DEBUT","A","C","F","G","I","J","FIN"],
+        "cheminCritique": [
+          "DEBUT",
+          "A",
+          "C",
+          "F",
+          "G",
+          "I",
+          "J",
+          "FIN"
+        ],
         "dureeProjet": "14 jours"
       },
       "exerciseSteps": [

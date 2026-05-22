@@ -60,7 +60,9 @@ export default function CourseFullPage() {
 
   // Leçon animée disponible pour ce module ? (remplace le schéma statique)
   const animLesson = ANIMATED_LESSONS[id]
-  const FULL_SECTIONS = FULL_SECTIONS_BASE
+  // Section vidéo uniquement si une URL réelle existe (modules gratuits)
+  const hasVideo = !!course?.videoUrl && !course.videoUrl.includes('[PLACEHOLDER]')
+  const FULL_SECTIONS = FULL_SECTIONS_BASE.filter(s => s.id !== 'video' || hasVideo)
 
   useEffect(() => {
     if (course && (course.tier === 'free' || isPremium)) {
@@ -416,81 +418,28 @@ export default function CourseFullPage() {
             )}
           </section>
 
-          {/* SECTION 6 — VIDÉO (slot à remplir au tournage) */}
-          <section id="section-video" className="coursef-section">
-            <div className="coursef-section-head">
-              <span className="coursef-eyebrow" style={{ color }}>06 · Vidéo (complément)</span>
-              <h2>Mini-vidéo de synthèse</h2>
-              <p className="coursef-section-sub">
-                Une courte vidéo de 2 à 3 minutes viendra ici en complément du schéma interactif.
-                L'essentiel de l'apprentissage reste dans les sections précédentes — la vidéo
-                est un bonus de révision pour les apprenants qui préfèrent l'écoute.
-              </p>
-            </div>
-
-            <VideoBlock
-              videoId={`${id}-video`}
-              title={`${course.title} — Mini-vidéo`}
-              subtitle="Synthèse de 2-3 min en complément du schéma interactif"
-              videoUrl={course.videoUrl}
-              duration="≈ 2-3 min"
-            />
-
-            {/* Slot indiquant clairement où ajouter l'URL une fois la vidéo enregistrée */}
-            {(!course.videoUrl || course.videoUrl.includes('[PLACEHOLDER]')) && (
-              <div
-                style={{
-                  marginTop: 16,
-                  padding: '14px 18px',
-                  background: `${color}08`,
-                  border: `1.5px dashed ${color}40`,
-                  borderRadius: 12,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 14,
-                }}
-              >
-                <div
-                  style={{
-                    width: 36, height: 36, borderRadius: 10,
-                    background: `${color}15`, color,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    flexShrink: 0,
-                  }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="23 7 16 12 23 17 23 7"/>
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                  </svg>
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: '#1a1a2e', marginBottom: 2 }}>
-                    Vidéo à enregistrer — URL YouTube à insérer
-                  </div>
-                  <div style={{ fontSize: 11, color: '#6B6B8A', lineHeight: 1.5 }}>
-                    Quand la vidéo sera prête, remplacer le placeholder dans{' '}
-                    <code style={{
-                      background: 'rgba(26,26,46,0.06)',
-                      padding: '1px 6px',
-                      borderRadius: 4,
-                      fontFamily: 'var(--font-mono, monospace)',
-                      fontSize: 10.5,
-                      color: '#1a1a2e',
-                    }}>
-                      src/assets/courses.json → "{id}".videoUrl
-                    </code>
-                    {' '}par l'URL d'intégration YouTube (format <code style={{
-                      background: 'rgba(26,26,46,0.06)',
-                      padding: '1px 5px',
-                      borderRadius: 4,
-                      fontFamily: 'var(--font-mono, monospace)',
-                      fontSize: 10.5,
-                    }}>https://www.youtube.com/embed/VIDEO_ID</code>).
-                  </div>
-                </div>
+          {/* SECTION 6 — VIDÉO (modules gratuits uniquement) */}
+          {course.videoUrl && !course.videoUrl.includes('[PLACEHOLDER]') && (
+            <section id="section-video" className="coursef-section">
+              <div className="coursef-section-head">
+                <span className="coursef-eyebrow" style={{ color }}>06 · Vidéo (complément)</span>
+                <h2>Mini-vidéo de synthèse</h2>
+                <p className="coursef-section-sub">
+                  Une courte vidéo de 2 à 3 minutes vient en complément du schéma interactif.
+                  L'essentiel de l'apprentissage reste dans les sections précédentes — la vidéo
+                  est un bonus de révision pour les apprenants qui préfèrent l'écoute.
+                </p>
               </div>
-            )}
-          </section>
+
+              <VideoBlock
+                videoId={`${id}-video`}
+                title={`${course.title} — Mini-vidéo`}
+                subtitle="Synthèse de 2-3 min en complément du schéma interactif"
+                videoUrl={course.videoUrl}
+                duration="≈ 2-3 min"
+              />
+            </section>
+          )}
 
           {/* SECTION 7 — QUIZ */}
           <section id="section-quiz" className="coursef-section coursef-section--alt">
