@@ -1,0 +1,1483 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Planification et Contrôle — MPM</title>
+<meta name="viewport" content="width=1366,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@1&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F4FF;
+  --dark:#08091A; --dark-2:#0D1129;
+  --accent:#6366F1;  --violet:#8B5CF6; --teal:#00C9B1;
+  --sky:#0EA5E9;     --pink:#EC4899;   --amber:#F59E0B;
+  --emerald:#10B981;
+  --text:#1a1a2e;    --text-2:#5a5a7a; --muted:#9090b0;
+  --line:rgba(26,26,46,0.08);
+  --r-lg:20px; --r-md:14px; --r-sm:10px; --r-pill:999px;
+  --tr:0.35s cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:17px;line-height:1.6}
+
+/* ===== BLOBS ===== */
+.bg-blobs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px)}
+.blob-1{width:55vw;height:55vw;top:-12vw;left:-15vw;
+  background:radial-gradient(circle, rgba(186,210,255,0.55) 0%, rgba(186,210,255,0) 70%);
+  animation:float 20s ease-in-out infinite alternate}
+.blob-2{width:45vw;height:45vw;top:-5vw;right:-12vw;
+  background:radial-gradient(circle, rgba(220,215,255,0.50) 0%, rgba(220,215,255,0) 70%);
+  animation:float 24s ease-in-out infinite alternate-reverse}
+.blob-3{width:42vw;height:42vw;bottom:-12vw;left:28vw;
+  background:radial-gradient(circle, rgba(153,230,215,0.40) 0%, rgba(153,230,215,0) 70%);
+  animation:float 26s ease-in-out infinite alternate}
+@keyframes float{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}100%{transform:translate(-30px,20px) scale(0.95)}}
+
+/* ===== UI persistant ===== */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(99,102,241,0.10);z-index:50}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--violet),var(--pink));transition:width var(--tr)}
+.logo-mark{position:fixed;bottom:22px;left:34px;z-index:40;font-size:14px;display:flex;align-items:center;gap:8px}
+.logo-mark .a{font-weight:700;color:var(--text)}
+.logo-mark .b{font-weight:300;color:var(--accent)}
+.logo-mark .dot{color:var(--accent);font-weight:700}
+.on-dark .logo-mark .a{color:#fff}
+.counter{position:fixed;bottom:22px;right:34px;z-index:40;
+  font-family:'JetBrains Mono';font-weight:700;font-size:12px;color:var(--muted);letter-spacing:0.05em}
+.on-dark .counter{color:rgba(255,255,255,0.65)}
+
+.minimap{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:40;display:flex;gap:6px;align-items:center}
+.minimap .dot{width:6px;height:6px;border-radius:50%;background:rgba(99,102,241,0.25);border:0;padding:0;cursor:pointer;transition:all var(--tr);outline:none}
+.minimap .dot:hover{background:rgba(99,102,241,0.55);transform:scale(1.5)}
+.minimap .dot:focus-visible{box-shadow:0 0 0 2px rgba(99,102,241,0.5)}
+.minimap .dot.active{background:var(--accent);width:18px;border-radius:3px}
+.on-dark .minimap .dot{background:rgba(255,255,255,0.20)}
+.on-dark .minimap .dot.active{background:#fff}
+
+/* ===== SLIDES ===== */
+.presentation{position:relative;z-index:1;width:100vw;height:100vh}
+.slide{position:absolute;inset:0;display:none;padding:48px 70px 84px;overflow:hidden;flex-direction:column}
+.slide.active{display:flex;animation:fadeInUp 0.4s ease}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.slide.dark{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-2) 100%);color:#fff;justify-content:center}
+.slide.dark::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;
+  background:linear-gradient(180deg,var(--accent),var(--violet),var(--pink))}
+.slide.dark .section-num{font-weight:700;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent)}
+.slide.dark h2{font-weight:800;font-size:72px;line-height:1.05;color:#fff;letter-spacing:-0.035em;margin-top:16px}
+.slide.dark .section-divider{width:100px;height:3px;background:linear-gradient(90deg,var(--accent),var(--pink));margin:28px 0}
+.slide.dark .section-sub{font-size:20px;color:#C7CDDD;max-width:760px;line-height:1.55}
+
+.eyebrow{font-weight:700;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent)}
+.slide h1{font-weight:800;letter-spacing:-0.04em;line-height:1}
+.slide h2{font-weight:700;font-size:34px;letter-spacing:-0.025em;line-height:1.1;color:var(--text);margin:6px 0 0}
+.slide h3{font-weight:600;font-size:17px;color:var(--text);line-height:1.3}
+.slide .lead{font-size:15px;color:var(--text-2);max-width:1100px;line-height:1.5;margin-top:4px}
+.divider-accent{width:60px;height:3px;background:linear-gradient(90deg,var(--accent),var(--violet));margin:10px 0 12px;border-radius:2px}
+.gradient-text{background:linear-gradient(135deg,var(--accent),var(--violet),var(--pink));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+.glass{background:rgba(255,255,255,0.45);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
+  border:1px solid rgba(255,255,255,0.75);border-top:1.5px solid rgba(255,255,255,0.90);
+  box-shadow:0 8px 32px rgba(0,0,0,0.07),inset 0 1px 0 rgba(255,255,255,0.85);
+  border-radius:var(--r-lg);padding:20px 22px;transition:transform var(--tr),box-shadow var(--tr)}
+.glass:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,0.10),inset 0 1px 0 rgba(255,255,255,0.95)}
+
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:var(--r-pill);
+  font-size:10.5px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase}
+.pill.free{background:rgba(16,185,129,0.12);color:var(--emerald)}
+.pill.premium{background:rgba(245,158,11,0.14);color:var(--amber)}
+.pill.accent{background:rgba(99,102,241,0.12);color:var(--accent)}
+.pill.pink{background:rgba(236,72,153,0.12);color:var(--pink)}
+
+.ic{width:32px;height:32px;display:block}
+.ic-lg{width:40px;height:40px}
+.ic-sm{width:22px;height:22px}
+
+/* ===== COUVERTURE ===== */
+.slide.cover{text-align:center;align-items:center;justify-content:center}
+.cover-top{position:absolute;top:36px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
+.cover-top .logo{display:flex;align-items:center;gap:8px;font-size:18px}
+.cover-top .logo .a{font-weight:700}
+.cover-top .logo .b{font-weight:300;color:var(--accent)}
+.cover-eyebrow{margin-bottom:22px}
+.slide.cover h1{font-size:104px;letter-spacing:-0.045em;line-height:1}
+.cover-divider{width:90px;height:3px;margin:22px auto;background:linear-gradient(90deg,var(--accent),var(--violet),var(--pink))}
+.cover-tagline{font-size:22px;color:var(--text-2);max-width:880px;margin:14px auto 0;line-height:1.5}
+.cover-credits{margin-top:48px;text-align:center}
+.cover-credits .team{font-size:16px;color:var(--text);font-weight:600;letter-spacing:0.01em}
+.cover-credits .uni{font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:0.08em;text-transform:uppercase}
+
+.slide-head{margin-bottom:12px}
+.slide-head .eyebrow{display:block;margin-bottom:4px}
+
+/* ===== LAYOUTS GENERIQUES ===== */
+.ctx-layout{display:grid;grid-template-columns:1fr;gap:18px;flex:1;align-content:space-evenly}
+.problems-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pcard{padding:22px;display:flex;flex-direction:column;gap:10px}
+.pcard .pic{width:46px;height:46px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center}
+.pcard h3{font-size:17px;font-weight:700;color:var(--text);margin-top:4px}
+.pcard p{font-size:13px;color:var(--text-2);line-height:1.55}
+.pcard .ref{font-size:11px;color:var(--accent);font-style:italic;margin-top:6px}
+
+.market-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.market-stat{padding:22px 26px;display:flex;align-items:center;gap:22px}
+.market-stat .v{font-weight:800;font-size:36px;color:var(--accent);letter-spacing:-0.025em;line-height:1;white-space:nowrap}
+.market-stat .v.alt{color:var(--violet)}
+.market-stat .v.alt2{color:var(--pink)}
+.market-stat .t{flex:1;font-size:12.5px;color:var(--text-2);line-height:1.5}
+.market-stat .t b{color:var(--text);font-weight:700}
+.market-stat .t .src{display:block;font-size:10.5px;font-style:italic;color:var(--muted);margin-top:2px}
+
+/* ===== THEORIE (grid 3xN) ===== */
+.theory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;flex:1;align-content:start;min-height:0}
+.theory-grid.rows-2{grid-template-rows:1fr 1fr}
+.theory-card{padding:14px 18px;display:flex;flex-direction:column;gap:5px;border-left:3px solid var(--accent);min-height:0;overflow:hidden}
+.theory-card.violet{border-left-color:var(--violet)}
+.theory-card.pink{border-left-color:var(--pink)}
+.theory-card.teal{border-left-color:var(--teal)}
+.theory-card.amber{border-left-color:var(--amber)}
+.theory-card.emerald{border-left-color:var(--emerald)}
+.theory-card.sky{border-left-color:var(--sky)}
+.theory-card .pic{width:24px;height:24px;color:var(--accent)}
+.theory-card.violet .pic{color:var(--violet)}
+.theory-card.pink .pic{color:var(--pink)}
+.theory-card.teal .pic{color:var(--teal)}
+.theory-card.amber .pic{color:var(--amber)}
+.theory-card.emerald .pic{color:var(--emerald)}
+.theory-card.sky .pic{color:var(--sky)}
+.theory-card .title{font-weight:700;font-size:14px;color:var(--text);line-height:1.2}
+.theory-card .src{font-size:11px;color:var(--accent);font-style:italic}
+.theory-card.violet .src{color:var(--violet)}
+.theory-card.pink .src{color:var(--pink)}
+.theory-card.teal .src{color:var(--teal)}
+.theory-card.amber .src{color:var(--amber)}
+.theory-card.emerald .src{color:var(--emerald)}
+.theory-card.sky .src{color:var(--sky)}
+.theory-card .desc{font-size:11.5px;color:var(--text-2);line-height:1.4}
+.theory-card .keyword,.theory-card .formula{font-family:'JetBrains Mono';font-size:10.5px;color:var(--text);
+  background:rgba(99,102,241,0.08);padding:4px 9px;border-radius:6px;align-self:flex-start;margin-top:auto;letter-spacing:0.01em;line-height:1.35}
+.theory-card.violet .formula{background:rgba(139,92,246,0.10)}
+.theory-card.pink .formula{background:rgba(236,72,153,0.10)}
+.theory-card.teal .formula{background:rgba(0,201,177,0.10)}
+.theory-card.amber .formula{background:rgba(245,158,11,0.12)}
+.theory-card.emerald .formula{background:rgba(16,185,129,0.10)}
+
+/* ===== NODE FOCUS (slide convention AON) ===== */
+.aon-layout{display:grid;grid-template-columns:1.05fr 1fr;gap:20px;flex:1;align-items:stretch}
+.aon-left{display:flex;flex-direction:column;gap:14px}
+.aon-svg-card{padding:18px 22px;display:flex;flex-direction:column;align-items:center;flex:1;justify-content:center}
+.aon-svg-card svg{width:100%;max-width:520px;height:auto}
+.aon-svg-card .caption{font-size:11.5px;color:var(--muted);font-style:italic;margin-top:8px;text-align:center}
+.aon-right{display:flex;flex-direction:column;gap:9px}
+.aon-feat{padding:10px 16px;display:flex;gap:12px;align-items:flex-start}
+.aon-feat .num{width:28px;height:28px;border-radius:var(--r-sm);background:rgba(99,102,241,0.12);color:var(--accent);
+  font-family:'JetBrains Mono';font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.aon-feat h4{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+.aon-feat p{font-size:11.5px;color:var(--text-2);line-height:1.4}
+.aon-feat .form{font-family:'JetBrains Mono';font-size:10.5px;color:var(--accent);margin-top:4px;display:inline-block;
+  background:rgba(99,102,241,0.08);padding:2px 7px;border-radius:5px}
+
+/* ===== ALGORITHMES (forward/backward) ===== */
+.algo-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;align-items:stretch;min-height:0}
+.algo-card{padding:18px 22px;display:flex;flex-direction:column;gap:10px;min-height:0}
+.algo-card.fwd{border-top:3px solid var(--accent)}
+.algo-card.bwd{border-top:3px solid var(--pink)}
+.algo-card .head{display:flex;align-items:center;gap:12px}
+.algo-card .head .pic{width:38px;height:38px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center}
+.algo-card.fwd .head .pic{background:rgba(99,102,241,0.12);color:var(--accent)}
+.algo-card.bwd .head .pic{background:rgba(236,72,153,0.12);color:var(--pink)}
+.algo-card h3{font-size:20px;font-weight:700;color:var(--text)}
+.algo-card .sub{font-size:12px;color:var(--text-2);font-style:italic}
+.algo-card .formula-block{font-family:'JetBrains Mono';font-size:13px;font-weight:700;color:var(--text);
+  background:rgba(99,102,241,0.07);padding:14px 18px;border-radius:var(--r-md);line-height:1.7;text-align:center}
+.algo-card.bwd .formula-block{background:rgba(236,72,153,0.07)}
+.algo-card .steps{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--text);line-height:1.5}
+.algo-card .steps b{color:var(--text);font-weight:700}
+.algo-card .steps .step{display:flex;gap:10px;align-items:flex-start}
+.algo-card .steps .step::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex-shrink:0}
+.algo-card.bwd .steps .step::before{background:var(--pink)}
+
+.algo-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.algo-foot .glass{padding:10px 16px;text-align:center}
+.algo-foot .v{font-family:'JetBrains Mono';font-weight:700;font-size:18px;color:var(--accent);letter-spacing:-0.02em}
+.algo-foot .v.alt{color:var(--violet)}
+.algo-foot .v.alt2{color:var(--pink)}
+.algo-foot .l{font-size:11px;color:var(--text-2);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em}
+
+/* ===== CAS - tableau dense ===== */
+.case-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;flex:1;align-items:stretch}
+.case-table-wrap{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.case-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12px}
+.case-table thead th{background:rgba(99,102,241,0.10);color:var(--text);font-weight:700;
+  padding:8px 12px;text-align:left;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;
+  border-bottom:1.5px solid rgba(99,102,241,0.20)}
+.case-table tbody td{padding:6px 12px;border-bottom:1px solid rgba(99,102,241,0.08);color:var(--text)}
+.case-table tbody tr:hover td{background:rgba(99,102,241,0.04)}
+.case-table tbody tr:last-child td{border-bottom:0}
+.case-table .num{font-family:'JetBrains Mono';font-weight:700;color:var(--accent);text-align:center}
+.case-table .ant{font-family:'JetBrains Mono';font-size:11px;color:var(--text-2);text-align:center}
+.case-table .lbl{font-weight:500}
+.case-side{display:flex;flex-direction:column;gap:10px;min-height:0}
+.case-side .glass{padding:13px 16px}
+.case-side h4{font-size:10.5px;font-weight:700;color:var(--accent);letter-spacing:0.10em;text-transform:uppercase;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.case-side p{font-size:11.5px;color:var(--text-2);line-height:1.45}
+.case-side .stat{display:flex;align-items:baseline;gap:8px;margin-top:4px}
+.case-side .stat .v{font-family:'JetBrains Mono';font-weight:700;font-size:20px;color:var(--accent);letter-spacing:-0.02em}
+.case-side .stat .l{font-size:11px;color:var(--text-2)}
+
+/* ===== Matrice niveaux + Gantt ===== */
+.lev-layout{display:flex;flex-direction:column;gap:14px;flex:1}
+.lev-matrix{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.lev-cell{padding:12px 6px;text-align:center;border-radius:var(--r-md);
+  background:rgba(255,255,255,0.55);border:1px solid rgba(99,102,241,0.10)}
+.lev-cell .niv{font-family:'JetBrains Mono';font-weight:700;font-size:11px;color:var(--accent);letter-spacing:0.08em}
+.lev-cell .tk{font-weight:700;font-size:15px;color:var(--text);margin-top:4px;font-family:'JetBrains Mono'}
+.gantt-card{padding:16px 20px;flex:1;display:flex;flex-direction:column}
+.gantt-card .gantt-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.gantt-card .gantt-head h4{font-size:13px;font-weight:700;color:var(--text)}
+.gantt-card .gantt-legend{display:flex;gap:14px;font-size:10.5px;color:var(--text-2);align-items:center}
+.gantt-card .gantt-legend i{width:14px;height:8px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+.gantt-svg-wrap{flex:1;min-height:0;display:flex;align-items:stretch}
+.gantt-svg-wrap svg{width:100%;height:100%}
+
+/* ===== Graphe MPM grand ===== */
+.graph-card{padding:18px 22px;flex:1;display:flex;flex-direction:column}
+.graph-card .gh-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.graph-card .gh-head h4{font-size:13px;font-weight:700;color:var(--text)}
+.graph-card .gh-legend{display:flex;gap:14px;font-size:10.5px;color:var(--text-2);align-items:center}
+.graph-card .gh-legend i{display:inline-block;width:24px;height:12px;border-radius:2px;margin-right:6px;vertical-align:middle;border:1px solid #1a1a2e}
+.graph-svg-wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.graph-svg-wrap svg{width:100%;height:100%;max-height:100%}
+
+/* ===== Tableau marges complete ===== */
+.marges-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;flex:1}
+.marges-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
+.marges-table thead th{background:#1a1a2e;color:#fff;font-weight:700;padding:8px 10px;
+  text-align:center;font-size:10px;letter-spacing:0.08em;text-transform:uppercase}
+.marges-table tbody td{padding:6px 10px;text-align:center;border-bottom:1px solid rgba(99,102,241,0.08)}
+.marges-table tbody td.lbl{text-align:left;font-weight:600}
+.marges-table .num{font-family:'JetBrains Mono';font-weight:600;color:var(--text)}
+.marges-table .bold{font-weight:700;color:var(--accent)}
+.marges-table tr.crit{background:rgba(236,72,153,0.06)}
+.marges-table tr.crit td.status{color:var(--pink);font-weight:700}
+.marges-table tr.noncrit td.status{color:var(--text-2);font-style:italic}
+.marges-side{display:flex;flex-direction:column;gap:8px;min-height:0}
+.marges-side .glass{padding:11px 16px}
+.marges-side h4{font-size:10.5px;font-weight:700;color:var(--accent);letter-spacing:0.10em;
+  text-transform:uppercase;margin-bottom:5px}
+.marges-side p{font-size:11.5px;color:var(--text-2);line-height:1.4}
+.marges-side .key{font-family:'JetBrains Mono';font-weight:700;color:var(--accent)}
+.marges-side .path{font-family:'JetBrains Mono';font-weight:700;font-size:11px;color:var(--pink);
+  background:rgba(236,72,153,0.08);padding:6px 9px;border-radius:6px;letter-spacing:0.02em;line-height:1.4}
+
+/* ===== ARCHITECTURE pour ouvrage (arch-layers reuse) ===== */
+.arch-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;flex:1;align-items:stretch}
+.arch-layers{display:flex;flex-direction:column;gap:5px}
+.arch-row{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center;padding:10px 16px}
+.arch-row .lab{font-weight:700;font-size:12px;letter-spacing:0.05em}
+.arch-row .lab .step{font-family:'JetBrains Mono';font-size:10px;color:var(--muted);display:block}
+.arch-chips{display:flex;gap:7px;flex-wrap:wrap}
+.archi-chip{background:rgba(255,255,255,0.70);border:1.5px solid;border-radius:var(--r-sm);
+  padding:5px 10px;font-size:11px;font-weight:600;color:var(--text)}
+.arch-flow{text-align:center;color:var(--muted);font-size:14px;height:8px;margin:-3px 0;line-height:1}
+.arch-side{display:flex;flex-direction:column;gap:10px}
+.arch-side-card{padding:14px 18px}
+.arch-side-card h4{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+.arch-side-card .item{display:flex;gap:10px;font-size:12.5px;color:var(--text);padding:3px 0;align-items:center}
+.arch-side-card .item .ic-sm{color:var(--accent);flex-shrink:0}
+.arch-side-card .item b{font-weight:700}
+.arch-side-card .item .v{font-family:'JetBrains Mono';font-weight:700;color:var(--accent);margin-left:auto}
+
+/* ===== Tableau positionnement (tech-layout reuse) ===== */
+.tech-layout{display:grid;grid-template-columns:1fr 360px;gap:18px;flex:1;align-items:stretch}
+.tech-table{width:100%;border-collapse:separate;border-spacing:0 6px;height:fit-content}
+.tech-table th{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--text-2);text-align:left;padding:6px 14px}
+.tech-table td{background:rgba(255,255,255,0.55);backdrop-filter:blur(20px);
+  padding:10px 14px;font-size:12.5px;color:var(--text);
+  border-top:1px solid rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.55)}
+.tech-table tr td:first-child{border-left:1px solid rgba(255,255,255,0.75);border-radius:var(--r-md) 0 0 var(--r-md);font-weight:600}
+.tech-table tr td:last-child{border-right:1px solid rgba(255,255,255,0.55);border-radius:0 var(--r-md) var(--r-md) 0}
+.tech-table .pick{font-family:'JetBrains Mono';font-weight:700;color:var(--accent)}
+.tech-table .alt{font-family:'JetBrains Mono';font-weight:500;color:var(--muted)}
+.tech-side{display:flex;flex-direction:column;gap:12px}
+.tech-side-card{padding:16px 18px}
+.tech-side-card h4{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+.tech-side-card p{font-size:12.5px;color:var(--text-2);line-height:1.5}
+.tech-side-card .bigv{font-weight:800;font-size:28px;color:var(--accent);letter-spacing:-0.02em;line-height:1;margin-bottom:4px}
+
+/* ===== BILAN 2col ===== */
+.bilan-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0}
+.bilan-col{padding:16px 20px}
+.bilan-col .head{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.bilan-col .pic{width:32px;height:32px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center}
+.bilan-col h3{font-size:17px;font-weight:700;color:var(--text);line-height:1.2}
+.bilan-col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:6px}
+.bilan-col li{display:flex;gap:10px;font-size:12px;color:var(--text);line-height:1.4}
+.bilan-col li::before{content:"";width:6px;height:6px;border-radius:50%;margin-top:6px;flex-shrink:0}
+.bilan-col.acquis li::before{background:var(--emerald)}
+.bilan-col.future li::before{background:var(--accent)}
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.metric-cell{text-align:center;padding:10px}
+.metric-cell .v{font-weight:800;font-size:22px;color:var(--accent);letter-spacing:-0.02em;line-height:1}
+.metric-cell .l{font-size:10.5px;color:var(--text-2);margin-top:3px;text-transform:uppercase;letter-spacing:0.06em}
+
+/* ===== Sensibilité grid (5 cards) ===== */
+.sens-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:12px;flex:1;min-height:0}
+.sens-card{padding:14px 18px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;min-height:0}
+.sens-card .qnum{position:absolute;top:10px;right:16px;font-family:'JetBrains Mono';font-weight:700;
+  font-size:28px;color:rgba(99,102,241,0.18);letter-spacing:-0.04em;line-height:1}
+.sens-card .qtag{font-family:'JetBrains Mono';font-weight:700;font-size:10px;letter-spacing:0.10em;
+  color:var(--accent);text-transform:uppercase}
+.sens-card .qt{font-size:13px;font-weight:700;color:var(--text);line-height:1.25}
+.sens-card .qd{font-size:11.5px;color:var(--text-2);line-height:1.4}
+.sens-card .qr{margin-top:auto;font-family:'JetBrains Mono';font-weight:700;font-size:11.5px;
+  background:rgba(99,102,241,0.08);color:var(--accent);padding:7px 10px;border-radius:8px;line-height:1.3}
+.sens-card.green .qr{background:rgba(16,185,129,0.10);color:var(--emerald)}
+.sens-card.green .qtag{color:var(--emerald)}
+.sens-card.amber .qr{background:rgba(245,158,11,0.12);color:var(--amber)}
+.sens-card.amber .qtag{color:var(--amber)}
+.sens-card.pink .qr{background:rgba(236,72,153,0.10);color:var(--pink)}
+.sens-card.pink .qtag{color:var(--pink)}
+.sens-card.violet .qr{background:rgba(139,92,246,0.10);color:var(--violet)}
+.sens-card.violet .qtag{color:var(--violet)}
+.sens-summary{padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:6px;
+  background:linear-gradient(135deg,rgba(99,102,241,0.10),rgba(236,72,153,0.06));
+  border:1px solid rgba(99,102,241,0.20)}
+.sens-summary h4{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
+.sens-summary h4::before{content:"⌬";font-size:16px;color:var(--accent)}
+.sens-summary p{font-size:11.5px;color:var(--text-2);line-height:1.5}
+.sens-summary p b{color:var(--text);font-weight:700}
+
+/* ===== MERCI ===== */
+.slide.thanks{align-items:center;justify-content:center;text-align:center;flex-direction:column}
+.slide.thanks .quote{font-family:'DM Serif Display';font-style:italic;font-size:28px;line-height:1.4;
+  max-width:900px;margin:0 auto 40px;color:#C7CDDD}
+.slide.thanks .quote .author{font-size:15px;color:var(--muted);font-style:normal;font-family:Inter;display:block;margin-top:10px}
+.slide.thanks h2{font-weight:800;font-size:78px;color:#fff;letter-spacing:-0.04em}
+.slide.thanks .url{font-family:'JetBrains Mono';font-weight:700;font-size:16px;color:#8B83F0;margin-top:34px}
+.slide.thanks .team{font-size:14px;color:#C7CDDD;margin-top:58px}
+.slide.thanks .footer{font-size:11px;color:var(--muted);margin-top:14px;letter-spacing:0.06em;text-transform:uppercase}
+
+.source-line{font-size:11px;font-style:italic;color:var(--muted);margin-top:10px;letter-spacing:0.02em}
+</style>
+</head>
+<body>
+
+<div class="bg-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+<div class="counter"><span id="curr">01</span> / <span id="total">18</span></div>
+<div class="logo-mark"><span class="a">Planification et Contrôle</span><span class="b">— MPM</span></div>
+<div class="minimap" id="minimap" aria-label="Navigation directe entre slides"></div>
+
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 3a3 3 0 0 0-3 3v1a3 3 0 0 0-2.5 4.4A3 3 0 0 0 6 16v1a3 3 0 0 0 3 3 3 3 0 0 0 3-3V3"/>
+      <path d="M15 3a3 3 0 0 1 3 3v1a3 3 0 0 1 2.5 4.4A3 3 0 0 1 18 16v1a3 3 0 0 1-3 3 3 3 0 0 1-3-3"/>
+    </symbol>
+    <symbol id="i-network" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="4" r="2.2"/><circle cx="4.5" cy="12" r="2.2"/><circle cx="19.5" cy="12" r="2.2"/>
+      <circle cx="8" cy="20" r="2.2"/><circle cx="16" cy="20" r="2.2"/>
+      <path d="M12 6.2v3.6M10.3 12 6.7 12M17.3 12l-3.6 0M9.8 18.5l1.4-3.3M14.2 18.5l-1.4-3.3"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 20h18"/><path d="M7 13l3-3 3 2 4-5"/>
+    </symbol>
+    <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="5" cy="5" r="2.2"/><circle cx="19" cy="19" r="2.2"/>
+      <path d="M5 7.2v6A5 5 0 0 0 10 18.2h6.8M19 16.8V11A5 5 0 0 0 14 6h-3"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2 4 5v7c0 5 3.5 8 8 10 4.5-2 8-5 8-10V5z"/><path d="m9 12 2 2 4-4"/>
+    </symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 4l6 6L9 21H3v-6z"/><path d="M13 5l6 6"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+    </symbol>
+    <symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="7" r="3.5"/><circle cx="17" cy="9" r="2.5"/>
+      <path d="M2 21v-1.5A4.5 4.5 0 0 1 6.5 15h5a4.5 4.5 0 0 1 4.5 4.5V21"/>
+      <path d="M18 21v-1a3.5 3.5 0 0 0-3-3.45"/>
+    </symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/>
+    </symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="7" width="18" height="13" rx="2"/>
+      <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6 9 17l-5-5"/>
+    </symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 14a5 5 0 0 1 5-5l5-5c3 0 4 1 4 4l-5 5a5 5 0 0 1-5 5"/>
+      <path d="M9 15c-1.5 1-3 1-3 3 2 0 2-1.5 3-3z"/><circle cx="15" cy="9" r="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5M3 17l9 5 9-5"/>
+    </symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 3 4 14h7l-1 7 9-11h-7l1-7z"/>
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 4l-4 16"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 4h6a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H3z"/>
+      <path d="M21 4h-6a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H21z"/>
+    </symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 21V4M4 4h12l-2 4 2 4H4"/>
+    </symbol>
+    <symbol id="i-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14M13 6l6 6-6 6"/>
+    </symbol>
+    <symbol id="i-arrow-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M11 6l-6 6 6 6"/>
+    </symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3"/><circle cx="12" cy="12" r="4"/>
+    </symbol>
+    <symbol id="i-news" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4" width="14" height="16" rx="1.5"/>
+      <path d="M17 8h3v10a2 2 0 0 1-2 2H7"/><path d="M7 8h6M7 12h6M7 16h6"/>
+    </symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="3"/>
+      <circle cx="8" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="16" cy="8" r="1.2" fill="currentColor"/>
+      <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+      <circle cx="8" cy="16" r="1.2" fill="currentColor"/>
+      <circle cx="16" cy="16" r="1.2" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="presentation">
+
+<!-- 01 COVER -->
+<section class="slide cover active" role="presentation">
+  <div class="cover-top">
+    <div class="logo"><span class="a">Planification et Contrôle</span><span class="b">— MPM</span></div>
+    <span class="pill accent">SOUTENANCE · 2025 / 2026</span>
+  </div>
+  <div class="eyebrow cover-eyebrow">PLANIFICATION ET CONTRÔLE</div>
+  <h1><span class="gradient-text">MPM</span></h1>
+  <div class="cover-divider"></div>
+  <p class="cover-tagline">Méthode des Potentiels Métra : théorie, application au Festival ASSO et analyse approfondie de l'ouvrage de référence.</p>
+  <div class="cover-credits">
+    <div class="team">Dorra Chakour · Paulianne Fontoura · Daryna Kosianchuk · Théophile Rabut</div>
+    <div class="uni">Master 1 MSI · Université Paris 1 Panthéon-Sorbonne · 2025 / 2026</div>
+  </div>
+</section>
+
+<!-- 02 SECTION 01 -->
+<section class="slide dark" role="presentation">
+  <span class="section-num">SECTION 01</span>
+  <h2>Théorie et formalisme</h2>
+  <div class="section-divider"></div>
+  <p class="section-sub">De la théorie des graphes orientés aux algorithmes de propagation des dates : socle conceptuel d'une méthode française devenue standard international.</p>
+</section>
+
+<!-- 03 ORIGINES + COMPARAISON -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">ORIGINES</span>
+    <h2>Trois méthodes contemporaines, trois traditions</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">MPM, PERT et CPM naissent à la même époque (1956-1964) en réponse à des besoins industriels distincts. Soixante ans plus tard, leurs concepts fusionnent dans les logiciels contemporains.</p>
+  </div>
+  <div class="ctx-layout">
+    <div class="problems-row">
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(99,102,241,0.10);color:var(--accent)"><svg class="ic" aria-hidden="true"><use href="#i-network"/></svg></div>
+        <h3>MPM — France</h3>
+        <p>Bernard Roy à la SEMA pour la construction du paquebot France et l'usine Renault de Flins. Convention <b>activity-on-node</b>.</p>
+        <div class="ref">Roy et Sussmann, 1964</div>
+      </div>
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(236,72,153,0.10);color:var(--pink)"><svg class="ic" aria-hidden="true"><use href="#i-dice"/></svg></div>
+        <h3>PERT — États-Unis</h3>
+        <p>US Navy pour le programme de missiles Polaris. Convention <b>activity-on-arc</b> et traitement probabiliste des durées.</p>
+        <div class="ref">Malcolm et al., 1959</div>
+      </div>
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(0,201,177,0.12);color:var(--teal)"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></div>
+        <h3>CPM — DuPont</h3>
+        <p>Kelley et Walker pour la maintenance d'usines chimiques. Intègre dès l'origine la dimension <b>time-cost trade-off</b>.</p>
+        <div class="ref">Kelley et Walker, 1959</div>
+      </div>
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(245,158,11,0.14);color:var(--amber)"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg></div>
+        <h3>Fondement mathématique</h3>
+        <p>La théorie des graphes orientés fournit le cadre formel. König (1936) et Berge (1958) ancrent la discipline française.</p>
+        <div class="ref">Berge, 1958</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="glass market-stat">
+        <div class="v">~ 60 ans</div>
+        <div class="t"><b>d'usage industriel ininterrompu.</b> MPM/CPM restent au cœur de tous les logiciels professionnels d'ordonnancement.<span class="src">MS Project, Primavera P6, GanttProject</span></div>
+      </div>
+      <div class="glass market-stat">
+        <div class="v alt">AON ✔</div>
+        <div class="t"><b>la convention française devient le standard de facto.</b> Activity-on-node supplante définitivement activity-on-arc dans les outils modernes.<span class="src">PMBOK Guide, 7e édition (PMI, 2021)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CONVENTION AON -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">FORMALISME</span>
+    <h2>Convention activity-on-node et structure du nœud</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Chaque tâche est un nœud rectangulaire à quatre compartiments. Les arcs orientés portent uniquement les contraintes de précédence.</p>
+  </div>
+  <div class="aon-layout">
+    <div class="aon-left">
+      <div class="glass aon-svg-card">
+        <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <marker id="ah1" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+              <path d="M0,0 L6,3.5 L0,7 z" fill="#6366F1"/>
+            </marker>
+          </defs>
+          <!-- Predecessor node -->
+          <rect x="20" y="80" width="120" height="80" rx="6" fill="rgba(255,255,255,0.85)" stroke="#5a5a7a" stroke-width="1.5"/>
+          <line x1="80" y1="80" x2="80" y2="160" stroke="#5a5a7a" stroke-width="1"/>
+          <line x1="20" y1="120" x2="140" y2="120" stroke="#5a5a7a" stroke-width="1"/>
+          <text x="50" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e" font-family="Inter">Tâche</text>
+          <text x="110" y="106" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1a2e" font-family="JetBrains Mono">d</text>
+          <text x="50" y="146" text-anchor="middle" font-size="12" font-weight="700" fill="#6366F1" font-family="JetBrains Mono">DTO</text>
+          <text x="110" y="146" text-anchor="middle" font-size="12" font-weight="700" fill="#6366F1" font-family="JetBrains Mono">DTA</text>
+          <!-- Arrow with p(i,j) -->
+          <line x1="142" y1="120" x2="318" y2="120" stroke="#6366F1" stroke-width="2.2" marker-end="url(#ah1)"/>
+          <text x="230" y="108" text-anchor="middle" font-size="11" font-style="italic" font-weight="700" fill="#6366F1" font-family="JetBrains Mono">d(i) + p(i,j)</text>
+          <!-- Successor node -->
+          <rect x="320" y="80" width="120" height="80" rx="6" fill="rgba(99,102,241,0.10)" stroke="#6366F1" stroke-width="2"/>
+          <line x1="380" y1="80" x2="380" y2="160" stroke="#6366F1" stroke-width="1.5"/>
+          <line x1="320" y1="120" x2="440" y2="120" stroke="#6366F1" stroke-width="1.5"/>
+          <text x="350" y="106" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a2e" font-family="Inter">Tâche j</text>
+          <text x="410" y="106" text-anchor="middle" font-size="12" font-weight="500" fill="#1a1a2e" font-family="JetBrains Mono">d(j)</text>
+          <text x="350" y="146" text-anchor="middle" font-size="12" font-weight="700" fill="#6366F1" font-family="JetBrains Mono">DTO(j)</text>
+          <text x="410" y="146" text-anchor="middle" font-size="12" font-weight="700" fill="#6366F1" font-family="JetBrains Mono">DTA(j)</text>
+          <!-- Annotations -->
+          <text x="80" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#9090b0" font-family="Inter">PRÉDÉCESSEUR i</text>
+          <text x="380" y="60" text-anchor="middle" font-size="10" font-weight="700" fill="#6366F1" font-family="Inter">SUCCESSEUR j</text>
+          <text x="50" y="195" text-anchor="middle" font-size="10" fill="#9090b0" font-family="Inter">tâche · durée</text>
+          <text x="110" y="195" text-anchor="middle" font-size="10" fill="#9090b0" font-family="Inter">d. tôt · d. tard</text>
+        </svg>
+        <div class="caption">Structure standard d'un nœud MPM et arc de précédence valué</div>
+      </div>
+    </div>
+    <div class="aon-right">
+      <div class="glass aon-feat">
+        <div class="num">01</div>
+        <div><h4>Nom de la tâche</h4><p>Identifiant unique. Convention : T<sub>i</sub> ou code projet (ex. T4 = autorisation municipale).</p></div>
+      </div>
+      <div class="glass aon-feat">
+        <div class="num">02</div>
+        <div><h4>Durée d(i)</h4><p>Estimation déterministe ou probabiliste, dans l'unité de temps du projet.</p>
+        <span class="form">d(i) ≥ 0</span></div>
+      </div>
+      <div class="glass aon-feat">
+        <div class="num">03</div>
+        <div><h4>Dates extrêmes — DTO et DTA</h4><p>DTO : date la plus précoce (forward pass). DTA : date la plus tardive sans retarder le projet (backward pass).</p>
+        <span class="form">earliest / latest start</span></div>
+      </div>
+      <div class="glass aon-feat">
+        <div class="num">→</div>
+        <div><h4>Arc orienté de i vers j</h4><p>Précédence valuée par <b>d(i) + p(i,j)</b>. Le délai p(i,j) est généralement nul.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ALGORITHMES FORWARD/BACKWARD -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">ALGORITHMES</span>
+    <h2>Forward et backward pass : deux parcours symétriques</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Deux règles, deux directions. Le maximum impose le respect des contraintes amont ; le minimum impose le respect du délai final.</p>
+  </div>
+  <div class="algo-layout">
+    <div class="glass algo-card fwd">
+      <div class="head">
+        <div class="pic"><svg class="ic" aria-hidden="true"><use href="#i-arrow-r"/></svg></div>
+        <div><h3>Forward pass</h3><div class="sub">Calcul des dates au plus tôt — règle du maximum</div></div>
+      </div>
+      <div class="formula-block">
+        DTO(j) = max<sub>i ∈ pred(j)</sub> [ DTO(i) + d(i) + p(i,j) ]
+      </div>
+      <div class="steps">
+        <div class="step"><span><b>Initialisation</b> : DTO(Début) = 0.</span></div>
+        <div class="step"><span><b>Parcours</b> dans l'ordre des niveaux croissants de la matrice.</span></div>
+        <div class="step"><span><b>Convergence</b> : DTO(Fin) = durée totale incompressible du projet.</span></div>
+        <div class="step"><span><b>Interprétation</b> : aucune tâche ne peut commencer avant que tous ses prédécesseurs soient achevés.</span></div>
+      </div>
+    </div>
+    <div class="glass algo-card bwd">
+      <div class="head">
+        <div class="pic"><svg class="ic" aria-hidden="true"><use href="#i-arrow-l"/></svg></div>
+        <div><h3>Backward pass</h3><div class="sub">Calcul des dates au plus tard — règle du minimum</div></div>
+      </div>
+      <div class="formula-block">
+        DTA(i) = min<sub>j ∈ succ(i)</sub> [ DTA(j) − d(i) − p(i,j) ]
+      </div>
+      <div class="steps">
+        <div class="step"><span><b>Initialisation</b> : DTA(Fin) = DTO(Fin).</span></div>
+        <div class="step"><span><b>Parcours</b> dans l'ordre des niveaux décroissants.</span></div>
+        <div class="step"><span><b>Cohérence</b> : DTA(Début) = 0 confirme la cohérence du calcul.</span></div>
+        <div class="step"><span><b>Interprétation</b> : tout démarrage tardif d'une tâche réduit la latitude des successeurs.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="algo-foot">
+    <div class="glass"><div class="v">O(|E|)</div><div class="l">complexité linéaire</div></div>
+    <div class="glass"><div class="v alt">DTO(Fin)</div><div class="l">durée totale du projet</div></div>
+    <div class="glass"><div class="v alt2">DTO = DTA</div><div class="l">tâche critique</div></div>
+  </div>
+</section>
+
+<!-- 06 INDICATEURS DE MARGES -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">INDICATEURS</span>
+    <h2>Trois marges, trois lectures complémentaires</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">La hiérarchie MC ≤ ML ≤ MT structure l'analyse de robustesse. Chaque indicateur répond à une question managériale distincte.</p>
+  </div>
+  <div class="theory-grid rows-2">
+    <div class="glass theory-card">
+      <svg class="ic pic" aria-hidden="true"><use href="#i-shield"/></svg>
+      <div class="title">Marge Totale — MT</div>
+      <div class="src">Total Float</div>
+      <div class="desc">Retard maximum absorbable <b>sans repousser la date de fin du projet</b>, à condition que tous les successeurs consomment leur marge.</div>
+      <span class="formula">MT(i) = DTA(i) − DTO(i)</span>
+    </div>
+    <div class="glass theory-card violet">
+      <svg class="ic pic" aria-hidden="true"><use href="#i-spark"/></svg>
+      <div class="title">Marge Libre — ML</div>
+      <div class="src">Free Float</div>
+      <div class="desc">Retard absorbable <b>sans décaler la date au plus tôt des successeurs</b>. Marge consommable sans impact sur le voisinage.</div>
+      <span class="formula">ML(i) = min[DTO(j)] − DTO(i) − d(i)</span>
+    </div>
+    <div class="glass theory-card pink">
+      <svg class="ic pic" aria-hidden="true"><use href="#i-target"/></svg>
+      <div class="title">Marge Certaine — MC</div>
+      <div class="src">Safety Float</div>
+      <div class="desc">Marge garantie <b>même lorsque les prédécesseurs ont consommé leur marge totale</b>. Mesure la robustesse en scénario amont dégradé.</div>
+      <span class="formula">MC(i) = max[0 ; min DTA(j) − max(DTA(k)+d(k)) − d(i)]</span>
+    </div>
+    <div class="glass theory-card teal">
+      <svg class="ic pic" aria-hidden="true"><use href="#i-route"/></svg>
+      <div class="title">Tâche critique</div>
+      <div class="src">Critère DTO = DTA</div>
+      <div class="desc">Tâche dont la marge totale est nulle. Tout retard se répercute intégralement sur la date de fin du projet.</div>
+      <span class="formula">Tâche i critique ⇔ MT(i) = 0</span>
+    </div>
+    <div class="glass theory-card amber">
+      <svg class="ic pic" aria-hidden="true"><use href="#i-network"/></svg>
+      <div class="title">Chemin critique</div>
+      <div class="src">Critical Path</div>
+      <div class="desc">Séquence ininterrompue de tâches critiques reliant Début à Fin. Sa longueur est égale à la durée totale du projet.</div>
+      <span class="formula">L(chemin critique) = DTO(Fin)</span>
+    </div>
+    <div class="glass theory-card emerald">
+      <svg class="ic pic" aria-hidden="true"><use href="#i-zap"/></svg>
+      <div class="title">Compression du délai</div>
+      <div class="src">Levier opérationnel</div>
+      <div class="desc">Toute réduction d(i) sur une tâche critique → gain équivalent sur la durée totale, jusqu'au basculement du chemin critique.</div>
+      <span class="formula">ΔT(projet) = −Δd(i critique)</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 EXTENSIONS PROBABILISTES ET LIMITES -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">EXTENSIONS</span>
+    <h2>Du déterministe au probabiliste : PERT et au-delà</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Quatre prolongements naturels enrichissent la méthode MPM classique pour traiter l'incertitude, les ressources et le changement.</p>
+  </div>
+  <div class="ctx-layout">
+    <div class="problems-row">
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(99,102,241,0.10);color:var(--accent)"><svg class="ic" aria-hidden="true"><use href="#i-dice"/></svg></div>
+        <h3>PERT probabiliste</h3>
+        <p>Trois estimations (a, m, b) → loi bêta. Durée moyenne T̄ = (a+4m+b)/6, variance σ² = ((b−a)/6)².</p>
+        <div class="ref">Malcolm et al., 1959</div>
+      </div>
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(236,72,153,0.10);color:var(--pink)"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg></div>
+        <h3>Simulation Monte-Carlo</h3>
+        <p>N tirages aléatoires sur chaque durée → distribution empirique du délai total. Lève le PERT merge bias.</p>
+        <div class="ref">Hulett, 2009</div>
+      </div>
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(0,201,177,0.12);color:var(--teal)"><svg class="ic" aria-hidden="true"><use href="#i-people"/></svg></div>
+        <h3>RCPSP</h3>
+        <p>Resource-Constrained Project Scheduling Problem. Intègre les contraintes de disponibilité. NP-difficile, heuristiques.</p>
+        <div class="ref">Hartmann et Briskorn, 2010</div>
+      </div>
+      <div class="glass pcard">
+        <div class="pic" style="background:rgba(245,158,11,0.14);color:var(--amber)"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg></div>
+        <h3>Hybridation agile</h3>
+        <p>MPM structure le projet global, Scrum / Kanban pilotent les sous-projets. Modèle dominant en industrie logicielle.</p>
+        <div class="ref">PMI Pulse, 2017</div>
+      </div>
+    </div>
+    <div class="market-row">
+      <div class="glass market-stat">
+        <div class="v">~ 90 %</div>
+        <div class="t"><b>des grands projets industriels intègrent désormais un volet probabiliste.</b> Monte-Carlo s'impose comme standard professionnel.<span class="src">Vanhoucke (2012), Practical Project Risk</span></div>
+      </div>
+      <div class="glass market-stat">
+        <div class="v alt">&gt; 500</div>
+        <div class="t"><b>publications annuelles sur le RCPSP.</b> L'un des champs les plus actifs de la recherche opérationnelle contemporaine.<span class="src">European Journal of Operational Research</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 SECTION 02 -->
+<section class="slide dark" role="presentation">
+  <span class="section-num">SECTION 02</span>
+  <h2>Étude de cas Festival ASSO</h2>
+  <div class="section-divider"></div>
+  <p class="section-sub">Application complète de la méthode à un projet événementiel : onze tâches, quatre mois, une date d'ouverture impérative au 8 août 2026.</p>
+</section>
+
+<!-- 09 ENONCE + 11 TACHES -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">CAS — ÉNONCÉ</span>
+    <h2>Festival jazz ASSO — onze tâches sur quatre mois</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Une association culturelle organise un festival de jazz. Date d'ouverture imposée. Tous les jours calendaires sont travaillés.</p>
+  </div>
+  <div class="case-layout">
+    <div class="glass case-table-wrap">
+      <table class="case-table">
+        <thead>
+          <tr><th style="width:48px">N°</th><th>Libellé de la tâche</th><th style="width:64px" class="num">d (j)</th><th style="width:90px" class="num">Antériorités</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td class="lbl">Recherche des groupes de Jazz</td><td class="num">15</td><td class="ant">4</td></tr>
+          <tr><td class="num">2</td><td class="lbl">Mailing aux producteurs et réponse</td><td class="num">30</td><td class="ant">4, 1</td></tr>
+          <tr><td class="num">3</td><td class="lbl">Sélection des groupes</td><td class="num">5</td><td class="ant">4, 1, 2</td></tr>
+          <tr><td class="num">4</td><td class="lbl">Obtention de l'autorisation de la ville</td><td class="num">35</td><td class="ant">—</td></tr>
+          <tr><td class="num">5</td><td class="lbl">Obtention des devis de location matériel</td><td class="num">20</td><td class="ant">—</td></tr>
+          <tr><td class="num">6</td><td class="lbl">Sélection des fournisseurs de matériel</td><td class="num">2</td><td class="ant">4, 5</td></tr>
+          <tr><td class="num">7</td><td class="lbl">Fixation du prix des entrées</td><td class="num">2</td><td class="ant">6, 3</td></tr>
+          <tr><td class="num">8</td><td class="lbl">Publicité dans journaux et radios</td><td class="num">21</td><td class="ant">7</td></tr>
+          <tr><td class="num">9</td><td class="lbl">Ouverture de la réservation des places</td><td class="num">40</td><td class="ant">7</td></tr>
+          <tr><td class="num">10</td><td class="lbl">Installation des chapiteaux</td><td class="num">3</td><td class="ant">9, 8</td></tr>
+          <tr><td class="num">11</td><td class="lbl">Vérification — commission de sécurité</td><td class="num">2</td><td class="ant">10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="case-side">
+      <div class="glass">
+        <h4><svg class="ic ic-sm" aria-hidden="true"><use href="#i-calendar"/></svg>Contrainte calendaire</h4>
+        <p>Ouverture du festival imposée au <b>8 août 2026</b>. Tous les jours sont travaillés (dimanches et jours fériés inclus).</p>
+        <div class="stat"><span class="v">8 août</span><span class="l">date d'ouverture imposée</span></div>
+      </div>
+      <div class="glass">
+        <h4><svg class="ic ic-sm" aria-hidden="true"><use href="#i-briefcase"/></svg>Périmètre et nature</h4>
+        <p>Projet associatif de petite à moyenne envergure. <b>Antériorités multiples</b> à traiter avec attention (redondance transitive).</p>
+      </div>
+      <div class="glass">
+        <h4><svg class="ic ic-sm" aria-hidden="true"><use href="#i-target"/></svg>Cinq questions de sensibilité</h4>
+        <p>Date de dépôt — impact d'un allongement T5 — impact d'un allongement T3 — durée maximale de T8 — compression de T4.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 MATRICE DES NIVEAUX + GANTT -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">STRUCTURATION</span>
+    <h2>Matrice des niveaux et calendrier Gantt</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Huit niveaux séquentiels structurent un projet faiblement parallélisable — deux tâches simultanées au maximum.</p>
+  </div>
+  <div class="lev-layout">
+    <div class="lev-matrix">
+      <div class="lev-cell"><div class="niv">NIVEAU 1</div><div class="tk">T4 · T5</div></div>
+      <div class="lev-cell"><div class="niv">NIVEAU 2</div><div class="tk">T1 · T6</div></div>
+      <div class="lev-cell"><div class="niv">NIVEAU 3</div><div class="tk">T2</div></div>
+      <div class="lev-cell"><div class="niv">NIVEAU 4</div><div class="tk">T3</div></div>
+      <div class="lev-cell"><div class="niv">NIVEAU 5</div><div class="tk">T7</div></div>
+      <div class="lev-cell"><div class="niv">NIVEAU 6</div><div class="tk">T8 · T9</div></div>
+      <div class="lev-cell"><div class="niv">NIVEAU 7</div><div class="tk">T10</div></div>
+      <div class="lev-cell"><div class="niv">NIVEAU 8</div><div class="tk">T11</div></div>
+    </div>
+    <div class="glass gantt-card">
+      <div class="gantt-head">
+        <h4>Diagramme de Gantt — barres positionnées sur les dates au plus tôt</h4>
+        <div class="gantt-legend">
+          <span><i style="background:#1a1a2e"></i>Tâche critique</span>
+          <span><i style="background:#BFBFBF"></i>Tâche non critique</span>
+          <span><i style="background:#EC4899;width:2px;height:14px"></i>J132 — fin</span>
+        </div>
+      </div>
+      <div class="gantt-svg-wrap">
+        <svg viewBox="-160 0 1060 300" preserveAspectRatio="xMidYMid meet">
+          <!-- Axis -->
+          <line x1="80" y1="270" x2="880" y2="270" stroke="#1a1a2e" stroke-width="1.5"/>
+          <!-- Day ticks -->
+          <g font-family="JetBrains Mono" font-size="9" fill="#9090b0" text-anchor="middle">
+            <line x1="80" y1="270" x2="80" y2="276" stroke="#9090b0"/><text x="80" y="290">0</text>
+            <line x1="208" y1="270" x2="208" y2="276" stroke="#9090b0"/><text x="208" y="290">20</text>
+            <line x1="293" y1="270" x2="293" y2="276" stroke="#9090b0"/><text x="293" y="290">35</text>
+            <line x1="378" y1="270" x2="378" y2="276" stroke="#9090b0"/><text x="378" y="290">50</text>
+            <line x1="540" y1="270" x2="540" y2="276" stroke="#9090b0"/><text x="540" y="290">80</text>
+            <line x1="568" y1="270" x2="568" y2="276" stroke="#9090b0"/><text x="568" y="290">87</text>
+            <line x1="788" y1="270" x2="788" y2="276" stroke="#9090b0"/><text x="788" y="290">127</text>
+            <line x1="816" y1="270" x2="816" y2="276" stroke="#9090b0"/><text x="816" y="290">132</text>
+          </g>
+          <!-- end line -->
+          <line x1="816" y1="20" x2="816" y2="270" stroke="#EC4899" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7"/>
+          <text x="822" y="30" font-family="Inter" font-size="9" font-style="italic" fill="#EC4899">J132 fin</text>
+          <!-- Bars from bottom up -->
+          <g font-family="Inter" font-size="10" fill="#1a1a2e">
+            <!-- T4 (0-35) critical -->
+            <rect x="80" y="30" width="213" height="14" fill="#1a1a2e"/>
+            <text x="72" y="40" text-anchor="end" font-size="10" font-weight="600">T4 · Autorisation</text>
+            <text x="186" y="40" text-anchor="middle" fill="#fff" font-weight="700">35 j</text>
+            <!-- T5 (0-20) non critical -->
+            <rect x="80" y="50" width="128" height="14" fill="#BFBFBF"/>
+            <text x="72" y="60" text-anchor="end" font-size="10">T5 · Devis matériel</text>
+            <text x="144" y="60" text-anchor="middle" fill="#1a1a2e" font-weight="700">20 j</text>
+            <!-- T1 (35-50) critical -->
+            <rect x="293" y="70" width="85" height="14" fill="#1a1a2e"/>
+            <text x="285" y="80" text-anchor="end" font-size="10" font-weight="600">T1 · Recherche groupes</text>
+            <text x="335" y="80" text-anchor="middle" fill="#fff" font-weight="700">15 j</text>
+            <!-- T6 (35-37) non critical -->
+            <rect x="293" y="90" width="12" height="14" fill="#BFBFBF"/>
+            <text x="285" y="100" text-anchor="end" font-size="10">T6 · Sélection fournisseurs</text>
+            <text x="320" y="100" font-size="9" fill="#5a5a7a">2 j</text>
+            <!-- T2 (50-80) critical -->
+            <rect x="378" y="110" width="162" height="14" fill="#1a1a2e"/>
+            <text x="370" y="120" text-anchor="end" font-size="10" font-weight="600">T2 · Mailing producteurs</text>
+            <text x="459" y="120" text-anchor="middle" fill="#fff" font-weight="700">30 j</text>
+            <!-- T3 (80-85) critical -->
+            <rect x="540" y="130" width="28" height="14" fill="#1a1a2e"/>
+            <text x="532" y="140" text-anchor="end" font-size="10" font-weight="600">T3 · Sélection groupes</text>
+            <text x="574" y="140" font-size="9" fill="#1a1a2e" font-weight="700">5 j</text>
+            <!-- T7 (85-87) critical -->
+            <rect x="568" y="150" width="11" height="14" fill="#1a1a2e"/>
+            <text x="560" y="160" text-anchor="end" font-size="10" font-weight="600">T7 · Fixation prix</text>
+            <text x="585" y="160" font-size="9" fill="#1a1a2e" font-weight="700">2 j</text>
+            <!-- T8 (87-108) non critical -->
+            <rect x="579" y="170" width="119" height="14" fill="#BFBFBF"/>
+            <text x="571" y="180" text-anchor="end" font-size="10">T8 · Pub journaux/radios</text>
+            <text x="638" y="180" text-anchor="middle" fill="#1a1a2e" font-weight="700">21 j</text>
+            <!-- T9 (87-127) critical -->
+            <rect x="579" y="190" width="227" height="14" fill="#1a1a2e"/>
+            <text x="571" y="200" text-anchor="end" font-size="10" font-weight="600">T9 · Réservation places</text>
+            <text x="692" y="200" text-anchor="middle" fill="#fff" font-weight="700">40 j</text>
+            <!-- T10 (127-130) critical -->
+            <rect x="788" y="210" width="17" height="14" fill="#1a1a2e"/>
+            <text x="780" y="220" text-anchor="end" font-size="10" font-weight="600">T10 · Installation chapiteaux</text>
+            <text x="810" y="220" font-size="9" fill="#1a1a2e" font-weight="700">3 j</text>
+            <!-- T11 (130-132) critical -->
+            <rect x="805" y="230" width="11" height="14" fill="#1a1a2e"/>
+            <text x="797" y="240" text-anchor="end" font-size="10" font-weight="600">T11 · Validation sécurité</text>
+            <text x="822" y="240" font-size="9" fill="#1a1a2e" font-weight="700">2 j</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 GRAPHE MPM -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">RÉSEAU</span>
+    <h2>Graphe MPM complet — chemin critique</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Un chemin critique unique de longueur 132 jours mobilise huit des onze tâches. Format des nœuds : [Tâche · Durée] au-dessus de [DTO · DTA].</p>
+  </div>
+  <div class="glass graph-card">
+    <div class="gh-head">
+      <h4>Réseau MPM du projet ASSO</h4>
+      <div class="gh-legend">
+        <span><i style="background:#D9D9D9;border-color:#1a1a2e;border-width:2px"></i>Tâche critique</span>
+        <span><i style="background:#FFFFFF"></i>Tâche non critique</span>
+        <span><i style="background:transparent;border-top:2px solid #1a1a2e;border-radius:0"></i>Arc critique</span>
+      </div>
+    </div>
+    <div class="graph-svg-wrap">
+      <svg viewBox="0 0 1320 410" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="apc" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0,0 L6,3.5 L0,7 z" fill="#1a1a2e"/>
+          </marker>
+          <marker id="apg" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+            <path d="M0,0 L6,3.5 L0,7 z" fill="#9090b0"/>
+          </marker>
+        </defs>
+        <!-- Arcs critical (thick black) -->
+        <line x1="80" y1="240" x2="155" y2="180" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="230" y1="180" x2="305" y2="180" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="380" y1="180" x2="455" y2="180" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="530" y1="180" x2="605" y2="180" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="680" y1="180" x2="755" y2="180" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="830" y1="180" x2="905" y2="300" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="980" y1="300" x2="1055" y2="240" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="1120" y1="240" x2="1155" y2="240" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <line x1="1220" y1="240" x2="1245" y2="240" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#apc)"/>
+        <!-- Arcs non-critical (grey thin) -->
+        <line x1="80" y1="240" x2="155" y2="320" stroke="#9090b0" stroke-width="1.2" marker-end="url(#apg)"/>
+        <line x1="230" y1="180" x2="305" y2="320" stroke="#9090b0" stroke-width="1.2" marker-end="url(#apg)"/>
+        <line x1="230" y1="320" x2="305" y2="320" stroke="#9090b0" stroke-width="1.2" marker-end="url(#apg)"/>
+        <line x1="380" y1="320" x2="755" y2="200" stroke="#9090b0" stroke-width="1.2" marker-end="url(#apg)"/>
+        <line x1="830" y1="180" x2="905" y2="180" stroke="#9090b0" stroke-width="1.2" marker-end="url(#apg)"/>
+        <line x1="980" y1="180" x2="1055" y2="220" stroke="#9090b0" stroke-width="1.2" marker-end="url(#apg)"/>
+
+        <!-- Edge labels (durations) -->
+        <g font-family="JetBrains Mono" font-size="11" font-weight="700">
+          <text x="110" y="200" fill="#1a1a2e">0</text>
+          <text x="265" y="170" fill="#1a1a2e">35</text>
+          <text x="415" y="170" fill="#1a1a2e">15</text>
+          <text x="565" y="170" fill="#1a1a2e">30</text>
+          <text x="715" y="170" fill="#1a1a2e">5</text>
+          <text x="855" y="225" fill="#1a1a2e">2</text>
+          <text x="1010" y="255" fill="#1a1a2e">40</text>
+          <text x="1132" y="232" fill="#1a1a2e">3</text>
+          <text x="1227" y="232" fill="#1a1a2e">2</text>
+          <text x="115" y="295" fill="#5a5a7a">0</text>
+          <text x="265" y="265" fill="#5a5a7a">35</text>
+          <text x="265" y="335" fill="#5a5a7a">20</text>
+          <text x="490" y="245" fill="#5a5a7a">2</text>
+          <text x="855" y="170" fill="#5a5a7a">2</text>
+          <text x="1010" y="195" fill="#5a5a7a">21</text>
+        </g>
+
+        <!-- Nodes -->
+        <!-- DEBUT -->
+        <g>
+          <rect x="20" y="210" width="60" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="50" y1="210" x2="50" y2="270" stroke="#1a1a2e"/>
+          <line x1="20" y1="240" x2="80" y2="240" stroke="#1a1a2e"/>
+          <text x="35" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">DÉB</text>
+          <text x="65" y="232" text-anchor="middle" font-size="11" fill="#1a1a2e">—</text>
+          <text x="35" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">0</text>
+          <text x="65" y="260" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">0</text>
+        </g>
+        <!-- T4 (critical) -->
+        <g>
+          <rect x="155" y="150" width="75" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="192.5" y1="150" x2="192.5" y2="210" stroke="#1a1a2e"/>
+          <line x1="155" y1="180" x2="230" y2="180" stroke="#1a1a2e"/>
+          <text x="173" y="172" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T4</text>
+          <text x="212" y="172" text-anchor="middle" font-size="11" fill="#1a1a2e">35</text>
+          <text x="173" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">0</text>
+          <text x="212" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">0</text>
+        </g>
+        <!-- T5 (non crit) -->
+        <g>
+          <rect x="155" y="290" width="75" height="60" rx="4" fill="#FFFFFF" stroke="#5a5a7a" stroke-width="1.2"/>
+          <line x1="192.5" y1="290" x2="192.5" y2="350" stroke="#5a5a7a"/>
+          <line x1="155" y1="320" x2="230" y2="320" stroke="#5a5a7a"/>
+          <text x="173" y="312" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T5</text>
+          <text x="212" y="312" text-anchor="middle" font-size="11" fill="#1a1a2e">20</text>
+          <text x="173" y="340" text-anchor="middle" font-size="11" fill="#1a1a2e">0</text>
+          <text x="212" y="340" text-anchor="middle" font-size="11" fill="#1a1a2e">63</text>
+        </g>
+        <!-- T1 (critical) -->
+        <g>
+          <rect x="305" y="150" width="75" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="342.5" y1="150" x2="342.5" y2="210" stroke="#1a1a2e"/>
+          <line x1="305" y1="180" x2="380" y2="180" stroke="#1a1a2e"/>
+          <text x="323" y="172" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T1</text>
+          <text x="362" y="172" text-anchor="middle" font-size="11" fill="#1a1a2e">15</text>
+          <text x="323" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">35</text>
+          <text x="362" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">35</text>
+        </g>
+        <!-- T6 (non crit) -->
+        <g>
+          <rect x="305" y="290" width="75" height="60" rx="4" fill="#FFFFFF" stroke="#5a5a7a" stroke-width="1.2"/>
+          <line x1="342.5" y1="290" x2="342.5" y2="350" stroke="#5a5a7a"/>
+          <line x1="305" y1="320" x2="380" y2="320" stroke="#5a5a7a"/>
+          <text x="323" y="312" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T6</text>
+          <text x="362" y="312" text-anchor="middle" font-size="11" fill="#1a1a2e">2</text>
+          <text x="323" y="340" text-anchor="middle" font-size="11" fill="#1a1a2e">35</text>
+          <text x="362" y="340" text-anchor="middle" font-size="11" fill="#1a1a2e">83</text>
+        </g>
+        <!-- T2 (critical) -->
+        <g>
+          <rect x="455" y="150" width="75" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="492.5" y1="150" x2="492.5" y2="210" stroke="#1a1a2e"/>
+          <line x1="455" y1="180" x2="530" y2="180" stroke="#1a1a2e"/>
+          <text x="473" y="172" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T2</text>
+          <text x="512" y="172" text-anchor="middle" font-size="11" fill="#1a1a2e">30</text>
+          <text x="473" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">50</text>
+          <text x="512" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">50</text>
+        </g>
+        <!-- T3 (critical) -->
+        <g>
+          <rect x="605" y="150" width="75" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="642.5" y1="150" x2="642.5" y2="210" stroke="#1a1a2e"/>
+          <line x1="605" y1="180" x2="680" y2="180" stroke="#1a1a2e"/>
+          <text x="623" y="172" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T3</text>
+          <text x="662" y="172" text-anchor="middle" font-size="11" fill="#1a1a2e">5</text>
+          <text x="623" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">80</text>
+          <text x="662" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">80</text>
+        </g>
+        <!-- T7 (critical) -->
+        <g>
+          <rect x="755" y="150" width="75" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="792.5" y1="150" x2="792.5" y2="210" stroke="#1a1a2e"/>
+          <line x1="755" y1="180" x2="830" y2="180" stroke="#1a1a2e"/>
+          <text x="773" y="172" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T7</text>
+          <text x="812" y="172" text-anchor="middle" font-size="11" fill="#1a1a2e">2</text>
+          <text x="773" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">85</text>
+          <text x="812" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">85</text>
+        </g>
+        <!-- T8 (non crit) -->
+        <g>
+          <rect x="905" y="150" width="75" height="60" rx="4" fill="#FFFFFF" stroke="#5a5a7a" stroke-width="1.2"/>
+          <line x1="942.5" y1="150" x2="942.5" y2="210" stroke="#5a5a7a"/>
+          <line x1="905" y1="180" x2="980" y2="180" stroke="#5a5a7a"/>
+          <text x="923" y="172" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T8</text>
+          <text x="962" y="172" text-anchor="middle" font-size="11" fill="#1a1a2e">21</text>
+          <text x="923" y="200" text-anchor="middle" font-size="11" fill="#1a1a2e">87</text>
+          <text x="962" y="200" text-anchor="middle" font-size="11" fill="#1a1a2e">106</text>
+        </g>
+        <!-- T9 (critical) -->
+        <g>
+          <rect x="905" y="270" width="75" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="942.5" y1="270" x2="942.5" y2="330" stroke="#1a1a2e"/>
+          <line x1="905" y1="300" x2="980" y2="300" stroke="#1a1a2e"/>
+          <text x="923" y="292" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T9</text>
+          <text x="962" y="292" text-anchor="middle" font-size="11" fill="#1a1a2e">40</text>
+          <text x="923" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">87</text>
+          <text x="962" y="320" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">87</text>
+        </g>
+        <!-- T10 (critical) -->
+        <g>
+          <rect x="1055" y="210" width="65" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="1087.5" y1="210" x2="1087.5" y2="270" stroke="#1a1a2e"/>
+          <line x1="1055" y1="240" x2="1120" y2="240" stroke="#1a1a2e"/>
+          <text x="1071" y="232" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T10</text>
+          <text x="1104" y="232" text-anchor="middle" font-size="11" fill="#1a1a2e">3</text>
+          <text x="1071" y="260" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a2e">127</text>
+          <text x="1104" y="260" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a2e">127</text>
+        </g>
+        <!-- T11 (critical) -->
+        <g>
+          <rect x="1155" y="210" width="65" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="1187.5" y1="210" x2="1187.5" y2="270" stroke="#1a1a2e"/>
+          <line x1="1155" y1="240" x2="1220" y2="240" stroke="#1a1a2e"/>
+          <text x="1171" y="232" text-anchor="middle" font-size="12" font-weight="700" fill="#1a1a2e">T11</text>
+          <text x="1204" y="232" text-anchor="middle" font-size="11" fill="#1a1a2e">2</text>
+          <text x="1171" y="260" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a2e">130</text>
+          <text x="1204" y="260" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a2e">130</text>
+        </g>
+        <!-- FIN (critical) -->
+        <g>
+          <rect x="1245" y="210" width="60" height="60" rx="4" fill="#D9D9D9" stroke="#1a1a2e" stroke-width="2"/>
+          <line x1="1275" y1="210" x2="1275" y2="270" stroke="#1a1a2e"/>
+          <line x1="1245" y1="240" x2="1305" y2="240" stroke="#1a1a2e"/>
+          <text x="1260" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1a2e">FIN</text>
+          <text x="1290" y="232" text-anchor="middle" font-size="11" fill="#1a1a2e">—</text>
+          <text x="1260" y="260" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a2e">132</text>
+          <text x="1290" y="260" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1a2e">132</text>
+        </g>
+
+        <!-- Path equation -->
+        <text x="660" y="385" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#1a1a2e">
+          DÉBUT → T4 → T1 → T2 → T3 → T7 → T9 → T10 → T11 → FIN  =  35+15+30+5+2+40+3+2 = 132 jours
+        </text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 12 RECAPITULATIF MARGES -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">RÉSULTATS</span>
+    <h2>Tableau récapitulatif des dates et marges</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Huit tâches critiques, trois tâches non critiques. La distribution asymétrique des marges révèle la structure dimensionnante du réseau.</p>
+  </div>
+  <div class="marges-layout">
+    <div class="glass" style="padding:14px 18px">
+      <table class="marges-table">
+        <thead><tr><th>Tâche</th><th>Durée</th><th>DTO</th><th>DTA</th><th>MT</th><th>ML</th><th>Statut</th></tr></thead>
+        <tbody>
+          <tr class="crit"><td class="lbl">T1</td><td class="num">15</td><td class="num">35</td><td class="num">35</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+          <tr class="crit"><td class="lbl">T2</td><td class="num">30</td><td class="num">50</td><td class="num">50</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+          <tr class="crit"><td class="lbl">T3</td><td class="num">5</td><td class="num">80</td><td class="num">80</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+          <tr class="crit"><td class="lbl">T4</td><td class="num">35</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+          <tr class="noncrit"><td class="lbl">T5</td><td class="num">20</td><td class="num">0</td><td class="num">63</td><td class="num bold">63</td><td class="num bold">15</td><td class="status">Non critique</td></tr>
+          <tr class="noncrit"><td class="lbl">T6</td><td class="num">2</td><td class="num">35</td><td class="num">83</td><td class="num bold">48</td><td class="num bold">48</td><td class="status">Non critique</td></tr>
+          <tr class="crit"><td class="lbl">T7</td><td class="num">2</td><td class="num">85</td><td class="num">85</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+          <tr class="noncrit"><td class="lbl">T8</td><td class="num">21</td><td class="num">87</td><td class="num">106</td><td class="num bold">19</td><td class="num bold">19</td><td class="status">Non critique</td></tr>
+          <tr class="crit"><td class="lbl">T9</td><td class="num">40</td><td class="num">87</td><td class="num">87</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+          <tr class="crit"><td class="lbl">T10</td><td class="num">3</td><td class="num">127</td><td class="num">127</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+          <tr class="crit"><td class="lbl">T11</td><td class="num">2</td><td class="num">130</td><td class="num">130</td><td class="num">0</td><td class="num">0</td><td class="status">Critique</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="marges-side">
+      <div class="glass">
+        <h4>Chemin critique unique</h4>
+        <div class="path">DÉBUT → T4 → T1 → T2 → T3 → T7 → T9 → T10 → T11 → FIN</div>
+        <p style="margin-top:8px">Longueur cumulée <span class="key">132 jours</span>. Aucun chemin alternatif ne présente cette même longueur.</p>
+      </div>
+      <div class="glass">
+        <h4>Marges distinctives</h4>
+        <p><b>T5</b> : MT = 63 j mais ML = 15 j → dissymétrie marge totale / marge libre.<br>
+        <b>T6</b> : MT = ML = 48 j → marge totalement consommable localement.<br>
+        <b>T8</b> : MT = ML = 19 j → marge réduite mais structurellement exploitable.</p>
+      </div>
+      <div class="glass">
+        <h4>Lecture managériale</h4>
+        <p>Concentration de la vigilance sur T4 (35 j exogène) et T9 (40 j) — les deux tâches les plus longues du chemin critique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 SENSIBILITÉ - 5 QUESTIONS -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">SENSIBILITÉ</span>
+    <h2>Cinq scénarios opérationnels résolus</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Chaque question est traitée par recalcul argumenté. Les marges du réseau absorbent les aléas mineurs ; un effort ciblé compresse le délai global.</p>
+  </div>
+  <div class="sens-grid">
+    <div class="glass sens-card">
+      <div class="qnum">Q4</div>
+      <div class="qtag">DATE DE DÉPÔT</div>
+      <div class="qt">Quand soumettre la demande d'autorisation ?</div>
+      <div class="qd">132 j en remontant à partir du 8 août 2026 = 29 mars 2026.</div>
+      <div class="qr">29 MARS 2026 — dépôt au plus tard</div>
+    </div>
+    <div class="glass sens-card green">
+      <div class="qnum">Q5</div>
+      <div class="qtag">ALLONGEMENT T5</div>
+      <div class="qt">T5 (devis) passe de 20 à 30 jours</div>
+      <div class="qd">max(0+35 ; 0+30) = 35. Le maximum reste imposé par T4. Marge totale de T5 absorbe largement les 10 j.</div>
+      <div class="qr">AUCUN IMPACT — projet à 132 j</div>
+    </div>
+    <div class="glass sens-card pink">
+      <div class="qnum">Q6</div>
+      <div class="qtag">ALLONGEMENT T3</div>
+      <div class="qt">T3 (sélection) passe de 5 à 6 jours</div>
+      <div class="qd">T3 est critique : tout allongement se répercute. Recalcul aval : DTO(Fin) passe de 132 à 133.</div>
+      <div class="qr">+ 1 JOUR — projet à 133 j</div>
+    </div>
+    <div class="glass sens-card amber">
+      <div class="qnum">Q7</div>
+      <div class="qtag">DURÉE MAX T8</div>
+      <div class="qt">Jusqu'où étendre la campagne pub ?</div>
+      <div class="qd">T8 peut durer jusqu'à 127 − 87 = 40 j sans bloquer T10. Marge de 19 j supplémentaires exploitables.</div>
+      <div class="qr">40 JOURS MAX — vs 21 j initial</div>
+    </div>
+    <div class="glass sens-card violet">
+      <div class="qnum">Q8</div>
+      <div class="qtag">COMPRESSION T4</div>
+      <div class="qt">T4 réduite à 10 j via canal privilégié</div>
+      <div class="qd">T4 sur chemin critique : gain de 25 j entièrement reporté. Structure du chemin critique inchangée.</div>
+      <div class="qr">107 JOURS — gain de 25 j</div>
+    </div>
+    <div class="glass sens-summary">
+      <h4>Synthèse managériale</h4>
+      <p>Les marges absorbent les aléas non critiques. Toute modification critique se répercute strictement. Un effort ciblé sur la tâche exogène compresse le délai global.</p>
+      <p><b>La MPM transforme l'intuition managériale en décisions chiffrées.</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- 14 SECTION 03 -->
+<section class="slide dark" role="presentation">
+  <span class="section-num">SECTION 03</span>
+  <h2>Analyse de l'ouvrage</h2>
+  <div class="section-divider"></div>
+  <p class="section-sub">Hémici et Bounab, <i>Techniques de gestion : cours et applications</i>, chapitre 4 — un manuel de référence francophone, sa structure, son positionnement et ses prolongements.</p>
+</section>
+
+<!-- 15 STRUCTURE CHAPITRE 4 -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">OUVRAGE — STRUCTURE</span>
+    <h2>Chapitre 4 — quatre sections et un dispositif d'exercices</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">L'architecture pédagogique conjugue formalisation rigoureuse, exemple longitudinal de 14 tâches et progression graduée des exercices d'application.</p>
+  </div>
+  <div class="arch-grid">
+    <div class="arch-layers">
+      <div class="glass arch-row">
+        <div class="lab"><span class="step">SECTION 01</span>NOTATIONS</div>
+        <div class="arch-chips">
+          <span class="archi-chip" style="border-color:var(--accent);color:var(--accent)">Convention activity-on-node</span>
+          <span class="archi-chip" style="border-color:var(--accent);color:var(--accent)">4 compartiments par nœud</span>
+          <span class="archi-chip" style="border-color:var(--accent);color:var(--accent)">Antériorité comme principe</span>
+        </div>
+      </div>
+      <div class="arch-flow">↓</div>
+      <div class="glass arch-row">
+        <div class="lab"><span class="step">SECTION 02</span>MISE EN ŒUVRE</div>
+        <div class="arch-chips">
+          <span class="archi-chip" style="border-color:var(--emerald);color:var(--emerald)">7 étapes structurées</span>
+          <span class="archi-chip" style="border-color:var(--emerald);color:var(--emerald)">Exemple 14 tâches</span>
+          <span class="archi-chip" style="border-color:var(--emerald);color:var(--emerald)">Forward + Backward</span>
+          <span class="archi-chip" style="border-color:var(--emerald);color:var(--emerald)">MT et ML distinguées</span>
+        </div>
+      </div>
+      <div class="arch-flow">↓</div>
+      <div class="glass arch-row">
+        <div class="lab"><span class="step">SECTION 03</span>PROBABILISTE</div>
+        <div class="arch-chips">
+          <span class="archi-chip" style="border-color:var(--amber);color:var(--amber)">Trois estimations bêta</span>
+          <span class="archi-chip" style="border-color:var(--amber);color:var(--amber)">Moyenne T̄ et variance σ²</span>
+          <span class="archi-chip" style="border-color:var(--amber);color:var(--amber)">Loi normale centrée réduite</span>
+        </div>
+      </div>
+      <div class="arch-flow">↓</div>
+      <div class="glass arch-row">
+        <div class="lab"><span class="step">SECTION 04</span>EXERCICES</div>
+        <div class="arch-chips">
+          <span class="archi-chip" style="border-color:var(--pink);color:var(--pink)">5 cas gradués 9 → 23 tâches</span>
+          <span class="archi-chip" style="border-color:var(--pink);color:var(--pink)">Corrigés détaillés</span>
+          <span class="archi-chip" style="border-color:var(--pink);color:var(--pink)">Pédagogie de l'autonomie</span>
+        </div>
+      </div>
+    </div>
+    <div class="arch-side">
+      <div class="glass arch-side-card">
+        <h4>Auteurs et édition</h4>
+        <div class="item"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-people"/></svg><b>Farouk Hémici · Mira Bounab</b></div>
+        <div class="item"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-book"/></svg><b>Éditions Dunod</b><span class="v">Eco Sup</span></div>
+        <div class="item"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-target"/></svg><b>Public</b><span class="v">Master · DSCG</span></div>
+        <div class="item"><svg class="ic ic-sm" aria-hidden="true"><use href="#i-layers"/></svg><b>Position dans l'ouvrage</b><span class="v">Pivot</span></div>
+      </div>
+      <div class="glass arch-side-card">
+        <h4>Choix pédagogiques distinctifs</h4>
+        <p style="font-size:12.5px;color:var(--text-2);line-height:1.55">
+          Un <b>exemple longitudinal unique</b> de 14 tâches déroulé sur tout le chapitre évite les changements de contexte. Les <b>corrigés substantiels</b> dépassent la pratique courante des manuels universitaires français.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 POSITIONNEMENT LITTERATURE -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">POSITIONNEMENT</span>
+    <h2>Quatre familles de références internationales</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">L'ouvrage occupe une position distinctive dans le paysage francophone : profondeur quantitative et ancrage dans la tradition Roy / SEMA.</p>
+  </div>
+  <div class="tech-layout">
+    <table class="tech-table" aria-label="Comparatif des familles de références">
+      <thead>
+        <tr><th style="width:22%">Famille</th><th style="width:24%">Référence type</th><th style="width:22%">Spécificité</th><th>Complémentarité Hémici-Bounab</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Manuels professionnels</td>
+          <td class="pick">PMBOK Guide</td>
+          <td class="alt">PMI, 2021</td>
+          <td>Checklists et templates · moins de démonstrations algorithmiques.</td>
+        </tr>
+        <tr>
+          <td>Recherche opérationnelle</td>
+          <td class="pick">Hillier et Lieberman</td>
+          <td class="alt">11<sup>e</sup> éd., 2020</td>
+          <td>Vision optimisation globale · MPM traité plus succinctement.</td>
+        </tr>
+        <tr>
+          <td>Gestion francophone</td>
+          <td class="pick">V. Giard</td>
+          <td class="alt">Economica, 2003</td>
+          <td>Approche orientée gestion de production · ordonnancement = composante.</td>
+        </tr>
+        <tr>
+          <td>Pratiques projet FR</td>
+          <td class="pick">H.-P. Maders</td>
+          <td class="alt">Eyrolles</td>
+          <td>Dimensions humaines et organisationnelles · quantitatif complémentaire.</td>
+        </tr>
+        <tr>
+          <td>Ordonnancement spécialisé</td>
+          <td class="pick">Demeulemeester et Herroelen</td>
+          <td class="alt">Kluwer, 2002</td>
+          <td>RCPSP, métaheuristiques · prolongement naturel de l'ouvrage.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tech-side">
+      <div class="glass tech-side-card">
+        <h4>Position distinctive</h4>
+        <p>Hémici-Bounab combine rigueur quantitative <b>et</b> tradition francophone de la recherche opérationnelle (Bernard Roy, SEMA), un positionnement rare dans le paysage éditorial.</p>
+      </div>
+      <div class="glass tech-side-card">
+        <h4>Apport pédagogique</h4>
+        <div class="bigv">3<sup>e</sup> éd.</div>
+        <p>Mise à jour régulière dans la collection <b>Eco Sup</b> chez Dunod. Référence centrale pour le cursus Master 1 MSI de Paris 1 Panthéon-Sorbonne.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 APPORTS ET PROLONGEMENTS -->
+<section class="slide" role="presentation">
+  <div class="slide-head">
+    <span class="eyebrow">SYNTHÈSE</span>
+    <h2>Apports distinctifs et prolongements ouverts</h2>
+    <div class="divider-accent"></div>
+    <p class="lead">Trois apports majeurs fondent la valeur pédagogique de l'ouvrage. Trois prolongements thématiques sont naturellement ouverts par sa lecture pour l'approfondissement futur.</p>
+  </div>
+  <div class="bilan-2col">
+    <div class="glass bilan-col acquis">
+      <div class="head">
+        <div class="pic" style="background:rgba(16,185,129,0.12);color:var(--emerald)"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></div>
+        <div><span class="eyebrow" style="color:var(--emerald)">APPORTS DISTINCTIFS</span><h3>Ce que l'ouvrage transmet</h3></div>
+      </div>
+      <ul>
+        <li><b>Rigueur quantitative</b> — formules, algorithmes, exemples chiffrés. Formation des cadres techniques.</li>
+        <li><b>Pédagogie progressive</b> — exemple longitudinal de 14 tâches, corrigés détaillés, exercices gradués.</li>
+        <li><b>Ancrage tradition française</b> — fidélité à Bernard Roy et à la SEMA, spécificité francophone préservée.</li>
+        <li><b>Convention AON</b> — choix technique pertinent, conforme au standard logiciel contemporain.</li>
+        <li><b>Extension probabiliste</b> — introduction précoce du PERT, anticipation des approches incertitude.</li>
+        <li><b>Architecture pivot</b> — position centrale entre techniques de décision et opérations.</li>
+      </ul>
+    </div>
+    <div class="glass bilan-col future">
+      <div class="head">
+        <div class="pic" style="background:rgba(99,102,241,0.12);color:var(--accent)"><svg class="ic" aria-hidden="true"><use href="#i-rocket"/></svg></div>
+        <div><span class="eyebrow">PROLONGEMENTS OUVERTS</span><h3>Pistes d'approfondissement</h3></div>
+      </div>
+      <ul>
+        <li><b>RCPSP</b> — extension naturelle vers les contraintes de ressources, prolongement académique reconnu.</li>
+        <li><b>Time-cost trade-off (CPM)</b> — dimension économique complémentaire, arbitrage budget-délai.</li>
+        <li><b>Simulation Monte-Carlo</b> — standard professionnel pour les projets complexes (Hulett, 2009).</li>
+        <li><b>Méthodologies agiles</b> — hybridation Scrum / Kanban avec ordonnancement classique.</li>
+        <li><b>Mise en page graphique</b> — bonnes pratiques pour la production autonome de réseaux.</li>
+        <li><b>Analyses contemporaines</b> — Modelling Complex Projects (Williams, 2002), incertitude radicale.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="metrics-row">
+    <div class="glass metric-cell"><div class="v">132 j</div><div class="l">durée projet résolu</div></div>
+    <div class="glass metric-cell"><div class="v" style="color:var(--emerald)">8 / 11</div><div class="l">tâches critiques</div></div>
+    <div class="glass metric-cell"><div class="v" style="color:var(--amber)">25 j</div><div class="l">gain max compression</div></div>
+  </div>
+</section>
+
+<!-- 18 MERCI -->
+<section class="slide dark thanks" role="presentation">
+  <h2><span class="gradient-text">Merci</span></h2>
+  <div class="team">Dorra Chakour · Paulianne Fontoura · Daryna Kosianchuk · Théophile Rabut</div>
+  <div class="footer">Master 1 MSI · Université Paris 1 Panthéon-Sorbonne · 2025 / 2026</div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  let current = 0;
+  const counterCurr = document.getElementById('curr');
+  const counterTotal = document.getElementById('total');
+  const progressFill = document.getElementById('progressFill');
+  const minimap = document.getElementById('minimap');
+  counterTotal.textContent = String(total).padStart(2, '0');
+
+  slides.forEach((s, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot';
+    dot.setAttribute('aria-label', 'Aller à la slide ' + (i + 1));
+    dot.dataset.idx = i;
+    dot.addEventListener('click', () => showSlide(i));
+    minimap.appendChild(dot);
+  });
+  const dots = Array.from(minimap.querySelectorAll('.dot'));
+
+  function showSlide(i){
+    if (i < 0) i = 0;
+    if (i >= total) i = total - 1;
+    slides[current].classList.remove('active');
+    slides[i].classList.add('active');
+    current = i;
+    counterCurr.textContent = String(i + 1).padStart(2, '0');
+    progressFill.style.width = ((i + 1) / total * 100) + '%';
+    document.body.classList.toggle('on-dark', slides[i].classList.contains('dark'));
+    dots.forEach((d, di) => d.classList.toggle('active', di === i));
+  }
+
+  document.addEventListener('keydown', e => {
+    const tgt = e.target;
+    if (tgt && typeof tgt.closest === 'function' && tgt.closest('input, textarea, button')) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault(); showSlide(current + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault(); showSlide(current - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(total - 1);
+    } else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
+    } else if (e.key === 'Escape') {
+      if (document.fullscreenElement) document.exitFullscreen();
+    }
+  });
+
+  document.addEventListener('click', e => {
+    const tgt = e.target;
+    if (tgt && typeof tgt.closest === 'function' &&
+        tgt.closest('.minimap, a, button, input, textarea')) return;
+    showSlide(current + 1);
+  });
+  document.addEventListener('contextmenu', e => {
+    const tgt = e.target;
+    if (tgt && typeof tgt.closest === 'function' &&
+        tgt.closest('a, input, textarea')) return;
+    e.preventDefault();
+    showSlide(current - 1);
+  });
+
+  showSlide(0);
+})();
+</script>
+
+</body>
+</html>
